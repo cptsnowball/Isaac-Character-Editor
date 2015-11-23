@@ -1,24 +1,22 @@
 <RCC>
-    <qresource prefix="/Background">
-        <file>WhoAmI.png</file>
-        <file>Background.png</file>
-        <file>BackgroundOverlay.png</file>
-    </qresource>
-    <qresource prefix="/Characters">
-        <file>Azazel.png</file>
-        <file>BlackJudas.png</file>
-        <file>BlueBaby.png</file>
-        <file>Cain.png</file>
-        <file>Eden.png</file>
-        <file>Eve.png</file>
-        <file>Isaac.png</file>
-        <file>Judas.png</file>
-        <file>Lazarus.png</file>
-        <file>Lazarus2.png</file>
-        <file>Lilith.png</file>
-        <file>Maggy.png</file>
-        <file>Samson.png</file>
-        <file>TheKeeper.png</file>
-        <file>TheLost.png</file>
+    <qresource prefix="/">
+        <file>Resources/Characters/Azazel.png</file>
+        <file>Resources/Characters/BlackJudas.png</file>
+        <file>Resources/Characters/BlueBaby.png</file>
+        <file>Resources/Characters/Cain.png</file>
+        <file>Resources/Characters/Eden.png</file>
+        <file>Resources/Characters/Eve.png</file>
+        <file>Resources/Characters/Judas.png</file>
+        <file>Resources/Characters/Lazarus.png</file>
+        <file>Resources/Characters/Lazarus2.png</file>
+        <file>Resources/Characters/Lilith.png</file>
+        <file>Resources/Characters/Maggy.png</file>
+        <file>Resources/Characters/Samson.png</file>
+        <file>Resources/Characters/TheLost.png</file>
+        <file>Resources/Background/Background.png</file>
+        <file>Resources/Background/BackgroundOverlay.png</file>
+        <file>Resources/Background/WhoAmI.png</file>
+        <file>Resources/Characters/Isaac.png</file>
+        <file>Resources/Characters/TheKeeper.png</file>
     </qresource>
 </RCC>

@@ -18,9 +18,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setWindowTitle(constants::TITLE + " " + constants::VERSION);
 
-    QPixmap background(":/Background/Background.png");
-    QPixmap overlay(":/Background/BackgroundOverlay.png");
-    QPixmap whoAmI(":/Background/WhoAmI.png");
+    QPixmap background(":/Resources/Background/Background.png");
+    QPixmap overlay(":/Resources/Background/BackgroundOverlay.png");
+    QPixmap whoAmI(":/Resources/Background/WhoAmI.png");
 
     QPixmap result(background.size());
 
