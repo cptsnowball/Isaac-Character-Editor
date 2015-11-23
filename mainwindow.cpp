@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QApplication::setWindowIcon(QIcon(":/Icon/PurpleKey.ico"));
 
-    setWindowTitle("Isaac Character Editor: Afterbirth Redux " + constants::VERSION);
+    setWindowTitle(constants::TITLE + " " + constants::VERSION);
 
     QPixmap background(":/Background/Background.png");
     QPixmap overlay(":/Background/BackgroundOverlay.png");
