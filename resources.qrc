@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/Background">
+        <file>WhoAmI.png</file>
+        <file>Background.png</file>
+        <file>BackgroundOverlay.png</file>
+    </qresource>
+    <qresource prefix="/Characters">
+        <file>Azazel.png</file>
+        <file>BlackJudas.png</file>
+        <file>BlueBaby.png</file>
+        <file>Cain.png</file>
+        <file>Eden.png</file>
+        <file>Eve.png</file>
+        <file>Isaac.png</file>
+        <file>Judas.png</file>
+        <file>Lazarus.png</file>
+        <file>Lazarus2.png</file>
+        <file>Lilith.png</file>
+        <file>Maggy.png</file>
+        <file>Samson.png</file>
+        <file>TheKeeper.png</file>
+        <file>TheLost.png</file>
+    </qresource>
+</RCC>

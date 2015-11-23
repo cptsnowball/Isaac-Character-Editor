@@ -13,8 +13,25 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    character.cpp \
+    draw.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    constants.h \
+    character.h \
+    variables.h \
+    draw.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resources.qrc
+
+CONFIG += c++11
+
+VERSION = 6.0.0.0
+QMAKE_TARGET_COMPANY = Portal-chan
+QMAKE_TARGET_PRODUCT = Isaac Character Editor
+QMAKE_TARGET_DESCRIPTION =
+QMAKE_TARGET_COPYRIGHT = Copyright © 2015-2016
