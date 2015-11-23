@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->characterComboBox->setFont(this->_font);
 
-    QApplication::setWindowIcon(QIcon(":/Icon/PurpleKey.ico"));
+    QApplication::setWindowIcon(QIcon(":Resources/Icons/PurpleKey.ico"));
 
     setWindowTitle(constants::TITLE + " " + constants::VERSION);
 
