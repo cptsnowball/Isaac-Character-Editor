@@ -9,7 +9,7 @@ Draw::Draw() { }
 
 Draw::~Draw() { }
 
-void Draw::Character(QLabel **characterImageLabel, int selectedIndex)
+void Draw::Character(QLabel* characterImageLabel, int selectedIndex)
 {
     QPixmap character;
     Characters characterToDraw = static_cast<Characters>(selectedIndex);
@@ -66,7 +66,7 @@ void Draw::Character(QLabel **characterImageLabel, int selectedIndex)
         break;
     }
 
-    characterImageLabel[0]->setPixmap(character);
-    characterImageLabel[0]->setMask(character.mask());
-    characterImageLabel[0]->show();
+    characterImageLabel->setPixmap(character);
+    characterImageLabel->setMask(character.mask());
+    characterImageLabel->show();
 }

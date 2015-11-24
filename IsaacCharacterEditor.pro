@@ -28,7 +28,7 @@ FORMS    += mainwindow.ui
 RESOURCES += \
     resources.qrc
 
-CONFIG += c++11
+CONFIG += c++14
 
 VERSION = 6.0.0.0
 QMAKE_TARGET_COMPANY = Portal-chan

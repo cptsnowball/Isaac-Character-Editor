@@ -18,6 +18,7 @@ public:
     void GenerateCharacterComboBox();
 public slots:
     void DrawCharacter(int characterToDraw);
+    void SetCurrentCharacter(int character);
 private:
     Ui::MainWindow *ui;
     Draw _draw;

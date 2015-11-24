@@ -2,6 +2,8 @@
 #define VARIABLES
 
 #include "character.h"
+#include "constants.h"
+#include <array>
 
 bool afterbirthEnabled = true;
 Characters currentCharacter = Characters::Isaac;
@@ -37,7 +39,7 @@ Character _lilith(13, "Lilith", "PlayerName_13_Lilith.png", "Character_014_Lilit
 Character _theKeeper(14, "The Keeper", "PlayerName_14_TheKeeper.png", "Character_015_Keeper.png", "PlayerPortrait_14_Keeper.png", "PlayerPortraitBig_Keeper.png",
                      -1, 0, 4, 0, 0, 1, 1, 0, 0, 0, 83, 349, true, QStringList {});
 
-std::vector<Character> characterList {
+std::array<Character, constants::TOTAL_CHARACTER_COUNT> characterList {
     _isaac, _maggy, _cain, _judas, _blueBaby, _eve, _samson, _azazel, _lazarus, _eden, _theLost, _lazarus2, _blackJudas, _lilith, _theKeeper
 };
 

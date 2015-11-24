@@ -19,5 +19,6 @@
         <file>Resources/Characters/Isaac.png</file>
         <file>Resources/Characters/TheKeeper.png</file>
         <file>Resources/Icons/PurpleKey.ico</file>
+        <file>Resources/Background/MyStuff.png</file>
     </qresource>
 </RCC>

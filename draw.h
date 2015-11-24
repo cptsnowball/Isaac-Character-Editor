@@ -11,7 +11,7 @@ class Draw : public QObject
 public:
     Draw();
     ~Draw();
-    void Character(QLabel**, int);
+    void Character(QLabel*, int);
 private:
 };
 

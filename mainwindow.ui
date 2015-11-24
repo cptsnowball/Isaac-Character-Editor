@@ -68,8 +68,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>characterComboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SetCurrentCharacter(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>343</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>463</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>DrawCharacter(int)</slot>
+  <slot>SetCurrentCharacter(int)</slot>
  </slots>
 </ui>

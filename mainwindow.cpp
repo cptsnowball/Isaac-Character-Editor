@@ -15,21 +15,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->characterComboBox->setFont(this->_font);
 
     QApplication::setWindowIcon(QIcon(":Resources/Icons/PurpleKey.ico"));
+    QWidget::setFixedSize(this->size());
 
     setWindowTitle(constants::TITLE + " " + constants::VERSION);
 
-    QPixmap background(":/Resources/Background/Background.png");
-    QPixmap overlay(":/Resources/Background/BackgroundOverlay.png");
-    QPixmap whoAmI(":/Resources/Background/WhoAmI.png");
-
-    QPixmap result(background.size());
+    QPixmap result(this->size());
 
     result.fill(Qt::transparent);
     {
+        const auto getPixmap = [](QString filename) -> QPixmap {
+            return QPixmap(":/Resources/Background/" + filename + ".png");
+        };
         QPainter painter(&result);
-        painter.drawPixmap(0, 0, background);
-        painter.drawPixmap(0, 0, overlay);
-        painter.drawPixmap(224, 10, whoAmI);
+        painter.drawPixmap(0, 0, getPixmap("Background"));
+        painter.drawPixmap(0, 0, getPixmap("BackgroundOverlay"));
+        painter.drawPixmap(224, 10, getPixmap("WhoAmI"));
+        painter.drawPixmap(453, 135, getPixmap("MyStuff"));
     }
 
     result = result.scaled(this->size(), Qt::IgnoreAspectRatio);
@@ -59,5 +60,10 @@ void MainWindow::GenerateCharacterComboBox()
 
 void MainWindow::DrawCharacter(int characterToDraw)
 {
-    this->_draw.Character(&this->ui->characterImageLabel, characterToDraw);
+    this->_draw.Character(this->ui->characterImageLabel, characterToDraw);
+}
+
+void MainWindow::SetCurrentCharacter(int character)
+{
+    currentCharacter = static_cast<Characters>(character);
 }
