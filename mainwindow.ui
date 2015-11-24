@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>712</width>
-    <height>427</height>
+    <width>705</width>
+    <height>417</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,37 +37,241 @@
      </rect>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>712</width>
-     <height>20</height>
-    </rect>
-   </property>
+   <widget class="QLabel" name="redHeartImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>172</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="soulHeartImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>197</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="blackHeartImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>222</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="coinImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>303</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bombImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>328</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="keyImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>353</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="healthLabel">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>135</y>
+      <width>50</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Health:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="consumablesLabel">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>265</y>
+      <width>75</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Consumables:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="redHeartLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>46</x>
+      <y>169</y>
+      <width>35</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="soulHeartLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>46</x>
+      <y>194</y>
+      <width>35</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="blackHeartLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>46</x>
+      <y>219</y>
+      <width>35</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="coinLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>46</x>
+      <y>300</y>
+      <width>35</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="bombLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>46</x>
+      <y>325</y>
+      <width>35</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="keyLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>46</x>
+      <y>350</y>
+      <width>35</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections>
-  <connection>
-   <sender>characterComboBox</sender>
-   <signal>currentIndexChanged(int)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>DrawCharacter(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>366</x>
-     <y>147</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>484</x>
-     <y>171</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>characterComboBox</sender>
    <signal>currentIndexChanged(int)</signal>
@@ -86,7 +290,6 @@
   </connection>
  </connections>
  <slots>
-  <slot>DrawCharacter(int)</slot>
   <slot>SetCurrentCharacter(int)</slot>
  </slots>
 </ui>

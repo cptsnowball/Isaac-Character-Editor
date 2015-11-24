@@ -20,5 +20,16 @@
         <file>Resources/Characters/TheKeeper.png</file>
         <file>Resources/Icons/PurpleKey.ico</file>
         <file>Resources/Background/MyStuff.png</file>
+        <file>Resources/Health/BlackHeartFull.png</file>
+        <file>Resources/Health/BlackHeartHalf.png</file>
+        <file>Resources/Health/CoinHeartFull.png</file>
+        <file>Resources/Health/CoinHeartHalf.png</file>
+        <file>Resources/Health/RedHeartFull.png</file>
+        <file>Resources/Health/RedHeartHalf.png</file>
+        <file>Resources/Health/SoulHeartFull.png</file>
+        <file>Resources/Health/SoulHeartHalf.png</file>
+        <file>Resources/Consumables/Bomb.png</file>
+        <file>Resources/Consumables/Coin.png</file>
+        <file>Resources/Consumables/Key.png</file>
     </qresource>
 </RCC>

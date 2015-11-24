@@ -4,9 +4,9 @@
 #include "character.h"
 #include "constants.h"
 #include <array>
+#include <map>
 
 bool afterbirthEnabled = true;
-Characters currentCharacter = Characters::Isaac;
 
 Character _isaac(0, "Isaac", "PlayerName_01_Isaac.png", "Character_001_Isaac.png", "PlayerPortrait_01_Isaac.png", "PlayerPortraitBig_01_Isaac.png",
                  -1, 0, 6, 0, 0, 0, 1, 0, 0, 0, 0, 105, true, QStringList {});
@@ -41,6 +41,24 @@ Character _theKeeper(14, "The Keeper", "PlayerName_14_TheKeeper.png", "Character
 
 std::array<Character, constants::TOTAL_CHARACTER_COUNT> characterList {
     _isaac, _maggy, _cain, _judas, _blueBaby, _eve, _samson, _azazel, _lazarus, _eden, _theLost, _lazarus2, _blackJudas, _lilith, _theKeeper
+};
+
+std::map<Characters, Character> characterMap {
+    {Characters::Isaac, _isaac},
+    {Characters::Maggy, _maggy},
+    {Characters::Cain, _cain},
+    {Characters::Judas, _judas},
+    {Characters::BlueBaby, _blueBaby},
+    {Characters::Eve, _eve},
+    {Characters::Samson, _samson},
+    {Characters::Azazel, _azazel},
+    {Characters::Lazarus, _lazarus},
+    {Characters::Eden, _eden},
+    {Characters::TheLost, _theLost},
+    {Characters::Lazarus2, _lazarus2},
+    {Characters::BlackJudas, _blackJudas},
+    {Characters::Lilith, _lilith},
+    {Characters::TheKeeper, _theKeeper}
 };
 
 #endif // VARIABLES
