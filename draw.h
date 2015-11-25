@@ -2,6 +2,7 @@
 #define DRAW_H
 
 #include "character.h"
+#include "random.h"
 #include <QLabel>
 #include <array>
 
@@ -16,6 +17,7 @@ public:
     void Character(QLabel*, Characters);
     void Health(std::array<QLabel*, 12>, int, int, int, bool);
 private:
+    Random _rng = Random();
 };
 
 #endif // DRAW_H

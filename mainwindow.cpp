@@ -116,4 +116,54 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
     this->_draw.Character(this->ui->characterImageLabel, this->_currentCharacter);
     this->_draw.Health(this->_heartLabels, character.RedHearts, character.SoulHearts, character.BlackHearts,
                        _currentCharacter == Characters::TheKeeper);
+
+    this->ui->redHeartLineEdit->setText(QString::number(character.RedHearts));
+    this->ui->soulHeartLineEdit->setText(QString::number(character.SoulHearts));
+    this->ui->blackHeartLineEdit->setText(QString::number(character.BlackHearts));
+
+    this->ui->coinLineEdit->setText(QString::number(character.Coins));
+    this->ui->bombLineEdit->setText(QString::number(character.Bombs));
+    this->ui->keyLineEdit->setText(QString::number(character.Keys));
+}
+
+void MainWindow::SetRedHearts(QString value)
+{
+    Character* character = &characterMap.at(this->_currentCharacter);
+    character->RedHearts = value.toInt();
+    this->_draw.Health(this->_heartLabels, character->RedHearts, character->SoulHearts, character->BlackHearts,
+                       _currentCharacter == Characters::TheKeeper);
+}
+
+void MainWindow::SetSoulHearts(QString value)
+{
+    Character* character = &characterMap.at(this->_currentCharacter);
+    character->SoulHearts = value.toInt();
+    this->_draw.Health(this->_heartLabels, character->RedHearts, character->SoulHearts, character->BlackHearts,
+                       _currentCharacter == Characters::TheKeeper);
+}
+
+void MainWindow::SetBlackHearts(QString value)
+{
+    Character* character = &characterMap.at(this->_currentCharacter);
+    character->BlackHearts = value.toInt();
+    this->_draw.Health(this->_heartLabels, character->RedHearts, character->SoulHearts, character->BlackHearts,
+                       _currentCharacter == Characters::TheKeeper);
+}
+
+void MainWindow::SetCoins(QString value)
+{
+    Character* character = &characterMap.at(this->_currentCharacter);
+    character->Coins = value.toInt();
+}
+
+void MainWindow::SetBombs(QString value)
+{
+    Character* character = &characterMap.at(this->_currentCharacter);
+    character->Bombs = value.toInt();
+}
+
+void MainWindow::SetKeys(QString value)
+{
+    Character* character = &characterMap.at(this->_currentCharacter);
+    character->Keys = value.toInt();
 }

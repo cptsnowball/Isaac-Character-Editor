@@ -23,6 +23,12 @@ public:
     std::array<QLabel*, 12> SetUpHeartLabels();
 public slots:
     void SetCurrentCharacter(int characterToSet);
+    void SetRedHearts(QString value);
+    void SetSoulHearts(QString value);
+    void SetBlackHearts(QString value);
+    void SetCoins(QString value);
+    void SetBombs(QString value);
+    void SetKeys(QString value);
 private:
     Ui::MainWindow* ui;
     Characters _currentCharacter = Characters::Isaac;

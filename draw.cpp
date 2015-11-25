@@ -104,7 +104,7 @@ void Draw::Health(std::array<QLabel*, 12> heartLabels, int redHearts, int soulHe
                 soulHearts -= 2;
                 drawnHealth += 2;
             }
-            else if(soulHearts == 1 || soulHearts > 1 && drawnHealth >= 3)
+            else if((soulHearts == 1 || soulHearts > 1) && drawnHealth >= 3)
             {
                 PixmapToLabel(heartLabels.at(i), ":/Resources/Health/SoulHeartHalf.png");
                 soulHearts -= 1;
@@ -116,7 +116,7 @@ void Draw::Health(std::array<QLabel*, 12> heartLabels, int redHearts, int soulHe
                 blackHearts -= 2;
                 drawnHealth += 2;
             }
-            else if(soulHearts == 1 || soulHearts > 1 && drawnHealth >= 3)
+            else if((soulHearts == 1 || soulHearts > 1) && drawnHealth >= 3)
             {
                 PixmapToLabel(heartLabels.at(i), ":/Resources/Health/BlackHeartHalf.png");
                 blackHearts -= 1;

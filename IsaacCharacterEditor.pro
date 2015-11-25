@@ -15,13 +15,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     character.cpp \
-    draw.cpp
+    draw.cpp \
+    random.cpp
 
 HEADERS  += mainwindow.h \
     constants.h \
     character.h \
     variables.h \
-    draw.h
+    draw.h \
+    random.h
 
 FORMS    += mainwindow.ui
 
