@@ -12,17 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _draw()
 {
     ui->setupUi(this);
-    ui->characterComboBox->setFont(this->_font);
-    ui->healthLabel->setFont(this->_font);
-    ui->consumablesLabel->setFont(this->_font);
-
-    ui->redHeartLineEdit->setFont(this->_font);
-    ui->soulHeartLineEdit->setFont(this->_font);
-    ui->blackHeartLineEdit->setFont(this->_font);
-
-    ui->coinLineEdit->setFont(this->_font);
-    ui->bombLineEdit->setFont(this->_font);
-    ui->keyLineEdit->setFont(this->_font);
 
     ui->redHeartLineEdit->setValidator(this->_healthValidator);
     ui->soulHeartLineEdit->setValidator(this->_healthValidator);
@@ -33,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->keyLineEdit->setValidator(this->_consumableValidator);
 
     QApplication::setWindowIcon(QIcon(":Resources/Icons/PurpleKey.ico"));
+    QApplication::setFont(this->_font);
     QWidget::setFixedSize(this->size());
 
     setWindowTitle(constants::TITLE + " " + constants::VERSION);
@@ -83,10 +73,10 @@ void MainWindow::GenerateCharacterComboBox()
     QStringList characterNames;
     for(int i = 0; i < constants::REBIRTH_CHARACTER_COUNT; ++i)
         characterNames.append(characterList.at(i).Name);
-    for(int i = 0; i < constants::AFTERBIRTH_CHARACTER_COUNT; ++i)
+    if(afterbirthEnabled) for(int i = 0; i < constants::AFTERBIRTH_CHARACTER_COUNT; ++i)
         characterNames.append(characterList.at(constants::REBIRTH_CHARACTER_COUNT + i).Name);
-    ui->characterComboBox->addItems(characterNames);
 
+    ui->characterComboBox->addItems(characterNames);
     this->_currentCharacter = Characters::Isaac;
 }
 
@@ -166,4 +156,32 @@ void MainWindow::SetKeys(QString value)
 {
     Character* character = &characterMap.at(this->_currentCharacter);
     character->Keys = value.toInt();
+}
+
+void MainWindow::PillCheckBoxChanged(int checkState)
+{
+    if(checkState == Qt::Checked)
+    {
+        if(this->ui->cardCheckBox->isChecked())
+            this->ui->cardCheckBox->setChecked(false);
+        this->_draw.Card(this->ui->cardImageLabel, afterbirthEnabled, 1);
+    }
+    else if(checkState == Qt::Unchecked)
+        this->_draw.Card(this->ui->cardImageLabel, afterbirthEnabled, 0);
+}
+
+void MainWindow::CardCheckBoxChanged(int checkState)
+{
+    if(checkState == Qt::Checked)
+    {
+        if(this->ui->pillCheckBox->isChecked())
+            this->ui->pillCheckBox->setChecked(false);
+        this->ui->cardComboBox->setEnabled(true);
+    }
+    else if(checkState == Qt::Unchecked)
+    {
+        this->ui->cardComboBox->setCurrentIndex(0);
+        this->ui->cardComboBox->setEnabled(false);
+    }
+    this->_draw.Card(this->ui->cardImageLabel, afterbirthEnabled, 0);
 }

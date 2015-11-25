@@ -29,6 +29,8 @@ public slots:
     void SetCoins(QString value);
     void SetBombs(QString value);
     void SetKeys(QString value);
+    void PillCheckBoxChanged(int checkState);
+    void CardCheckBoxChanged(int checkState);
 private:
     Ui::MainWindow* ui;
     Characters _currentCharacter = Characters::Isaac;

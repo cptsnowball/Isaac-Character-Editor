@@ -1,5 +1,5 @@
-#ifndef VARIABLES
-#define VARIABLES
+#ifndef VARIABLES_H
+#define VARIABLES_H
 
 #include "character.h"
 #include "constants.h"

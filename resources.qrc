@@ -31,5 +31,24 @@
         <file>Resources/Consumables/Bomb.png</file>
         <file>Resources/Consumables/Coin.png</file>
         <file>Resources/Consumables/Key.png</file>
+        <file>Resources/Cards/DiceShard.png</file>
+        <file>Resources/Cards/EmergencyContact.png</file>
+        <file>Resources/Cards/Pill1.png</file>
+        <file>Resources/Cards/Pill2.png</file>
+        <file>Resources/Cards/Pill3.png</file>
+        <file>Resources/Cards/Pill4.png</file>
+        <file>Resources/Cards/Pill5.png</file>
+        <file>Resources/Cards/Pill6.png</file>
+        <file>Resources/Cards/Pill7.png</file>
+        <file>Resources/Cards/Pill8.png</file>
+        <file>Resources/Cards/Pill9.png</file>
+        <file>Resources/Cards/Pill10.png</file>
+        <file>Resources/Cards/Pill11.png</file>
+        <file>Resources/Cards/Pill12.png</file>
+        <file>Resources/Cards/Pill13.png</file>
+        <file>Resources/Cards/PlayingCard.png</file>
+        <file>Resources/Cards/Rune1.png</file>
+        <file>Resources/Cards/Rune2.png</file>
+        <file>Resources/Cards/TarotCard.png</file>
     </qresource>
 </RCC>
