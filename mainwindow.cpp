@@ -164,10 +164,10 @@ void MainWindow::PillCheckBoxChanged(int checkState)
     {
         if(this->ui->cardCheckBox->isChecked())
             this->ui->cardCheckBox->setChecked(false);
-        this->_draw.Card(this->ui->cardImageLabel, afterbirthEnabled, 1);
+        this->_draw.Card(this->ui->cardImageLabel, 1);
     }
     else if(checkState == Qt::Unchecked)
-        this->_draw.Card(this->ui->cardImageLabel, afterbirthEnabled, 0);
+        this->_draw.Card(this->ui->cardImageLabel, 0);
 }
 
 void MainWindow::CardCheckBoxChanged(int checkState)
@@ -183,5 +183,5 @@ void MainWindow::CardCheckBoxChanged(int checkState)
         this->ui->cardComboBox->setCurrentIndex(0);
         this->ui->cardComboBox->setEnabled(false);
     }
-    this->_draw.Card(this->ui->cardImageLabel, afterbirthEnabled, 0);
+    this->_draw.Card(this->ui->cardImageLabel, 0);
 }

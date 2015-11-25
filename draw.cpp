@@ -1,4 +1,5 @@
 #include "draw.h"
+#include "variables.h"
 
 #include <QBitmap>
 #include <QLabel>
@@ -161,7 +162,7 @@ void Draw::Health(std::array<QLabel*, 12> heartLabels, int redHearts, int soulHe
     }
 }
 
-void Draw::Card(QLabel* cardImageLabel, bool afterbirthEnabled, int cardOrPill, int cardIndex)
+void Draw::Card(QLabel* cardImageLabel, int cardOrPill, int cardIndex)
 {
     if(cardOrPill == 0) cardImageLabel->clear();
     else if(cardOrPill == 1)
