@@ -20,6 +20,7 @@ public:
     ~MainWindow();
     void SetUpHealthAndConsumableLabels();
     void GenerateCharacterComboBox();
+    void GenerateCardComboBox();
     std::array<QLabel*, 12> SetUpHeartLabels();
 public slots:
     void SetCurrentCharacter(int characterToSet);
@@ -29,8 +30,10 @@ public slots:
     void SetCoins(QString value);
     void SetBombs(QString value);
     void SetKeys(QString value);
+    void SetCard(int cardIndex);
     void PillCheckBoxChanged(int checkState);
     void CardCheckBoxChanged(int checkState);
+    void AfterbirthCheckBoxChanged(int checkState);
 private:
     Ui::MainWindow* ui;
     Characters _currentCharacter = Characters::Isaac;

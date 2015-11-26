@@ -16,7 +16,8 @@ public:
     void PixmapToLabel(QLabel*, const QString&);
     void Character(QLabel*, Characters);
     void Health(std::array<QLabel*, 12>, int, int, int, bool);
-    void Card(QLabel*, int, int = 0);
+    void Pill(QLabel*);
+    void Card(QLabel*, int);
 private:
     Random _rng = Random();
 };

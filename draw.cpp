@@ -162,28 +162,25 @@ void Draw::Health(std::array<QLabel*, 12> heartLabels, int redHearts, int soulHe
     }
 }
 
-void Draw::Card(QLabel* cardImageLabel, int cardOrPill, int cardIndex)
+void Draw::Pill(QLabel* cardImageLabel)
 {
-    if(cardOrPill == 0) cardImageLabel->clear();
-    else if(cardOrPill == 1)
+    int pills = afterbirthEnabled ? constants::TOTAL_PILL_COUNT : constants::REBIRTH_PILL_COUNT;
+    QString pillToDraw = QString(":/Resources/Cards/Pill%1.png").arg(this->_rng.RandomInt(pills));
+    PixmapToLabel(cardImageLabel, pillToDraw);
+}
+
+void Draw::Card(QLabel* cardImageLabel, int cardIndex)
+{
+    QString rune = QString(":/Resources/Cards/Rune%1.png").arg(this->_rng.RandomInt(constants::RUNE_COUNT));
+    if(cardIndex == 0) cardImageLabel->clear();
+    else if(cardIndex > 0 && cardIndex <= 22) PixmapToLabel(cardImageLabel, ":/Resources/Cards/TarotCard.png");
+    else if(cardIndex >= 23 && cardIndex <= 27) PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
+    else if(cardIndex >= 36 && cardIndex <= 43)
     {
-        int pills = afterbirthEnabled ? 14 : 10;
-        QString pillToDraw = QString(":/Resources/Cards/Pill%1.png").arg(this->_rng.RandomInt(1, pills));
-        PixmapToLabel(cardImageLabel, pillToDraw);
+        if(afterbirthEnabled && cardIndex == 36) PixmapToLabel(cardImageLabel, rune);
+        else PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
     }
-    else if(cardOrPill == 2)
-    {
-        QString rune = QString(":/Resources/Cards/Rune%1.png").arg(this->_rng.RandomInt(1, 3));
-        if(cardIndex > 0 && cardIndex <= 22) PixmapToLabel(cardImageLabel, ":/Resources/Cards/TarotCard.png");
-        else if(cardIndex >= 23 && cardIndex <= 27) PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
-        else if(cardIndex >= 36 && cardIndex <= 43)
-        {
-            if(afterbirthEnabled && cardIndex == 36) PixmapToLabel(cardImageLabel, rune);
-            else PixmapToLabel(cardImageLabel, rune);
-        }
-        else if(cardIndex >= 28 && cardIndex <= 35) PixmapToLabel(cardImageLabel, rune);
-        else if(cardIndex == 44) PixmapToLabel(cardImageLabel, ":/Resources/Cards/DiceShard.png");
-        else if(cardIndex == 45) PixmapToLabel(cardImageLabel, ":/Resources/Cards/EmergencyContact.png");
-        else cardImageLabel->clear();
-    }
+    else if(cardIndex >= 28 && cardIndex <= 35) PixmapToLabel(cardImageLabel, rune);
+    else if(cardIndex == 44) PixmapToLabel(cardImageLabel, ":/Resources/Cards/DiceShard.png");
+    else if(cardIndex == 45) PixmapToLabel(cardImageLabel, ":/Resources/Cards/EmergencyContact.png");
 }
