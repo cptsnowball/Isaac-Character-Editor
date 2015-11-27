@@ -18,6 +18,7 @@ public:
     void Health(std::array<QLabel*, 12>, int, int, int, bool);
     void Pill(QLabel*);
     void Card(QLabel*, int);
+    void Trinket(QLabel*, int);
 private:
     Random _rng = Random();
 };

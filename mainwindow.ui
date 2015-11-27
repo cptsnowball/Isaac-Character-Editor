@@ -316,7 +316,7 @@
      <rect>
       <x>336</x>
       <y>323</y>
-      <width>72</width>
+      <width>162</width>
       <height>22</height>
      </rect>
     </property>
@@ -351,6 +351,41 @@
     </property>
     <property name="checked">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="trinketCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>189</x>
+      <y>349</y>
+      <width>150</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Start with a trinket:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="trinketComboBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>336</x>
+      <y>348</y>
+      <width>162</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QComboBox::AdjustToContents</enum>
     </property>
    </widget>
   </widget>
@@ -534,6 +569,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>trinketCheckBox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>TrinketCheckBoxChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>257</x>
+     <y>364</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>135</x>
+     <y>331</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SetCurrentCharacter(int)</slot>
@@ -547,5 +598,6 @@
   <slot>CardCheckBoxChanged(int)</slot>
   <slot>SetCard(int)</slot>
   <slot>AfterbirthCheckBoxChanged(int)</slot>
+  <slot>TrinketCheckBoxChanged(int)</slot>
  </slots>
 </ui>

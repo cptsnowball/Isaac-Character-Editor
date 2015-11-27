@@ -117,7 +117,7 @@ void Draw::Health(std::array<QLabel*, 12> heartLabels, int redHearts, int soulHe
                 blackHearts -= 2;
                 drawnHealth += 2;
             }
-            else if((soulHearts == 1 || soulHearts > 1) && drawnHealth >= 3)
+            else if((blackHearts == 1 || blackHearts > 1) && drawnHealth >= 3)
             {
                 PixmapToLabel(heartLabels.at(i), ":/Resources/Health/BlackHeartHalf.png");
                 blackHearts -= 1;
@@ -183,4 +183,9 @@ void Draw::Card(QLabel* cardImageLabel, int cardIndex)
     else if(cardIndex >= 28 && cardIndex <= 35) PixmapToLabel(cardImageLabel, rune);
     else if(cardIndex == 44) PixmapToLabel(cardImageLabel, ":/Resources/Cards/DiceShard.png");
     else if(cardIndex == 45) PixmapToLabel(cardImageLabel, ":/Resources/Cards/EmergencyContact.png");
+}
+
+void Draw::Trinket(QLabel* trinketImageLabel, int trinketID)
+{
+
 }

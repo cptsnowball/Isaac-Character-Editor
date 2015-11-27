@@ -49,6 +49,7 @@ MainWindow::MainWindow(QWidget *parent) :
     SetUpHealthAndConsumableLabels();
     GenerateCharacterComboBox();
     GenerateCardComboBox();
+    GenerateTrinketComboBox();
 }
 
 MainWindow::~MainWindow()
@@ -145,6 +146,11 @@ void MainWindow::GenerateCardComboBox()
     this->ui->cardComboBox->addItems(cardList);
 }
 
+void MainWindow::GenerateTrinketComboBox()
+{
+
+}
+
 std::array<QLabel*, 12> MainWindow::SetUpHeartLabels()
 {
     std::array<QLabel*, 12> heartLabels;
@@ -188,6 +194,9 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
     this->ui->pillCheckBox->setChecked(character.Pill == 1);
     this->ui->cardCheckBox->setChecked(character.Card > 0);
     this->ui->cardComboBox->setCurrentIndex(character.Card);
+
+    this->ui->trinketCheckBox->setChecked(character.Trinket > 0);
+    this->ui->trinketComboBox->setCurrentIndex(character.Trinket);
 }
 
 void MainWindow::SetRedHearts(QString value)
@@ -271,10 +280,22 @@ void MainWindow::CardCheckBoxChanged(int checkState)
     }
 }
 
+void MainWindow::TrinketCheckBoxChanged(int checkState)
+{
+    if(checkState == Qt::Checked)
+        this->ui->trinketComboBox->setEnabled(true);
+    else if(checkState == Qt::Unchecked)
+    {
+        this->ui->trinketComboBox->setCurrentIndex(0);
+        this->ui->trinketComboBox->setEnabled(false);
+    }
+}
+
 void MainWindow::AfterbirthCheckBoxChanged(int checkState)
 {
     if(checkState == Qt::Checked) afterbirthEnabled = true;
     else if(checkState == Qt::Unchecked) afterbirthEnabled = false;
     GenerateCharacterComboBox();
     GenerateCardComboBox();
+    GenerateTrinketComboBox();
 }
