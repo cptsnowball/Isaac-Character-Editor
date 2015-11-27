@@ -54,3 +54,24 @@ std::map<Characters, Character> characterMap {
     {Characters::Lilith, _lilith},
     {Characters::TheKeeper, _theKeeper}
 };
+
+std::map<QString, int> trinketMap {
+    {"None", 0}, {"Swallowed Penny", 1}, {"Petrified Poop", 2}, {"AAA Battery", 3}, {"Broken Remote", 4}, {"Purple Heart", 5},
+    {"Broken Magnet", 6}, {"Rosary Bead", 7}, {"Cartridge", 8}, {"Pulse Worm", 9}, {"Wiggle Worm", 10},
+    {"Ring Worm", 11}, {"Flat Worm", 12}, {"Store Credit", 13}, {"Callus", 14}, {"Lucky Rock", 15},
+    {"Mom's Toenail", 16}, {"Black Lipstick", 17}, {"Bible Tract", 18}, {"Paper Clip", 19}, {"Monkey's Paw", 20},
+    {"Mysterious Paper", 21}, {"Daemon's Tail", 22}, {"Missing Poster", 23}, {"Butt Penny", 24}, {"Mysterious Candy", 25},
+    {"Hook Worm", 26}, {"Whip Worm", 27}, {"Broken Ankh", 28}, {"Fish Head", 29}, {"Pinky Eye", 30},
+    {"Push Pin", 31}, {"Liberty Cap", 32}, {"Umbilical Cord", 33}, {"Child's Heart", 34}, {"Curved Horn", 35},
+    {"Rusted Key", 36}, {"Goat Hoof", 37}, {"Mom's Pearl", 38}, {"Cancer", 39}, {"Red Patch", 40},
+    {"Match Stick", 41}, {"Lucky Toe", 42}, {"Cursed Skull", 43}, {"Safety Cap", 44}, {"Ace of Spades", 45},
+    {"Isaac's Fork", 46}, {"A Missing Page", 48}, {"Bloody Penny", 49}, {"Burnt Penny", 50},
+    {"Flat Penny", 51}, {"Counterfeit Coin", 52}, {"Tick", 53}, {"Isaac's Head", 54}, {"Maggy's Faith", 55},
+    {"Judas' Tongue", 56}, {"???'s Soul", 57}, {"Samson's Lock", 58}, {"Cain's Eye", 59}, {"Eve's Bird Foot", 60},
+    {"The Left Hand", 61}, {"Shiny Rock", 62}, {"Safety Scissors", 63}, {"Rainbow Worm", 64}, {"Tape Worm", 65},
+    {"Lazy Worm", 66}, {"Cracked Dice", 67}, {"Super Magnet", 68}, {"Faded Polaroid", 69}, {"Louse", 70},
+    {"Bob's Bladder", 71}, {"Watch Battery", 72}, {"Blasting Cap", 73}, {"Stud Finder", 74}, {"Error", 75},
+    {"Poker Chip", 76}, {"Blister", 77}, {"Second Hand", 78}, {"Endless Nameless", 79}, {"Black Feather", 80},
+    {"Blind Rage", 81}, {"Golden Horse Shoe", 82}, {"Store Key", 83}, {"Rib of Greed", 84}, {"Karma", 85},
+    {"Lil Larva", 86}, {"Mom's Locket", 87}, {"NO!", 88}, {"Child Leash", 89}, {"Brown Cap", 90}
+};

@@ -320,9 +320,6 @@
       <height>22</height>
      </rect>
     </property>
-    <property name="sizeAdjustPolicy">
-     <enum>QComboBox::AdjustToContents</enum>
-    </property>
    </widget>
    <widget class="QLabel" name="cardImageLabel">
     <property name="geometry">
@@ -383,9 +380,6 @@
       <width>162</width>
       <height>22</height>
      </rect>
-    </property>
-    <property name="sizeAdjustPolicy">
-     <enum>QComboBox::AdjustToContents</enum>
     </property>
    </widget>
   </widget>
@@ -585,6 +579,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>trinketComboBox</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SetTrinket(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>361</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>410</x>
+     <y>389</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SetCurrentCharacter(int)</slot>
@@ -599,5 +609,6 @@
   <slot>SetCard(int)</slot>
   <slot>AfterbirthCheckBoxChanged(int)</slot>
   <slot>TrinketCheckBoxChanged(int)</slot>
+  <slot>SetTrinket(QString)</slot>
  </slots>
 </ui>

@@ -32,6 +32,7 @@ public slots:
     void SetBombs(QString value);
     void SetKeys(QString value);
     void SetCard(int cardIndex);
+    void SetTrinket(QString value);
     void PillCheckBoxChanged(int checkState);
     void CardCheckBoxChanged(int checkState);
     void TrinketCheckBoxChanged(int checkState);

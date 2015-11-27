@@ -148,7 +148,108 @@ void MainWindow::GenerateCardComboBox()
 
 void MainWindow::GenerateTrinketComboBox()
 {
+    QStringList trinketList {
+        "None", //0
+        "Swallowed Penny",
+        "Petrified Poop",
+        "AAA Battery",
+        "Broken Remote",
+        "Purple Heart",
+        "Broken Magnet",
+        "Rosary Bead",
+        "Cartridge",
+        "Pulse Worm",
+        "Wiggle Worm", //10
+        "Ring Worm",
+        "Flat Worm",
+        "Store Credit",
+        "Callus",
+        "Lucky Rock",
+        "Mom's Toenail",
+        "Black Lipstick",
+        "Bible Tract",
+        "Paper Clip",
+        "Monkey's Paw", //20
+        "Mysterious Paper",
+        "Daemon's Tail",
+        "Missing Poster",
+        "Butt Penny",
+        "Mysterious Candy",
+        "Hook Worm",
+        "Whip Worm",
+        "Broken Ankh",
+        "Fish Head",
+        "Pinky Eye", //30
+        "Push Pin",
+        "Liberty Cap",
+        "Umbilical Cord",
+        "Child's Heart",
+        "Curved Horn",
+        "Rusted Key",
+        "Goat Hoof",
+        "Mom's Pearl",
+        "Cancer",
+        "Red Patch", //40
+        "Match Stick",
+        "Lucky Toe",
+        "Cursed Skull",
+        "Safety Cap",
+        "Ace of Spades",
+        "Isaac's Fork",
+        //"Polaroid",
+        "A Missing Page",
+        "Bloody Penny",
+        "Burnt Penny", //50
+        "Flat Penny",
+        "Counterfeit Coin",
+        "Tick",
+        "Isaac's Head",
+        "Maggy's Faith",
+        "Judas' Tongue",
+        "\?\?\?'s Soul", //escapes a trigraph
+        "Samson's Lock",
+        "Cain's Eye",
+        "Eve's Bird Foot", //60
+        "The Left Hand"
+    };
 
+    if(afterbirthEnabled)
+    {
+        trinketList.append(QStringList {
+            "Shiny Rock",
+            "Safety Scissors",
+            "Rainbow Worm",
+            "Tape Worm",
+            "Lazy Worm",
+            "Cracked Dice",
+            "Super Magnet",
+            "Faded Polaroid",
+            "Louse",
+            "Bob's Bladder",
+            "Watch Battery",
+            "Blasting Cap",
+            "Stud Finder",
+            "Error",
+            "Poker Chip",
+            "Blister",
+            "Second Hand",
+            "Endless Nameless",
+            "Black Feather",
+            "Blind Rage",
+            "Golden Horse Shoe",
+            "Store Key",
+            "Rib of Greed",
+            "Karma",
+            "Lil Larva",
+            "Mom's Locket",
+            "NO!",
+            "Child Leash",
+            "Brown Cap"
+        });
+    }
+
+    this->ui->trinketComboBox->clear();
+    this->ui->trinketComboBox->addItems(trinketList);
 }
 
 std::array<QLabel*, 12> MainWindow::SetUpHeartLabels()
@@ -196,7 +297,10 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
     this->ui->cardComboBox->setCurrentIndex(character.Card);
 
     this->ui->trinketCheckBox->setChecked(character.Trinket > 0);
-    this->ui->trinketComboBox->setCurrentIndex(character.Trinket);
+    for(int i = 0; i < this->ui->trinketComboBox->count(); ++i)
+    {
+        //pass
+    }
 }
 
 void MainWindow::SetRedHearts(QString value)
@@ -246,6 +350,12 @@ void MainWindow::SetCard(int cardIndex)
     Character* character = &characterMap.at(this->_currentCharacter);
     character->Card = cardIndex;
     this->_draw.Card(this->ui->cardImageLabel, cardIndex);
+}
+
+void MainWindow::SetTrinket(QString value)
+{
+    Character* character = &characterMap.at(this->_currentCharacter);
+    character->Trinket = trinketMap[value];
 }
 
 void MainWindow::PillCheckBoxChanged(int checkState)
