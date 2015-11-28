@@ -39,6 +39,11 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
    </widget>
    <widget class="QLabel" name="redHeartImageLabel">
     <property name="geometry">
@@ -320,6 +325,11 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
    </widget>
    <widget class="QLabel" name="cardImageLabel">
     <property name="geometry">
@@ -380,6 +390,11 @@
       <width>162</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
     </property>
    </widget>
    <widget class="QTextEdit" name="pathTextEdit">
