@@ -438,6 +438,38 @@
      <string>Restore default</string>
     </property>
    </widget>
+   <widget class="QLabel" name="trinketImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>380</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="sortCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>117</y>
+      <width>150</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Sort alphabetically</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -667,6 +699,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>sortCheckBox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SortCheckBoxChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>194</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SetCurrentCharacter(int)</slot>
@@ -683,5 +731,6 @@
   <slot>TrinketCheckBoxChanged(int)</slot>
   <slot>SetTrinket(QString)</slot>
   <slot>RestoreDefaultPath()</slot>
+  <slot>SortCheckBoxChanged(int)</slot>
  </slots>
 </ui>

@@ -187,5 +187,6 @@ void Draw::Card(QLabel* cardImageLabel, int cardIndex)
 
 void Draw::Trinket(QLabel* trinketImageLabel, int trinketID)
 {
-
+    if(trinketID == 0) trinketImageLabel->clear();
+    else PixmapToLabel(trinketImageLabel, QString(":/Resources/Trinkets/Trinket_%1.png").arg(QString::number(trinketID)));
 }

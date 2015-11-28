@@ -17,3 +17,8 @@ int Random::RandomInt(int min, int max)
     std::uniform_int_distribution<int> distribution(min, max);
     return distribution(this->_mt);
 }
+
+void Random::SetRandomComboBoxIndex(QComboBox* comboBox)
+{
+    comboBox->setCurrentIndex(RandomInt(1, comboBox->count()));
+}

@@ -19,6 +19,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void SetUpHealthAndConsumableLabels();
+    void GenerateComboBoxes();
     void GenerateCharacterComboBox();
     void GenerateCardComboBox();
     void GenerateTrinketComboBox();
@@ -36,6 +37,7 @@ public slots:
     void PillCheckBoxChanged(int checkState);
     void CardCheckBoxChanged(int checkState);
     void TrinketCheckBoxChanged(int checkState);
+    void SortCheckBoxChanged(int checkState);
     void AfterbirthCheckBoxChanged(int checkState);
     void RestoreDefaultPath();
 private:
@@ -43,6 +45,12 @@ private:
     Characters _currentCharacter = Characters::Isaac;
     Draw _draw;
     const QFont _font = QFont("Segoe UI", 9);
+    QString _isaacPath = _defaultPath;
+    QIntValidator* _healthValidator = new QIntValidator(0, 24, this);
+    QIntValidator* _consumableValidator = new QIntValidator(0, 99, this);
+    std::array<QLabel*, 12> _heartLabels = SetUpHeartLabels();
+
+    //Ugly
 #if defined(Q_OS_WIN)
     const QString _defaultPath = "C:/Program Files (x86)/Steam/SteamApps/common/The Binding of Isaac Rebirth";
 #elif defined(Q_OS_MAC)
@@ -55,9 +63,6 @@ private:
 #error Platform not supported
     const QString _defaultPath = QString::null;
 #endif
-    QIntValidator* _healthValidator = new QIntValidator(0, 24, this);
-    QIntValidator* _consumableValidator = new QIntValidator(0, 99, this);
-    std::array<QLabel*, 12> _heartLabels = SetUpHeartLabels();
 };
 
 #endif // MAINWINDOW_H

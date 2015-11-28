@@ -4,6 +4,7 @@
 #include <QPainter>
 #include "character.h"
 #include "constants.h"
+#include "functions.h"
 #include "variables.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -50,8 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     SetUpHealthAndConsumableLabels();
     GenerateCharacterComboBox();
-    GenerateCardComboBox();
-    GenerateTrinketComboBox();
+    GenerateComboBoxes();
 }
 
 MainWindow::~MainWindow()
@@ -70,6 +70,16 @@ void MainWindow::SetUpHealthAndConsumableLabels()
     this->_draw.PixmapToLabel(this->ui->coinImageLabel, ":/Resources/Consumables/Coin.png");
     this->_draw.PixmapToLabel(this->ui->bombImageLabel, ":/Resources/Consumables/Bomb.png");
     this->_draw.PixmapToLabel(this->ui->keyImageLabel, ":/Resources/Consumables/Key.png");
+}
+
+void MainWindow::GenerateComboBoxes()
+{
+    //Character ComboBox is excluded because it's only supposed to be called
+    //when a character's name is changed and Afterbirth is enabled/disabled.
+
+    GenerateCardComboBox();
+    GenerateTrinketComboBox();
+    //GenerateSpacebarComboBox();
 }
 
 void MainWindow::GenerateCharacterComboBox()
@@ -135,6 +145,7 @@ void MainWindow::GenerateCardComboBox()
 
     if(afterbirthEnabled)
     {
+        //Blank Rune is ID 36 in Afterbirth, moving the other Rebirth cards' IDs up by one
         cardList.insert(36, "Blank Rune"); //36
         cardList.append(QStringList {
             "Get Out of Jail Free Card", //42
@@ -250,6 +261,14 @@ void MainWindow::GenerateTrinketComboBox()
         });
     }
 
+    if(sortAlphabetically)
+    {
+        //Removes and inserts "None" so it's always the first, regardless of sorting.
+        trinketList.removeAt(0);
+        trinketList.sort();
+        trinketList.insert(0, "None");
+    }
+
     this->ui->trinketComboBox->clear();
     this->ui->trinketComboBox->addItems(trinketList);
 }
@@ -298,11 +317,19 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
     this->ui->cardCheckBox->setChecked(character.Card > 0);
     this->ui->cardComboBox->setCurrentIndex(character.Card);
 
-    this->ui->trinketCheckBox->setChecked(character.Trinket > 0);
-    for(int i = 0; i < this->ui->trinketComboBox->count(); ++i)
+    //If character holds a trinket, get the trinkets name and loop through the ComboBox.
+    //Once an index with the same name is find, set it.
+    //This is used to make it work with both alphabetical sorting and not.
+    if(character.Trinket > 0)
     {
-        //pass
+        this->ui->trinketCheckBox->setChecked(true);
+        QString trinket = GetKeyFromValue(trinketMap, character.Trinket);
+
+        for(int i = 0; i < this->ui->trinketComboBox->count(); ++i)
+            if(ui->trinketComboBox->itemText(i) == trinket)
+                this->ui->trinketComboBox->setCurrentIndex(i);
     }
+    else this->ui->trinketCheckBox->setChecked(false);
 }
 
 void MainWindow::SetRedHearts(QString value)
@@ -357,7 +384,9 @@ void MainWindow::SetCard(int cardIndex)
 void MainWindow::SetTrinket(QString value)
 {
     Character* character = &characterMap.at(this->_currentCharacter);
-    character->Trinket = trinketMap[value];
+    int trinket = trinketMap[value];
+    character->Trinket = trinket;
+    this->_draw.Trinket(this->ui->trinketImageLabel, trinket);
 }
 
 void MainWindow::PillCheckBoxChanged(int checkState)
@@ -403,13 +432,19 @@ void MainWindow::TrinketCheckBoxChanged(int checkState)
     }
 }
 
+void MainWindow::SortCheckBoxChanged(int checkState)
+{
+    if(checkState == Qt::Checked) sortAlphabetically = true;
+    else if(checkState == Qt::Unchecked) sortAlphabetically = false;
+    GenerateComboBoxes();
+}
+
 void MainWindow::AfterbirthCheckBoxChanged(int checkState)
 {
     if(checkState == Qt::Checked) afterbirthEnabled = true;
     else if(checkState == Qt::Unchecked) afterbirthEnabled = false;
     GenerateCharacterComboBox();
-    GenerateCardComboBox();
-    GenerateTrinketComboBox();
+    GenerateComboBoxes();
 }
 
 void MainWindow::RestoreDefaultPath()

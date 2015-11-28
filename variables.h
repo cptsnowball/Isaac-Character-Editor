@@ -7,6 +7,7 @@
 #include <map>
 
 extern bool afterbirthEnabled;
+extern bool sortAlphabetically;
 
 extern Character _isaac;
 extern Character _maggy;

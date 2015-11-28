@@ -1,6 +1,8 @@
 #ifndef CONSTANTS
 #define CONSTANTS
 
+#include <QString>
+
 namespace constants {
     const int REBIRTH_CHARACTER_COUNT = 13;
     const int AFTERBIRTH_CHARACTER_COUNT = 2;

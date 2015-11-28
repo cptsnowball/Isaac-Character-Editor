@@ -17,14 +17,16 @@ SOURCES += main.cpp\
     character.cpp \
     draw.cpp \
     random.cpp \
-    variables.cpp
+    variables.cpp \
+    functions.cpp
 
 HEADERS  += mainwindow.h \
     constants.h \
     character.h \
     draw.h \
     random.h \
-    variables.h
+    variables.h \
+    functions.h
 
 FORMS    += mainwindow.ui
 

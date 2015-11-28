@@ -1,6 +1,7 @@
 #include "variables.h"
 
 bool afterbirthEnabled = true;
+bool sortAlphabetically = false;
 
 Character _isaac(0, "Isaac", "PlayerName_01_Isaac.png", "Character_001_Isaac.png", "PlayerPortrait_01_Isaac.png", "PlayerPortraitBig_01_Isaac.png",
                  -1, 0, 6, 0, 0, 0, 1, 0, 0, 0, 0, 105, true, QStringList {});
