@@ -37,11 +37,24 @@ public slots:
     void CardCheckBoxChanged(int checkState);
     void TrinketCheckBoxChanged(int checkState);
     void AfterbirthCheckBoxChanged(int checkState);
+    void RestoreDefaultPath();
 private:
     Ui::MainWindow* ui;
     Characters _currentCharacter = Characters::Isaac;
     Draw _draw;
     const QFont _font = QFont("Segoe UI", 9);
+#if defined(Q_OS_WIN)
+    const QString _defaultPath = "C:/Program Files (x86)/Steam/SteamApps/common/The Binding of Isaac Rebirth";
+#elif defined(Q_OS_MAC)
+    //not sure yet
+    const QString _defaultPath = "/Library/Application Support/Steam/SteamApps/common/the binding of isaac/The Binding Of Isaac.app/Content/Resources/resources/";
+#elif defined(Q_OS_LINUX)
+    //not sure yet either
+    const QString _defaultPath = "";
+#else
+#error Platform not supported
+    const QString _defaultPath = QString::null;
+#endif
     QIntValidator* _healthValidator = new QIntValidator(0, 24, this);
     QIntValidator* _consumableValidator = new QIntValidator(0, 99, this);
     std::array<QLabel*, 12> _heartLabels = SetUpHeartLabels();

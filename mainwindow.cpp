@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->ui->bombLineEdit->setValidator(this->_consumableValidator);
     this->ui->keyLineEdit->setValidator(this->_consumableValidator);
 
+    this->ui->pathTextEdit->setText(this->_defaultPath);
+
     QApplication::setWindowIcon(QIcon(":Resources/Icons/PurpleKey.ico"));
     QApplication::setFont(this->_font);
     QWidget::setFixedSize(this->size());
@@ -408,4 +410,12 @@ void MainWindow::AfterbirthCheckBoxChanged(int checkState)
     GenerateCharacterComboBox();
     GenerateCardComboBox();
     GenerateTrinketComboBox();
+}
+
+void MainWindow::RestoreDefaultPath()
+{
+    this->ui->pathTextEdit->setText(this->_defaultPath);
+    QTextCursor cursor(this->ui->pathTextEdit->textCursor());
+    cursor.movePosition(QTextCursor::End);
+    this->ui->pathTextEdit->setTextCursor(cursor);
 }

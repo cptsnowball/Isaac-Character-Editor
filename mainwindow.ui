@@ -382,6 +382,47 @@
      </rect>
     </property>
    </widget>
+   <widget class="QTextEdit" name="pathTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>42</y>
+      <width>210</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pathLabel">
+    <property name="geometry">
+     <rect>
+      <x>474</x>
+      <y>12</y>
+      <width>211</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>The Binding of Isaac: Rebirth location:</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton">
+    <property name="geometry">
+     <rect>
+      <x>581</x>
+      <y>100</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Restore default</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -595,6 +636,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>toolButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>RestoreDefaultPath()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>613</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>545</x>
+     <y>178</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SetCurrentCharacter(int)</slot>
@@ -610,5 +667,6 @@
   <slot>AfterbirthCheckBoxChanged(int)</slot>
   <slot>TrinketCheckBoxChanged(int)</slot>
   <slot>SetTrinket(QString)</slot>
+  <slot>RestoreDefaultPath()</slot>
  </slots>
 </ui>
