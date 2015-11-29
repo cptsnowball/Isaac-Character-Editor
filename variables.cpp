@@ -34,10 +34,6 @@ Character _lilith(13, "Lilith", "PlayerName_13_Lilith.png", "Character_014_Lilit
 Character _theKeeper(14, "The Keeper", "PlayerName_14_TheKeeper.png", "Character_015_Keeper.png", "PlayerPortrait_14_Keeper.png", "PlayerPortraitBig_Keeper.png",
                      -1, 0, 4, 0, 0, 1, 1, 0, 0, 0, 83, 349, true, QStringList {});
 
-std::array<Character, constants::TOTAL_CHARACTER_COUNT> characterList {
-    _isaac, _maggy, _cain, _judas, _blueBaby, _eve, _samson, _azazel, _lazarus, _eden, _theLost, _lazarus2, _blackJudas, _lilith, _theKeeper
-};
-
 std::map<Characters, Character> characterMap {
     {Characters::Isaac, _isaac},
     {Characters::Maggy, _maggy},
@@ -56,6 +52,28 @@ std::map<Characters, Character> characterMap {
     {Characters::TheKeeper, _theKeeper}
 };
 
+std::map<QString, int> spacebarMap {
+    {"None", 0}, {"The Bible", 33}, {"The Book of Belial", 34}, {"The Necronomicon", 35}, {"The Poop", 36},
+    {"Mr. Boom", 37}, {"Tammy's Head", 38}, {"Mom's Bra", 39}, {"Kamikaze", 40}, {"Mom's Pad", 41},
+    {"Bob's Rotten Head", 42}, {"Teleport", 44}, {"Yum Heart", 45}, {"Doctor's Remote", 47}, {"Shoop Da Woop", 49},
+    {"Lemon Mishap", 56}, {"Book of Shadows", 58}, {"Anarchist's Cookbook", 65}, {"The Hourglass", 66}, {"My Little Unicorn", 77},
+    {"Book of Revelations", 78}, {"The Nail", 83}, {"We Need To Go Deeper", 84}, {"Deck of Cards", 85}, {"Monstro's Tooth", 86},
+    {"The Gamekid", 93}, {"The Book of Sin", 97}, {"Mom's Bottle of Pills", 102}, {"The D6", 105}, {"Pinking Shears", 107},
+    {"The Bean", 111}, {"Monster Manual", 123}, {"Dead Sea Scrolls", 124}, {"Razor Blade", 126}, {"Forget Me Now", 127},
+    {"A Pony", 130}, {"Guppy's Paw", 133}, {"IV Bag", 135}, {"Best Friend", 136}, {"Remote Detonator", 137},
+    {"Guppy's Head", 145}, {"Prayer Card", 146}, {"Notched Axe", 147}, {"Crystal Ball", 158}, {"Crack The Sky", 160},
+    {"The Candle", 164}, {"D20", 166}, {"Spider Butt", 171}, {"Dad's Key", 175}, {"Portable Slot", 177},
+    {"White Pony", 181}, {"Blood Rights", 186}, {"Telepathy For Dummies", 192}, {"How To Jump", 282}, {"D100", 283},
+    {"D4", 284}, {"D10", 285}, {"Blank Card", 286}, {"Book of Secrets", 287}, {"Box of Spiders", 288},
+    {"Red Candle", 289}, {"The Jar", 290}, {"Flush!", 291}, {"The Satanic Bible", 292}, {"Head of Krampus", 293},
+    {"Butter Bean", 294}, {"Magic Fingers", 295}, {"Converter", 296}, {"Pandora's Box", 297}, {"Unicorn Stump", 298},
+    {"Isaac's Tears", 323}, {"Undefined", 324}, {"Scissors", 325}, {"Breath of Life", 326}, {"Boomerang", 338},
+    {"Diplopia", 347}, {"Placebo", 348}, {"Wooden Nickel", 349}, {"Mega Bean", 351}, {"Glass Cannon", 352},
+    {"Box of Friends", 357}, {"Friendly Ball", 382}, {"Tear Detonator", 383}, {"D12", 386}, {"Ventricide Razor", 396},
+    {"D8", 406}, {"I-Teleport!", 419}, {"Kidney Bean", 421}, {"Glowing Hour Glass", 422}, {"Mine Crafter", 427},
+    {"Jar of Flies", 434}, {"D7", 437}, {"Mom's Box", 439}, {"Mega Blast", 441}
+};
+
 std::map<QString, int> trinketMap {
     {"None", 0}, {"Swallowed Penny", 1}, {"Petrified Poop", 2}, {"AAA Battery", 3}, {"Broken Remote", 4}, {"Purple Heart", 5},
     {"Broken Magnet", 6}, {"Rosary Bead", 7}, {"Cartridge", 8}, {"Pulse Worm", 9}, {"Wiggle Worm", 10},
@@ -68,7 +86,7 @@ std::map<QString, int> trinketMap {
     {"Match Stick", 41}, {"Lucky Toe", 42}, {"Cursed Skull", 43}, {"Safety Cap", 44}, {"Ace of Spades", 45},
     {"Isaac's Fork", 46}, {"A Missing Page", 48}, {"Bloody Penny", 49}, {"Burnt Penny", 50},
     {"Flat Penny", 51}, {"Counterfeit Coin", 52}, {"Tick", 53}, {"Isaac's Head", 54}, {"Maggy's Faith", 55},
-    {"Judas' Tongue", 56}, {"???'s Soul", 57}, {"Samson's Lock", 58}, {"Cain's Eye", 59}, {"Eve's Bird Foot", 60},
+    {"Judas' Tongue", 56}, {"\?\?\?'s Soul", 57}, {"Samson's Lock", 58}, {"Cain's Eye", 59}, {"Eve's Bird Foot", 60},
     {"The Left Hand", 61}, {"Shiny Rock", 62}, {"Safety Scissors", 63}, {"Rainbow Worm", 64}, {"Tape Worm", 65},
     {"Lazy Worm", 66}, {"Cracked Dice", 67}, {"Super Magnet", 68}, {"Faded Polaroid", 69}, {"Louse", 70},
     {"Bob's Bladder", 71}, {"Watch Battery", 72}, {"Blasting Cap", 73}, {"Stud Finder", 74}, {"Error", 75},

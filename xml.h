@@ -7,7 +7,7 @@
 class XML
 {
 public:
-    XML(QString filename);
+    explicit XML(QString filename);
     void WriteXML();
     void DeleteXML();
 private:

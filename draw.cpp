@@ -1,4 +1,5 @@
 #include "draw.h"
+#include "functions.h"
 #include "variables.h"
 
 #include <QBitmap>
@@ -160,6 +161,32 @@ void Draw::Health(std::array<QLabel*, 12> heartLabels, int redHearts, int soulHe
             blackHearts -= 1;
         }
     }
+}
+
+void Draw::Spacebar(QLabel* spacebarImageLabel, int spacebarID)
+{
+    PixmapToLabel(spacebarImageLabel, QString(":/Resources/Spacebar/Spacebar_%1.png").arg(spacebarID));
+}
+
+void Draw::Charge(QLabel* chargeLabel, int spacebarID)
+{
+    const std::vector<int> charge1IDs = {36, 38, 111, 127, 145, 164, 285, 289, 298, 294, 338, 349, 352, 383, 427};
+    const std::vector<int> charge2IDs = {37, 44, 56, 66, 171, 175, 192, 288, 421, 422};
+    const std::vector<int> charge3IDs = {34, 39, 41, 42, 47, 49, 58, 65, 86, 123, 136, 147, 351, 386, 437};
+    const std::vector<int> charge4IDs = {45, 97, 124, 160, 286, 348, 357, 382, 406, 419, 439};
+    const std::vector<int> charge6IDs = {
+                    33, 35, 77, 78, 83, 84, 85, 93, 102, 105, 107, 130, 146, 158, 166, 181, 283, 284, 287,
+                    291, 292, 293, 323, 324, 325, 326
+                };
+    const std::vector<int> charge12IDs = {441};
+
+    if(VectorContains(charge1IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge1.png");
+    else if(VectorContains(charge2IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge2.png");
+    else if(VectorContains(charge3IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge3.png");
+    else if(VectorContains(charge4IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge4.png");
+    else if(VectorContains(charge6IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge6.png");
+    else if(VectorContains(charge12IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge12.png");
+    else chargeLabel->clear();
 }
 
 void Draw::Pill(QLabel* cardImageLabel)

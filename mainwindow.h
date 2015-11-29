@@ -21,6 +21,7 @@ public:
     void SetUpHealthAndConsumableLabels();
     void GenerateComboBoxes();
     void GenerateCharacterComboBox();
+    void GenerateSpacebarComboBox();
     void GenerateCardComboBox();
     void GenerateTrinketComboBox();
     std::array<QLabel*, 12> SetUpHeartLabels();
@@ -32,8 +33,10 @@ public slots:
     void SetCoins(QString value);
     void SetBombs(QString value);
     void SetKeys(QString value);
+    void SetSpacebar(QString value);
     void SetCard(int cardIndex);
     void SetTrinket(QString value);
+    void SetTears(int checkState);
     void PillCheckBoxChanged(int checkState);
     void CardCheckBoxChanged(int checkState);
     void TrinketCheckBoxChanged(int checkState);

@@ -18,7 +18,6 @@ SOURCES += main.cpp\
     draw.cpp \
     random.cpp \
     variables.cpp \
-    functions.cpp \
     xml.cpp
 
 HEADERS  += mainwindow.h \

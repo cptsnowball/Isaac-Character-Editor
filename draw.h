@@ -16,6 +16,8 @@ public:
     void PixmapToLabel(QLabel*, const QString&);
     void Character(QLabel*, Characters);
     void Health(std::array<QLabel*, 12>, int, int, int, bool);
+    void Spacebar(QLabel*, int);
+    void Charge(QLabel*, int);
     void Pill(QLabel*);
     void Card(QLabel*, int);
     void Trinket(QLabel*, int);

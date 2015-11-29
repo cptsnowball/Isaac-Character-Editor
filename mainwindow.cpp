@@ -54,6 +54,12 @@ MainWindow::MainWindow(QWidget *parent) :
     SetUpHealthAndConsumableLabels();
     GenerateCharacterComboBox();
     GenerateComboBoxes();
+
+    //Generating ComboBoxes resets the spacebar item to 0
+    //Workaround to set it to Isaac's spacebar item.
+    for(int i = 0; i < this->ui->spacebarComboBox->count(); ++i)
+        if(ui->spacebarComboBox->itemText(i) == "The D6")
+            this->ui->spacebarComboBox->setCurrentIndex(i);
 }
 
 MainWindow::~MainWindow()
@@ -79,9 +85,9 @@ void MainWindow::GenerateComboBoxes()
     //Character ComboBox is excluded because it's only supposed to be called
     //when a character's name is changed and Afterbirth is enabled/disabled.
 
+    GenerateSpacebarComboBox();
     GenerateCardComboBox();
     GenerateTrinketComboBox();
-    //GenerateSpacebarComboBox();
 }
 
 void MainWindow::GenerateCharacterComboBox()
@@ -97,6 +103,123 @@ void MainWindow::GenerateCharacterComboBox()
     this->ui->characterComboBox->addItems(characterNames);
     if(previousIndex > 0 && previousIndex < this->ui->characterComboBox->count())
         this->ui->characterComboBox->setCurrentIndex(previousIndex);
+}
+
+void MainWindow::GenerateSpacebarComboBox()
+{
+    QStringList spacebarList {
+        "None", //0
+        "The Bible",
+        "The Book of Belial",
+        "The Necronomicon",
+        "The Poop",
+        "Mr. Boom",
+        "Tammy's Head",
+        "Mom's Bra",
+        "Kamikaze",
+        "Mom's Pad",
+        "Bob's Rotten Head", //10
+        "Teleport",
+        "Yum Heart",
+        "Doctor's Remote",
+        "Shoop Da Woop",
+        "Lemon Mishap",
+        "Book of Shadows",
+        "Anarchist's Cookbook",
+        "The Hourglass",
+        "My Little Unicorn",
+        "Book of Revelations", //20
+        "The Nail",
+        "We Need To Go Deeper",
+        "Deck of Cards",
+        "Monstro's Tooth",
+        "The Gamekid",
+        "The Book of Sin",
+        "Mom's Bottle of Pills",
+        "The D6",
+        "Pinking Shears",
+        "The Bean", //30
+        "Monster Manual",
+        "Dead Sea Scrolls",
+        "Razor Blade",
+        "Forget Me Now",
+        "A Pony",
+        "Guppy's Paw",
+        "IV Bag",
+        "Best Friend",
+        "Remote Detonator",
+        "Guppy's Head", //40
+        "Prayer Card",
+        "Notched Axe",
+        "Crystal Ball",
+        "Crack The Sky",
+        "The Candle",
+        "D20",
+        "Spider Butt",
+        "Dad's Key",
+        "Portable Slot",
+        "White Pony", //50
+        "Blood Rights",
+        "Telepathy For Dummies",
+        "How To Jump",
+        "D100",
+        "D4",
+        "D10",
+        "Blank Card",
+        "Book of Secrets",
+        "Box of Spiders",
+        "Red Candle", //60
+        "The Jar",
+        "Flush!",
+        "The Satanic Bible",
+        "Head of Krampus",
+        "Butter Bean",
+        "Magic Fingers",
+        "Converter",
+        "Pandora's Box",
+        "Unicorn Stump",
+        "Isaac's Tears", //70
+        "Undefined",
+        "Scissors",
+        "Breath of Life",
+        "Boomerang"
+    };
+
+    if(afterbirthEnabled)
+    {
+        spacebarList.append(QStringList {
+            "Diplopia",
+            "Placebo",
+            "Wooden Nickel",
+            "Mega Bean",
+            "Glass Cannon",
+            "Box of Friends",
+            "Friendly Ball",
+            "Tear Detonator",
+            "D12",
+            "Ventricide Razor",
+            "D8",
+            "I-Teleport!",
+            "Kidney Bean",
+            "Glowing Hour Glass",
+            "Mine Crafter",
+            "Jar of Flies",
+            "D7",
+            "Mom's Box",
+            "Mega Blast"
+        });
+    }
+
+    if(sortAlphabetically)
+    {
+        //Removes and inserts "None" so it's always the first, regardless of sorting.
+        spacebarList.removeAt(0);
+        spacebarList.sort();
+        spacebarList.insert(0, "None");
+    }
+
+    this->ui->spacebarComboBox->clear();
+    this->ui->spacebarComboBox->addItems(spacebarList);
 }
 
 void MainWindow::GenerateCardComboBox()
@@ -272,7 +395,7 @@ void MainWindow::GenerateTrinketComboBox()
     }
 
     this->ui->trinketComboBox->clear();
-    this->ui->trinketComboBox->addItems(trinketList);
+    this->ui->trinketComboBox->addItems(trinketList);;
 }
 
 std::array<QLabel*, 12> MainWindow::SetUpHeartLabels()
@@ -296,6 +419,7 @@ std::array<QLabel*, 12> MainWindow::SetUpHeartLabels()
 
 void MainWindow::SetCurrentCharacter(int characterToSet)
 {
+    //Happens when the ComboBox is cleared.
     if(characterToSet == -1) return;
 
     this->_currentCharacter = static_cast<Characters>(characterToSet);
@@ -320,7 +444,7 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
     this->ui->cardComboBox->setCurrentIndex(character.Card);
 
     //If character holds a trinket, get the trinkets name and loop through the ComboBox.
-    //Once an index with the same name is find, set it.
+    //Once an index with the same name is found, set it.
     //This is used to make it work with both alphabetical sorting and not.
     if(character.Trinket > 0)
     {
@@ -332,6 +456,19 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
                 this->ui->trinketComboBox->setCurrentIndex(i);
     }
     else this->ui->trinketCheckBox->setChecked(false);
+
+    //Almost the same thing, except this time with a spacebar item.
+    if(character.Spacebar > 0)
+    {
+        QString spacebar = GetKeyFromValue(spacebarMap, character.Spacebar);
+
+        for(int i = 0; i < this->ui->spacebarComboBox->count(); ++i)
+            if(ui->spacebarComboBox->itemText(i) == spacebar)
+                this->ui->spacebarComboBox->setCurrentIndex(i);
+    }
+    else this->ui->spacebarComboBox->setCurrentIndex(0);
+
+    this->ui->canShootCheckBox->setChecked(character.CanShoot);
 }
 
 void MainWindow::SetRedHearts(QString value)
@@ -376,6 +513,15 @@ void MainWindow::SetKeys(QString value)
     character->Keys = value.toInt();
 }
 
+void MainWindow::SetSpacebar(QString value)
+{
+    Character* character = &characterMap.at(this->_currentCharacter);
+    int spacebar = spacebarMap[value];
+    character->Spacebar = spacebar;
+    this->_draw.Spacebar(this->ui->spacebarImageLabel, spacebar);
+    this->_draw.Charge(this->ui->chargeImageLabel, spacebar);
+}
+
 void MainWindow::SetCard(int cardIndex)
 {
     Character* character = &characterMap.at(this->_currentCharacter);
@@ -389,6 +535,13 @@ void MainWindow::SetTrinket(QString value)
     int trinket = trinketMap[value];
     character->Trinket = trinket;
     this->_draw.Trinket(this->ui->trinketImageLabel, trinket);
+}
+
+void MainWindow::SetTears(int checkState)
+{
+    Character* character = &characterMap.at(this->_currentCharacter);
+    if(checkState == Qt::Checked) character->CanShoot = true;
+    else if(checkState == Qt::Unchecked) character->CanShoot = false;
 }
 
 void MainWindow::PillCheckBoxChanged(int checkState)
@@ -447,6 +600,7 @@ void MainWindow::AfterbirthCheckBoxChanged(int checkState)
     else if(checkState == Qt::Unchecked) afterbirthEnabled = false;
     GenerateCharacterComboBox();
     GenerateComboBoxes();
+    this->ui->canShootCheckBox->setEnabled(afterbirthEnabled);
 }
 
 void MainWindow::PathTextEditChanged()

@@ -27,6 +27,7 @@ extern Character _theKeeper;
 
 extern std::array<Character, constants::TOTAL_CHARACTER_COUNT> characterList;
 extern std::map<Characters, Character> characterMap;
+extern std::map<QString, int> spacebarMap;
 extern std::map<QString, int> trinketMap;
 
 #endif // VARIABLES

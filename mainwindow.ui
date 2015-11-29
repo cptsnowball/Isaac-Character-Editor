@@ -460,7 +460,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>117</y>
+      <y>108</y>
       <width>150</width>
       <height>19</height>
      </rect>
@@ -527,6 +527,84 @@
     </property>
     <property name="text">
      <string>Purge players.xml</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="canShootCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>307</y>
+      <width>125</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Can shoot tears?</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="spacebarImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>21</x>
+      <y>14</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="chargeImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>14</y>
+      <width>16</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="spacebarLabel">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>58</y>
+      <width>141</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Active (Spacebar) item:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="spacebarComboBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>82</y>
+      <width>151</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
     </property>
    </widget>
   </widget>
@@ -838,6 +916,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>canShootCheckBox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SetTears(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>627</x>
+     <y>315</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>467</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spacebarComboBox</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SetSpacebar(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>90</x>
+     <y>99</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>175</x>
+     <y>164</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SetCurrentCharacter(int)</slot>
@@ -859,5 +969,7 @@
   <slot>PathTextEditChanged()</slot>
   <slot>ReadButtonClicked()</slot>
   <slot>PurgeButtonClicked()</slot>
+  <slot>SetTears(int)</slot>
+  <slot>SetSpacebar(QString)</slot>
  </slots>
 </ui>
