@@ -52,7 +52,6 @@ private:
     Ui::MainWindow* ui;
     Characters _currentCharacter = Characters::Isaac;
     Draw _draw;
-    const QFont _font = QFont("Droid Sans", 9);
     QIntValidator* _healthValidator = new QIntValidator(0, 24, this);
     QIntValidator* _consumableValidator = new QIntValidator(0, 99, this);
     std::array<QLabel*, 12> _heartLabels = SetUpHeartLabels();
@@ -60,11 +59,14 @@ private:
     //Ugly
 #if defined(Q_OS_WIN)
     const QString _defaultPath = "C:/Program Files (x86)/Steam/SteamApps/common/The Binding of Isaac Rebirth";
+    const QFont _font = QFont("Segoe UI", 9);
 #elif defined(Q_OS_MAC)
     //not sure yet
-    const QString _defaultPath = "/Library/Application Support/Steam/SteamApps/common/the binding of isaac/The Binding Of Isaac.app/Content/Resources/resources/";
+    const QString _defaultPath = QDir::homePath() + "/Library/Application Support/Steam/steamapps/common/The Binding of Isaac Rebirth/The Binding of Isaac Rebirth.app/Contents/Resources/";
+    QFont _font = QFont("Helvetica Neue", 12);
 #elif defined(Q_OS_LINUX)
     const QString _defaultPath = QDir::homePath() + "/.steam/steam/steamapps/common/The Binding of Isaac Rebirth/";
+    const QFont _font = QFont("Droid Sans", 9);
 #else
 #error Platform not supported
     const QString _defaultPath = QString::null;

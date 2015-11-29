@@ -25,6 +25,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->ui->pathTextEdit->setText(this->_defaultPath);
 
+#if defined(Q_OS_MAC)
+    //Needed to set the fonts on these for whatever reason
+    this->ui->redHeartLineEdit->setFont(this->_font);
+    this->ui->soulHeartLineEdit->setFont(this->_font);
+    this->ui->blackHeartLineEdit->setFont(this->_font);
+    this->ui->coinLineEdit->setFont(this->_font);
+    this->ui->bombLineEdit->setFont(this->_font);
+    this->ui->keyLineEdit->setFont(this->_font);
+    this->ui->sortCheckBox->setFont(this->_font);
+    this->ui->pillCheckBox->setFont(this->_font);
+    this->ui->cardCheckBox->setFont(this->_font);
+    this->ui->trinketCheckBox->setFont(this->_font);
+#endif
+
     QApplication::setWindowIcon(QIcon(":Resources/Icons/PurpleKey.ico"));
     QApplication::setFont(this->_font);
     QWidget::setFixedSize(this->size());
