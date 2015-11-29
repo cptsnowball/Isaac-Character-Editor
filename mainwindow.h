@@ -39,7 +39,11 @@ public slots:
     void TrinketCheckBoxChanged(int checkState);
     void SortCheckBoxChanged(int checkState);
     void AfterbirthCheckBoxChanged(int checkState);
+    void PathTextEditChanged();
     void RestoreDefaultPath();
+    void PurgeButtonClicked();
+    void ReadButtonClicked();
+    void ExportButtonClicked();
 private:
     Ui::MainWindow* ui;
     Characters _currentCharacter = Characters::Isaac;

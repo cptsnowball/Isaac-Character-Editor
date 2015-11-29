@@ -2,10 +2,12 @@
 #include "ui_mainwindow.h"
 
 #include <QPainter>
+#include <QMessageBox>
 #include "character.h"
 #include "constants.h"
 #include "functions.h"
 #include "variables.h"
+#include "xml.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -86,9 +88,9 @@ void MainWindow::GenerateCharacterComboBox()
 {
     QStringList characterNames;
     for(int i = 0; i < constants::REBIRTH_CHARACTER_COUNT; ++i)
-        characterNames.append(characterList.at(i).Name);
+        characterNames.append(characterMap.at(static_cast<Characters>(i)).Name);
     if(afterbirthEnabled) for(int i = 0; i < constants::AFTERBIRTH_CHARACTER_COUNT; ++i)
-        characterNames.append(characterList.at(constants::REBIRTH_CHARACTER_COUNT + i).Name);
+        characterNames.append(characterMap.at(static_cast<Characters>(constants::REBIRTH_CHARACTER_COUNT + i)).Name);
 
     int previousIndex = this->ui->characterComboBox->currentIndex();
     this->ui->characterComboBox->clear();
@@ -447,10 +449,30 @@ void MainWindow::AfterbirthCheckBoxChanged(int checkState)
     GenerateComboBoxes();
 }
 
+void MainWindow::PathTextEditChanged()
+{
+    this->_isaacPath = this->ui->pathTextEdit->toPlainText();
+}
+
 void MainWindow::RestoreDefaultPath()
 {
     this->ui->pathTextEdit->setText(this->_defaultPath);
     QTextCursor cursor(this->ui->pathTextEdit->textCursor());
     cursor.movePosition(QTextCursor::End);
     this->ui->pathTextEdit->setTextCursor(cursor);
+}
+
+void MainWindow::PurgeButtonClicked()
+{
+    XML(this->_isaacPath).DeleteXML();
+}
+
+void MainWindow::ReadButtonClicked()
+{
+    //pass
+}
+
+void MainWindow::ExportButtonClicked()
+{
+    XML(this->_isaacPath).WriteXML();
 }

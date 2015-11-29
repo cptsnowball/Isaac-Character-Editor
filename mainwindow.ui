@@ -425,7 +425,7 @@
      <string>The Binding of Isaac: Rebirth location:</string>
     </property>
    </widget>
-   <widget class="QToolButton" name="toolButton">
+   <widget class="QToolButton" name="defaultPathButton">
     <property name="geometry">
      <rect>
       <x>581</x>
@@ -433,6 +433,11 @@
       <width>100</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
     </property>
     <property name="text">
      <string>Restore default</string>
@@ -468,6 +473,60 @@
     </property>
     <property name="text">
      <string>Sort alphabetically</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="exportButton">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>380</y>
+      <width>125</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Export players.xml</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="readButton">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>380</y>
+      <width>125</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Read players.xml</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="purgeButton">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>380</y>
+      <width>125</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Purge players.xml</string>
     </property>
    </widget>
   </widget>
@@ -684,7 +743,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>toolButton</sender>
+   <sender>defaultPathButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>RestoreDefaultPath()</slot>
@@ -715,6 +774,70 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>exportButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>ExportButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>389</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>376</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pathTextEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>PathTextEditChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>544</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>479</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>readButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>ReadButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>367</x>
+     <y>388</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>439</x>
+     <y>240</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>purgeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>PurgeButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>229</x>
+     <y>385</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>226</x>
+     <y>201</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SetCurrentCharacter(int)</slot>
@@ -732,5 +855,9 @@
   <slot>SetTrinket(QString)</slot>
   <slot>RestoreDefaultPath()</slot>
   <slot>SortCheckBoxChanged(int)</slot>
+  <slot>ExportButtonClicked()</slot>
+  <slot>PathTextEditChanged()</slot>
+  <slot>ReadButtonClicked()</slot>
+  <slot>PurgeButtonClicked()</slot>
  </slots>
 </ui>
