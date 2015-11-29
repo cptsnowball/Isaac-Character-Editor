@@ -11,8 +11,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    _draw()
+    ui(new Ui::MainWindow)
 {
     this->ui->setupUi(this);
 

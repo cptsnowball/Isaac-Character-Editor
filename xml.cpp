@@ -42,7 +42,7 @@ void XML::WriteXML()
     if(file.open(QIODevice::WriteOnly))
     {
         QTextStream stream(&file);
-        stream << "<players>\r\n";
+        stream << "<players bigportraitroot=\"gfx/ui/stage/\" nameimageroot=\"gfx/ui/boss/\" portraitroot=\"gfx/ui/boss/\" root=\"gfx/characters/costumes/\">\r\n";
 
         for(int i = 0; i < constants::REBIRTH_CHARACTER_COUNT; ++i)
             stream << GetPlayerLine(characterMap.at(static_cast<Characters>(i)));
