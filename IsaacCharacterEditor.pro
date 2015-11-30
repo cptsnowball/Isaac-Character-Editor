@@ -34,7 +34,13 @@ FORMS    += mainwindow.ui
 RESOURCES += \
     resources.qrc
 
-CONFIG += c++11
+CONFIG += c++14
+
+macx {
+    #The standard library isn't included properly in Mac
+    #while using C++14 without this.
+    QMAKE_CXXFLAGS += -stdlib=libc++
+}
 
 VERSION = 6.0.0.0
 QMAKE_TARGET_COMPANY = Portal-chan
