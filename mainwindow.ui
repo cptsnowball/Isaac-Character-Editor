@@ -633,7 +633,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QTextEdit" name="itemTextEdit">
+   <widget class="ItemEdit" name="itemTextEdit">
     <property name="geometry">
      <rect>
       <x>469</x>
@@ -669,6 +669,13 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ItemEdit</class>
+   <extends>QTextEdit</extends>
+   <header>itemedit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
