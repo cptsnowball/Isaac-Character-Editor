@@ -6,6 +6,7 @@
 #include "character.h"
 #include "constants.h"
 #include "functions.h"
+#include "itemedit.h"
 #include "variables.h"
 #include "xml.h"
 
@@ -24,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
     this->ui->keyLineEdit->setValidator(this->_consumableValidator);
 
     this->ui->pathTextEdit->setText(this->_defaultPath);
+
+    this->ui->cardComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
+    this->ui->trinketComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
 
 #if defined(Q_OS_MAC)
     //Needed to set the fonts on these for whatever reason

@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     draw.cpp \
     random.cpp \
     variables.cpp \
-    xml.cpp
+    xml.cpp \
+    itemedit.cpp
 
 HEADERS  += mainwindow.h \
     constants.h \
@@ -27,7 +28,8 @@ HEADERS  += mainwindow.h \
     random.h \
     variables.h \
     functions.h \
-    xml.h
+    xml.h \
+    itemedit.h
 
 FORMS    += mainwindow.ui
 

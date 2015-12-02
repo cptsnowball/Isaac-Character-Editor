@@ -14,6 +14,7 @@ namespace constants {
     const int RUNE_COUNT = 2;
 
     const int HEART_LABEL_SIZE = 16;
+    const int COMBOBOX_VIEW_MIN_WIDTH = 162;
 
     const QString TITLE = "Isaac Character Editor Rewritten";
     const QString VERSION = "v6.0";
