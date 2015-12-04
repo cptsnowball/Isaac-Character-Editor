@@ -3,11 +3,16 @@
 
 #include "character.h"
 #include "constants.h"
+#include "input.h"
+
 #include <array>
 #include <map>
+#include <vector>
 
 extern bool afterbirthEnabled;
 extern bool sortAlphabetically;
+
+extern Characters currentCharacter;
 
 extern Character _isaac;
 extern Character _maggy;
@@ -29,6 +34,8 @@ extern std::array<Character, constants::TOTAL_CHARACTER_COUNT> characterList;
 extern std::map<Characters, Character> characterMap;
 extern std::map<QString, int> spacebarMap;
 extern std::map<QString, int> trinketMap;
+
+extern std::vector<Input> possibleInputs;
 
 #endif // VARIABLES
 

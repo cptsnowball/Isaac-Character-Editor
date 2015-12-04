@@ -19,6 +19,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
+    Character* GetCurrentCharacter();
     void SetUpHealthAndConsumableLabels();
     void GenerateComboBoxes();
     void GenerateCharacterComboBox();
@@ -34,6 +35,7 @@ public slots:
     void SetCoins(QString value);
     void SetBombs(QString value);
     void SetKeys(QString value);
+    void SetItems();
     void SetSpacebar(QString value);
     void SetCard(int cardIndex);
     void SetTrinket(QString value);
@@ -50,7 +52,6 @@ public slots:
     void ExportButtonClicked();
 private:
     Ui::MainWindow* ui;
-    Characters _currentCharacter = Characters::Isaac;
     Draw _draw;
     QIntValidator* _healthValidator = new QIntValidator(0, 24, this);
     QIntValidator* _consumableValidator = new QIntValidator(0, 99, this);

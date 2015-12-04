@@ -12,7 +12,7 @@ class Character
 {
 public:
     Character();
-    Character(int, QString, QString, QString, QString, QString, int, int, int, int, int, int, int, int, int, int, int, int, bool, QStringList);
+    Character(int, QString, QString, QString, QString, QString, int, int, int, int, int, int, int, int, int, int, int, int, bool, QStringList = {});
     int ID;
     QString Name, NameImage, SkinFile;
     QString Portrait, BigPortrait;

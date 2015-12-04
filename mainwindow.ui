@@ -1014,6 +1014,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>defaultPathButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SetItems()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>614</x>
+     <y>256</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>424</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SetCurrentCharacter(int)</slot>
@@ -1037,5 +1053,6 @@
   <slot>PurgeButtonClicked()</slot>
   <slot>SetTears(int)</slot>
   <slot>SetSpacebar(QString)</slot>
+  <slot>SetItems()</slot>
  </slots>
 </ui>

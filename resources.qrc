@@ -243,5 +243,6 @@
         <file>Resources/Spacebar/Spacebar_437.png</file>
         <file>Resources/Spacebar/Spacebar_439.png</file>
         <file>Resources/Spacebar/Spacebar_441.png</file>
+        <file>inputs.xml</file>
     </qresource>
 </RCC>

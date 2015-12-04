@@ -6,6 +6,9 @@
 #include <map>
 #include <stdexcept>
 #include <vector>
+#include <QStringList>
+#include "input.h"
+#include "variables.h"
 
 template<typename Key, typename Value>
 Key GetKeyFromValue(const std::map<Key, Value> &map, const Value &valueToFind) {
@@ -25,5 +28,9 @@ inline bool VectorContains(const std::vector<T> &vector, const T &value)
     //Returns true if the vector contains the value and false otherwise
     return std::binary_search(vector.begin(), vector.end(), value);
 }
+
+std::vector<int> GetItemIDsFromItemList(QStringList itemList);
+QStringList GetItemNamesFromItemList(QStringList itemList);
+QStringList SimplifyItemString(QStringList itemList);
 
 #endif // FUNCTIONS_H

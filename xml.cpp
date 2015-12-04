@@ -1,6 +1,8 @@
 #include "xml.h"
 
+#include "functions.h"
 #include "variables.h"
+#include <sstream>
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
@@ -71,11 +73,12 @@ QString XML::GetPlayerLine(const Character &player)
     if(player.Coins != 0) AppendToLine(line, "coins", player.Coins);
     if(player.Bombs != 0) AppendToLine(line, "bombs", player.Bombs);
     if(player.Keys != 0) AppendToLine(line, "keys", player.Keys);
+    QString itemString = GetItemString(player);
+    if(itemString != "") AppendToLine(line, "items", itemString);
     if(player.Pill != 0) AppendToLine(line, "pill", player.Pill);
     if(player.Card != 0) AppendToLine(line, "card", player.Card);
     if(player.Trinket != 0) AppendToLine(line, "trinket", player.Trinket);
     if(afterbirthEnabled) AppendToLine(line, "canShoot", player.CanShoot);
-    //TODO: items
     if(player.ID == 9) //Eden
     {
         line.append(">\r\n");
@@ -85,4 +88,16 @@ QString XML::GetPlayerLine(const Character &player)
     }
     else line.append("/>\r\n");
     return line;
+}
+
+QString XML::GetItemString(const Character &player)
+{
+    std::vector<int> itemIDs = GetItemIDsFromItemList(player.Items);
+    if(player.Spacebar != 0) itemIDs.push_back(player.Spacebar);
+    std::sort(itemIDs.begin(), itemIDs.end());
+
+    QStringList itemStringList;
+    for(const auto& itemID : itemIDs)
+        itemStringList.push_back(QString::number(itemID));
+    return itemStringList.join(",");
 }

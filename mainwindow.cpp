@@ -216,7 +216,7 @@ void MainWindow::GenerateSpacebarComboBox()
             "D12",
             "Ventricide Razor",
             "D8",
-            "I-Teleport!",
+            "Teleport 2.0",
             "Kidney Bean",
             "Glowing Hour Glass",
             "Mine Crafter",
@@ -439,11 +439,11 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
     //Happens when the ComboBox is cleared.
     if(characterToSet == -1) return;
 
-    this->_currentCharacter = static_cast<Characters>(characterToSet);
-    Character character = characterMap.at(this->_currentCharacter);
-    this->_draw.Character(this->ui->characterImageLabel, this->_currentCharacter);
+    currentCharacter = static_cast<Characters>(characterToSet);
+    Character character = characterMap.at(currentCharacter);
+    this->_draw.Character(this->ui->characterImageLabel, currentCharacter);
     this->_draw.Health(this->_heartLabels, character.RedHearts, character.SoulHearts, character.BlackHearts,
-                       _currentCharacter == Characters::TheKeeper);
+                       currentCharacter == Characters::TheKeeper);
 
     if(character.Pill == 1) this->_draw.Pill(this->ui->cardImageLabel);
     else if(character.Card > 0) this->_draw.Card(this->ui->cardImageLabel, character.Card);
@@ -485,54 +485,61 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
     }
     else this->ui->spacebarComboBox->setCurrentIndex(0);
 
+    this->SetItems();
     this->ui->canShootCheckBox->setChecked(character.CanShoot);
 }
 
 void MainWindow::SetRedHearts(QString value)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     character->RedHearts = value.toInt();
     this->_draw.Health(this->_heartLabels, character->RedHearts, character->SoulHearts, character->BlackHearts,
-                       _currentCharacter == Characters::TheKeeper);
+                       currentCharacter == Characters::TheKeeper);
 }
 
 void MainWindow::SetSoulHearts(QString value)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     character->SoulHearts = value.toInt();
     this->_draw.Health(this->_heartLabels, character->RedHearts, character->SoulHearts, character->BlackHearts,
-                       _currentCharacter == Characters::TheKeeper);
+                       currentCharacter == Characters::TheKeeper);
 }
 
 void MainWindow::SetBlackHearts(QString value)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     character->BlackHearts = value.toInt();
     this->_draw.Health(this->_heartLabels, character->RedHearts, character->SoulHearts, character->BlackHearts,
-                       _currentCharacter == Characters::TheKeeper);
+                       currentCharacter == Characters::TheKeeper);
 }
 
 void MainWindow::SetCoins(QString value)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     character->Coins = value.toInt();
 }
 
 void MainWindow::SetBombs(QString value)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     character->Bombs = value.toInt();
 }
 
 void MainWindow::SetKeys(QString value)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     character->Keys = value.toInt();
+}
+
+void MainWindow::SetItems()
+{
+    Character* character = &characterMap.at(currentCharacter);
+    this->ui->itemTextEdit->setPlainText(character->Items.join(", "));
 }
 
 void MainWindow::SetSpacebar(QString value)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     int spacebar = spacebarMap[value];
     character->Spacebar = spacebar;
     this->_draw.Spacebar(this->ui->spacebarImageLabel, spacebar);
@@ -541,14 +548,14 @@ void MainWindow::SetSpacebar(QString value)
 
 void MainWindow::SetCard(int cardIndex)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     character->Card = cardIndex;
     this->_draw.Card(this->ui->cardImageLabel, cardIndex);
 }
 
 void MainWindow::SetTrinket(QString value)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     int trinket = trinketMap[value];
     character->Trinket = trinket;
     this->_draw.Trinket(this->ui->trinketImageLabel, trinket);
@@ -556,14 +563,14 @@ void MainWindow::SetTrinket(QString value)
 
 void MainWindow::SetTears(int checkState)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     if(checkState == Qt::Checked) character->CanShoot = true;
     else if(checkState == Qt::Unchecked) character->CanShoot = false;
 }
 
 void MainWindow::PillCheckBoxChanged(int checkState)
 {
-    Character* character = &characterMap.at(this->_currentCharacter);
+    Character* character = &characterMap.at(currentCharacter);
     if(checkState == Qt::Checked)
     {
         if(this->ui->cardCheckBox->isChecked())

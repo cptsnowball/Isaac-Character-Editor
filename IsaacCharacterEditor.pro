@@ -19,7 +19,9 @@ SOURCES += main.cpp\
     random.cpp \
     variables.cpp \
     xml.cpp \
-    itemedit.cpp
+    itemedit.cpp \
+    input.cpp \
+    functions.cpp
 
 HEADERS  += mainwindow.h \
     constants.h \
@@ -29,7 +31,8 @@ HEADERS  += mainwindow.h \
     variables.h \
     functions.h \
     xml.h \
-    itemedit.h
+    itemedit.h \
+    input.h
 
 FORMS    += mainwindow.ui
 

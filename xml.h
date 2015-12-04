@@ -12,6 +12,7 @@ public:
     void DeleteXML();
 private:
     QString GetPlayerLine(const Character &player);
+    QString GetItemString(const Character &player);
     QString _filename;
     inline void AppendToLine(QString &line, QString attribute, QString arg) {
         line.append(QString("%1=\"%2\" ").arg(attribute, arg));
