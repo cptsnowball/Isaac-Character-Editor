@@ -1,5 +1,4 @@
 #include "functions.h"
-#include <QMessageBox>
 
 std::vector<int> GetItemIDsFromItemList(QStringList itemList)
 {

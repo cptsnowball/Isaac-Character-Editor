@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     this->ui->setupUi(this);
+    possibleInputs = Input::getPossibleUserInputs();
 
     this->ui->redHeartLineEdit->setValidator(this->_healthValidator);
     this->ui->soulHeartLineEdit->setValidator(this->_healthValidator);

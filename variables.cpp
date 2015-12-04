@@ -97,4 +97,4 @@ std::map<QString, int> trinketMap {
     {"Lil Larva", 86}, {"Mom's Locket", 87}, {"NO!", 88}, {"Child Leash", 89}, {"Brown Cap", 90}
 };
 
-std::vector<Input> possibleInputs = Input::getPossibleUserInputs();
+std::vector<Input> possibleInputs;
