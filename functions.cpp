@@ -10,7 +10,10 @@ std::vector<int> GetItemIDsFromItemList(QStringList itemList)
         for(auto& possibleInput : possibleInputs)
             for(auto& userInput : possibleInput.UserInputsList)
                 if(userInput == item)
-                    itemIDs.push_back(possibleInput.ID);
+                {
+                    if(!afterbirthEnabled && possibleInput.Afterbirth) continue;
+                    else itemIDs.push_back(possibleInput.ID);
+                }
 
     return itemIDs;
 }
@@ -24,7 +27,10 @@ QStringList GetItemNamesFromItemList(QStringList itemList)
         for(auto& possibleInput : possibleInputs)
             for(auto& userInput : possibleInput.UserInputsList)
                 if(userInput == item)
-                    itemNames.push_back(possibleInput.Name);
+                {
+                    if(!afterbirthEnabled && possibleInput.Afterbirth) continue;
+                    else itemNames.push_back(possibleInput.Name);
+                }
 
     return itemNames;
 }

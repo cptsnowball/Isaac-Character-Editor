@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QDesktopServices>
+#include <QFileDialog>
 #include <QPainter>
 #include <QMessageBox>
 #include "character.h"
@@ -28,6 +30,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->ui->cardComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
     this->ui->trinketComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
+
+    this->ui->notepadButton->setIcon(QIcon(":/Resources/Buttons/NotepadButton.png"));
+    this->ui->compassButton->setIcon(QIcon(":/Resources/Buttons/CompassButton.png"));
+    this->ui->randomCostumeButton->setIcon(QIcon(":/Resources/Buttons/DiceButton.png"));
 
 #if defined(Q_OS_MAC)
     //Needed to set the fonts on these for whatever reason
@@ -95,6 +101,20 @@ void MainWindow::SetUpHealthAndConsumableLabels()
     this->_draw.PixmapToLabel(this->ui->coinImageLabel, ":/Resources/Consumables/Coin.png");
     this->_draw.PixmapToLabel(this->ui->bombImageLabel, ":/Resources/Consumables/Bomb.png");
     this->_draw.PixmapToLabel(this->ui->keyImageLabel, ":/Resources/Consumables/Key.png");
+}
+
+void MainWindow::ReplaceComboBoxItems(QComboBox* comboBox, QStringList items)
+{
+    //Replaces the items in the ComboBox with the provided ones and keeps the previously
+    //selected value selected if possible, else it selects "None".
+    QString previousSelection = comboBox->currentText();
+
+    comboBox->clear();
+    comboBox->addItems(items);
+
+    for(int i = 0; i < comboBox->count(); ++i)
+        if(previousSelection == comboBox->itemText(i))
+            comboBox->setCurrentIndex(i);
 }
 
 void MainWindow::GenerateComboBoxes()
@@ -235,8 +255,16 @@ void MainWindow::GenerateSpacebarComboBox()
         spacebarList.insert(0, "None");
     }
 
+    ReplaceComboBoxItems(this->ui->spacebarComboBox, spacebarList);
+    /*
+    QString previousSelection = this->ui->spacebarComboBox->currentText();
+
     this->ui->spacebarComboBox->clear();
     this->ui->spacebarComboBox->addItems(spacebarList);
+
+    for(int i = 0; i < this->ui->spacebarComboBox->count(); ++i)
+        if(previousSelection == this->ui->spacebarComboBox->itemText(i))
+            this->ui->spacebarComboBox->setCurrentIndex(i);*/
 }
 
 void MainWindow::GenerateCardComboBox()
@@ -297,8 +325,7 @@ void MainWindow::GenerateCardComboBox()
         });
     }
 
-    this->ui->cardComboBox->clear();
-    this->ui->cardComboBox->addItems(cardList);
+    ReplaceComboBoxItems(this->ui->cardComboBox, cardList);
 }
 
 void MainWindow::GenerateTrinketComboBox()
@@ -411,8 +438,7 @@ void MainWindow::GenerateTrinketComboBox()
         trinketList.insert(0, "None");
     }
 
-    this->ui->trinketComboBox->clear();
-    this->ui->trinketComboBox->addItems(trinketList);;
+    ReplaceComboBoxItems(this->ui->trinketComboBox, trinketList);
 }
 
 std::array<QLabel*, 12> MainWindow::SetUpHeartLabels()
@@ -621,10 +647,18 @@ void MainWindow::SortCheckBoxChanged(int checkState)
 void MainWindow::AfterbirthCheckBoxChanged(int checkState)
 {
     if(checkState == Qt::Checked) afterbirthEnabled = true;
-    else if(checkState == Qt::Unchecked) afterbirthEnabled = false;
+    else if(checkState == Qt::Unchecked)
+    {
+        afterbirthEnabled = false;
+        //Enable tears for all Rebirth characters because canShoot is Afterbirth exclusive
+        //Leave Afterbirth characters intact because they need Afterbirth enabled anyways.
+        for(int i = 0; i < constants::REBIRTH_CHARACTER_COUNT; ++i)
+            characterMap.at(static_cast<Characters>(i)).CanShoot = true;
+    }
     GenerateCharacterComboBox();
     GenerateComboBoxes();
     this->ui->canShootCheckBox->setEnabled(afterbirthEnabled);
+    this->ui->itemTextEdit->ProcessItems();
 }
 
 void MainWindow::PathTextEditChanged()
@@ -640,6 +674,33 @@ void MainWindow::RestoreDefaultPath()
     this->ui->pathTextEdit->setTextCursor(cursor);
 }
 
+void MainWindow::CompassButtonClicked()
+{
+    //Sets the path text box to a directory selected by the user.
+    QString dir = QFileDialog::getExistingDirectory(this,
+        tr("Select your Isaac directory."),
+        QDir::currentPath(),
+        QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    this->ui->pathTextEdit->setPlainText(dir);
+
+    QTextCursor cursor(this->ui->pathTextEdit->textCursor());
+    cursor.movePosition(QTextCursor::End);
+    this->ui->pathTextEdit->setTextCursor(cursor);
+}
+
+void MainWindow::NotepadButtonClicked()
+{
+    //Opens the file in a default text editor.
+    if(QFile(this->_isaacPath + "/resources/players.xml").exists())
+        QDesktopServices::openUrl(QUrl("file:///" + this->_isaacPath + "/resources/players.xml"));
+    else QMessageBox(QMessageBox::Warning, "Information", "players.xml can't be opened.").exec();
+}
+
+void MainWindow::SetItemsButtonClicked()
+{
+    this->ui->itemTextEdit->ProcessItems();
+}
+
 void MainWindow::PurgeButtonClicked()
 {
     XML(this->_isaacPath).DeleteXML();
@@ -647,7 +708,7 @@ void MainWindow::PurgeButtonClicked()
 
 void MainWindow::ReadButtonClicked()
 {
-    //pass
+    XML(this->_isaacPath).ReadXML();
 }
 
 void MainWindow::ExportButtonClicked()

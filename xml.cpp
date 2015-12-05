@@ -59,6 +59,11 @@ void XML::WriteXML()
     message.exec();
 }
 
+void XML::ReadXML()
+{
+    //pass
+}
+
 QString XML::GetPlayerLine(const Character &player)
 {
     QString line = QString("\t<player ");

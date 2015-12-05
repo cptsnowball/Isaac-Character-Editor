@@ -21,6 +21,7 @@ public:
     ~MainWindow();
     Character* GetCurrentCharacter();
     void SetUpHealthAndConsumableLabels();
+    void ReplaceComboBoxItems(QComboBox*, QStringList);
     void GenerateComboBoxes();
     void GenerateCharacterComboBox();
     void GenerateSpacebarComboBox();
@@ -47,6 +48,9 @@ public slots:
     void AfterbirthCheckBoxChanged(int checkState);
     void PathTextEditChanged();
     void RestoreDefaultPath();
+    void CompassButtonClicked();
+    void NotepadButtonClicked();
+    void SetItemsButtonClicked();
     void PurgeButtonClicked();
     void ReadButtonClicked();
     void ExportButtonClicked();

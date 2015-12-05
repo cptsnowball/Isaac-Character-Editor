@@ -10,6 +10,7 @@ public:
     explicit XML(QString filename);
     void WriteXML();
     void DeleteXML();
+    void ReadXML();
 private:
     QString GetPlayerLine(const Character &player);
     QString GetItemString(const Character &player);

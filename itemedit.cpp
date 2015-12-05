@@ -10,10 +10,7 @@ ItemEdit::ItemEdit(QWidget* parent) : QTextEdit(parent)
 
 void ItemEdit::keyPressEvent(QKeyEvent* event)
 {
-    if(event->key() == Qt::Key_Return)
-    {
-        this->ProcessItems();
-    }
+    if(event->key() == Qt::Key_Return) this->ProcessItems();
     else QTextEdit::keyPressEvent(event);
 }
 

@@ -194,6 +194,7 @@ void Draw::Pill(QLabel* cardImageLabel)
     int pills = afterbirthEnabled ? constants::TOTAL_PILL_COUNT : constants::REBIRTH_PILL_COUNT;
     QString pillToDraw = QString(":/Resources/Cards/Pill%1.png").arg(this->_rng.RandomInt(pills));
     PixmapToLabel(cardImageLabel, pillToDraw);
+    this->DrawnPill = pillToDraw.toInt();
 }
 
 void Draw::Card(QLabel* cardImageLabel, int cardIndex)

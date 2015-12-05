@@ -648,7 +648,7 @@
      </font>
     </property>
    </widget>
-   <widget class="QToolButton" name="defaultPathButton_2">
+   <widget class="QToolButton" name="setItemsButton">
     <property name="geometry">
      <rect>
       <x>604</x>
@@ -664,6 +664,88 @@
     </property>
     <property name="text">
      <string>Set items</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="compassButton">
+    <property name="geometry">
+     <rect>
+      <x>559</x>
+      <y>100</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="notepadButton">
+    <property name="geometry">
+     <rect>
+      <x>537</x>
+      <y>100</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="editNameButton">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>115</y>
+      <width>41</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edit</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="costumeComboBox">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>142</y>
+      <width>171</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="skinColorComboBox">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>168</y>
+      <width>146</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="randomCostumeButton">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>169</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -1015,7 +1097,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>defaultPathButton_2</sender>
+   <sender>setItemsButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>SetItems()</slot>
@@ -1027,6 +1109,54 @@
     <hint type="destinationlabel">
      <x>424</x>
      <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>setItemsButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SetItemsButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>649</x>
+     <y>258</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>419</x>
+     <y>259</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>compassButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>CompassButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>569</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>567</x>
+     <y>150</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>notepadButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>NotepadButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>542</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>516</x>
+     <y>122</y>
     </hint>
    </hints>
   </connection>
@@ -1054,5 +1184,8 @@
   <slot>SetTears(int)</slot>
   <slot>SetSpacebar(QString)</slot>
   <slot>SetItems()</slot>
+  <slot>SetItemsButtonClicked()</slot>
+  <slot>CompassButtonClicked()</slot>
+  <slot>NotepadButtonClicked()</slot>
  </slots>
 </ui>

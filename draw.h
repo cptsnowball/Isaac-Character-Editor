@@ -21,6 +21,7 @@ public:
     void Pill(QLabel*);
     void Card(QLabel*, int);
     void Trinket(QLabel*, int);
+    int DrawnPill = 0;
 private:
     Random _rng = Random();
 };
