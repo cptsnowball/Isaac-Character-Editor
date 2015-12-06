@@ -32,5 +32,7 @@ inline bool VectorContains(const std::vector<T> &vector, const T &value)
 std::vector<int> GetItemIDsFromItemList(QStringList itemList);
 QStringList GetItemNamesFromItemList(QStringList itemList);
 QStringList SimplifyItemString(QStringList itemList);
+void ReplaceComboBoxItems(QComboBox* comboBox, QStringList items);
+void FindAndSetValueInComboBox(QComboBox* comboBox, QString value);
 
 #endif // FUNCTIONS_H

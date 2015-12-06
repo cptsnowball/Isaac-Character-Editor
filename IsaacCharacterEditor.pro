@@ -41,6 +41,9 @@ RESOURCES += \
 
 CONFIG += c++14
 
+CONFIG += static
+QMAKE_LFLAGS += -static -static-libgcc
+
 macx {
     #The standard library isn't included properly in Mac
     #while using C++14 without this.

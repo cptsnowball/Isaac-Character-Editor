@@ -17,7 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     this->ui->setupUi(this);
+    this->DrawBackground(true);
+
     possibleInputs = Input::getPossibleUserInputs();
+    spacebarComboBoxPtr = this->ui->spacebarComboBox;
 
     this->ui->redHeartLineEdit->setValidator(this->_healthValidator);
     this->ui->soulHeartLineEdit->setValidator(this->_healthValidator);
@@ -54,27 +57,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QApplication::setFont(this->_font);
     QWidget::setFixedSize(this->size());
 
-    setWindowTitle(constants::TITLE + " " + constants::VERSION);
-
-    QPixmap result(this->size());
-
-    result.fill(Qt::transparent);
-    {
-        const auto getPixmap = [](QString filename) -> QPixmap {
-            return QPixmap(":/Resources/Background/" + filename + ".png");
-        };
-        QPainter painter(&result);
-        painter.drawPixmap(0, 0, getPixmap("Background"));
-        painter.drawPixmap(0, 0, getPixmap("BackgroundOverlay"));
-        painter.drawPixmap(224, 10, getPixmap("WhoAmI"));
-        painter.drawPixmap(453, 135, getPixmap("MyStuff"));
-    }
-
-    result = result.scaled(this->size(), Qt::IgnoreAspectRatio);
-    QPalette palette;
-    palette.setBrush(QPalette::Background, result);
-    this->setPalette(palette);
-
     SetUpHealthAndConsumableLabels();
     GenerateCharacterComboBox();
     GenerateComboBoxes();
@@ -93,6 +75,38 @@ MainWindow::~MainWindow()
     delete this->_consumableValidator;
 }
 
+void MainWindow::DrawBackground(bool vaporwave)
+{
+    QPixmap result(this->size());
+
+    if(vaporwave)
+    {
+        setWindowTitle(constants::TITLE + " " + constants::VAPORWAVE_VERSION);
+        result.fill(Qt::transparent);
+        QPainter painter(&result);
+        painter.drawPixmap(0, 0, QPixmap(":/Resources/BackgroundVaporwave/BackgroundVaporwave.png"));
+        painter.drawPixmap(0, 0, QPixmap(":/Resources/Background/BackgroundOverlay.png"));
+        painter.drawPixmap(224, 10, QPixmap(":/Resources/BackgroundVaporwave/WhoAmI.png"));
+        painter.drawPixmap(453, 135, QPixmap(":/Resources/BackgroundVaporwave/MyStuff.png"));
+    }
+    else
+    {
+        setWindowTitle(constants::TITLE + " " + constants::VERSION);
+        result.fill(Qt::transparent);
+        QPainter painter(&result);
+        painter.drawPixmap(0, 0, QPixmap(":/Resources/Background/Background.png"));
+        painter.drawPixmap(0, 0, QPixmap(":/Resources/Background/BackgroundOverlay.png"));
+        painter.drawPixmap(224, 10, QPixmap(":/Resources/Background/WhoAmI.png"));
+        painter.drawPixmap(453, 135, QPixmap(":/Resources/Background/MyStuff.png"));
+    }
+
+
+    result = result.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Background, result);
+    this->setPalette(palette);
+}
+
 void MainWindow::SetUpHealthAndConsumableLabels()
 {
     this->_draw.PixmapToLabel(this->ui->redHeartImageLabel, ":/Resources/Health/RedHeartFull.png");
@@ -102,20 +116,6 @@ void MainWindow::SetUpHealthAndConsumableLabels()
     this->_draw.PixmapToLabel(this->ui->coinImageLabel, ":/Resources/Consumables/Coin.png");
     this->_draw.PixmapToLabel(this->ui->bombImageLabel, ":/Resources/Consumables/Bomb.png");
     this->_draw.PixmapToLabel(this->ui->keyImageLabel, ":/Resources/Consumables/Key.png");
-}
-
-void MainWindow::ReplaceComboBoxItems(QComboBox* comboBox, QStringList items)
-{
-    //Replaces the items in the ComboBox with the provided ones and keeps the previously
-    //selected value selected if possible, else it selects "None".
-    QString previousSelection = comboBox->currentText();
-
-    comboBox->clear();
-    comboBox->addItems(items);
-
-    for(int i = 0; i < comboBox->count(); ++i)
-        if(previousSelection == comboBox->itemText(i))
-            comboBox->setCurrentIndex(i);
 }
 
 void MainWindow::GenerateComboBoxes()
@@ -682,7 +682,7 @@ void MainWindow::CompassButtonClicked()
         tr("Select your Isaac directory."),
         QDir::currentPath(),
         QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    this->ui->pathTextEdit->setPlainText(dir);
+    if(dir != QString::null) this->ui->pathTextEdit->setPlainText(dir);
 
     QTextCursor cursor(this->ui->pathTextEdit->textCursor());
     cursor.movePosition(QTextCursor::End);
@@ -695,11 +695,6 @@ void MainWindow::NotepadButtonClicked()
     if(QFile(this->_isaacPath + "/resources/players.xml").exists())
         QDesktopServices::openUrl(QUrl("file:///" + this->_isaacPath + "/resources/players.xml"));
     else QMessageBox(QMessageBox::Warning, "Information", "players.xml can't be opened.").exec();
-}
-
-void MainWindow::SetItemsButtonClicked()
-{
-    this->ui->itemTextEdit->ProcessItems();
 }
 
 void MainWindow::PurgeButtonClicked()

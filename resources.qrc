@@ -244,5 +244,8 @@
         <file>Resources/Spacebar/Spacebar_439.png</file>
         <file>Resources/Spacebar/Spacebar_441.png</file>
         <file>inputs.xml</file>
+        <file>Resources/BackgroundVaporwave/WhoAmI.png</file>
+        <file>Resources/BackgroundVaporwave/BackgroundVaporwave.png</file>
+        <file>Resources/BackgroundVaporwave/MyStuff.png</file>
     </qresource>
 </RCC>

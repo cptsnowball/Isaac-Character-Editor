@@ -639,31 +639,13 @@
       <x>469</x>
       <y>186</y>
       <width>210</width>
-      <height>54</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <kerning>false</kerning>
      </font>
-    </property>
-   </widget>
-   <widget class="QToolButton" name="setItemsButton">
-    <property name="geometry">
-     <rect>
-      <x>604</x>
-      <y>242</y>
-      <width>75</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="text">
-     <string>Set items</string>
     </property>
    </widget>
    <widget class="QPushButton" name="compassButton">
@@ -746,6 +728,19 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="setItemsHelpLabel">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>160</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>press enter to set items</string>
     </property>
    </widget>
   </widget>
@@ -1093,38 +1088,6 @@
     <hint type="destinationlabel">
      <x>175</x>
      <y>164</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>setItemsButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>SetItems()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>614</x>
-     <y>256</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>424</x>
-     <y>219</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>setItemsButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>SetItemsButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>649</x>
-     <y>258</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>419</x>
-     <y>259</y>
     </hint>
    </hints>
   </connection>

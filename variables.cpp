@@ -98,3 +98,5 @@ std::map<QString, int> trinketMap {
 };
 
 std::vector<Input> possibleInputs;
+
+QComboBox* spacebarComboBoxPtr;

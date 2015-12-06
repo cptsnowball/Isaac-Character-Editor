@@ -20,6 +20,7 @@ std::vector<int> GetItemIDsFromItemList(QStringList itemList)
 QStringList GetItemNamesFromItemList(QStringList itemList)
 {
     //Loops through all possible inputs and returns a vector containing their correct item names.
+    //Also sets the spacebar combo box if a spacebar item was found.
     itemList = SimplifyItemString(itemList);
     QStringList itemNames;
     for(const auto& item : itemList)
@@ -28,6 +29,8 @@ QStringList GetItemNamesFromItemList(QStringList itemList)
                 if(userInput == item)
                 {
                     if(!afterbirthEnabled && possibleInput.Afterbirth) continue;
+                    else if(possibleInput.Spacebar)
+                        FindAndSetValueInComboBox(spacebarComboBoxPtr, possibleInput.Name);
                     else itemNames.push_back(possibleInput.Name);
                 }
 
@@ -51,4 +54,26 @@ QStringList SimplifyItemString(QStringList itemList)
         simplifiedItemList.push_back(item);
     }
     return simplifiedItemList;
+}
+
+void ReplaceComboBoxItems(QComboBox* comboBox, QStringList items)
+{
+    //Replaces the items in the ComboBox with the provided ones and keeps the previously
+    //selected value selected if possible, else it selects "None".
+    QString previousSelection = comboBox->currentText();
+
+    comboBox->clear();
+    comboBox->addItems(items);
+
+    for(int i = 0; i < comboBox->count(); ++i)
+        if(previousSelection == comboBox->itemText(i))
+            comboBox->setCurrentIndex(i);
+}
+
+void FindAndSetValueInComboBox(QComboBox* comboBox, QString value)
+{
+    //int is used instead of size_t because count() returns a const int.
+    for(int i = 0; i < comboBox->count(); ++i)
+        if(value == spacebarComboBoxPtr->itemText(i))
+            comboBox->setCurrentIndex(i);
 }

@@ -8,6 +8,7 @@
 #include <array>
 #include <map>
 #include <vector>
+#include <QComboBox>
 
 extern bool afterbirthEnabled;
 extern bool sortAlphabetically;
@@ -36,6 +37,10 @@ extern std::map<QString, int> spacebarMap;
 extern std::map<QString, int> trinketMap;
 
 extern std::vector<Input> possibleInputs;
+
+//Needed to set the selected spacebar item outside of the MainWindow class.
+//Probably a terrible work around.
+extern QComboBox* spacebarComboBoxPtr;
 
 #endif // VARIABLES
 

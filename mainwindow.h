@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QDir>
+#include <QLabel>
 #include <QMainWindow>
 #include <QIntValidator>
 #include <QPointer>
@@ -20,8 +21,8 @@ public:
     explicit MainWindow(QWidget* parent = 0);
     ~MainWindow();
     Character* GetCurrentCharacter();
+    void DrawBackground(bool vaporwave = false);
     void SetUpHealthAndConsumableLabels();
-    void ReplaceComboBoxItems(QComboBox*, QStringList);
     void GenerateComboBoxes();
     void GenerateCharacterComboBox();
     void GenerateSpacebarComboBox();
@@ -50,7 +51,6 @@ public slots:
     void RestoreDefaultPath();
     void CompassButtonClicked();
     void NotepadButtonClicked();
-    void SetItemsButtonClicked();
     void PurgeButtonClicked();
     void ReadButtonClicked();
     void ExportButtonClicked();

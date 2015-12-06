@@ -26,6 +26,8 @@ std::vector<Input> Input::getPossibleUserInputs()
                             input.Name = attribute.value().toString();
                         else if(attribute.name().toString() == "id")
                             input.ID = attribute.value().toInt();
+                        else if(attribute.name().toString() == "spacebar")
+                            input.Spacebar = attribute.value().toString() == "true" ? true : false;
                         else if(attribute.name().toString() == "afterbirth")
                             input.Afterbirth = attribute.value().toString() == "true" ? true : false;
                     }
