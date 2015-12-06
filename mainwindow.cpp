@@ -35,9 +35,18 @@ MainWindow::MainWindow(QWidget *parent) :
     this->ui->cardComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
     this->ui->trinketComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
 
+    this->ui->nameLineEdit->hide();
+
     this->ui->notepadButton->setIcon(QIcon(":/Resources/Buttons/NotepadButton.png"));
     this->ui->compassButton->setIcon(QIcon(":/Resources/Buttons/CompassButton.png"));
+
+    this->ui->randomSpacebarButton->setIcon(QIcon(":/Resources/Buttons/DiceButton.png"));
+    this->ui->randomCardButton->setIcon(QIcon(":/Resources/Buttons/DiceButton.png"));
+    this->ui->randomTrinketButton->setIcon(QIcon(":/Resources/Buttons/DiceButton.png"));
     this->ui->randomCostumeButton->setIcon(QIcon(":/Resources/Buttons/DiceButton.png"));
+
+    this->ui->randomEverythingButton->setIcon(QIcon(":/Resources/Buttons/DiceButton2.png"));
+    this->ui->randomEverythingButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 
 #if defined(Q_OS_MAC)
     //Needed to set the fonts on these for whatever reason
@@ -59,6 +68,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     SetUpHealthAndConsumableLabels();
     GenerateCharacterComboBox();
+    GenerateSkinColorComboBox();
     GenerateComboBoxes();
 
     //Generating ComboBoxes resets the spacebar item to 0
@@ -126,6 +136,7 @@ void MainWindow::GenerateComboBoxes()
     GenerateSpacebarComboBox();
     GenerateCardComboBox();
     GenerateTrinketComboBox();
+    GenerateCostumeComboBox();
 }
 
 void MainWindow::GenerateCharacterComboBox()
@@ -257,15 +268,6 @@ void MainWindow::GenerateSpacebarComboBox()
     }
 
     ReplaceComboBoxItems(this->ui->spacebarComboBox, spacebarList);
-    /*
-    QString previousSelection = this->ui->spacebarComboBox->currentText();
-
-    this->ui->spacebarComboBox->clear();
-    this->ui->spacebarComboBox->addItems(spacebarList);
-
-    for(int i = 0; i < this->ui->spacebarComboBox->count(); ++i)
-        if(previousSelection == this->ui->spacebarComboBox->itemText(i))
-            this->ui->spacebarComboBox->setCurrentIndex(i);*/
 }
 
 void MainWindow::GenerateCardComboBox()
@@ -442,6 +444,70 @@ void MainWindow::GenerateTrinketComboBox()
     ReplaceComboBoxItems(this->ui->trinketComboBox, trinketList);
 }
 
+void MainWindow::GenerateCostumeComboBox()
+{
+    QStringList costumeList {
+        "0: Nothing",
+        "1: Puberty Hair",
+        "2: I Found Pills (broken)",
+        "3: Lord of the Flies",
+        "4: Gnawed Leaf",
+        "5: Guppy",
+        "6: R U A Wizard",
+        "7: Maggy's Hair",
+        "8: Cain's Eyepatch",
+        "9: Judas' Fez",
+        "10: Eve's Hair",
+        "11: Azazel's Horns & Wings",
+        "12: Random Eden's Hair",
+        "13: Samson's Hair",
+        "14: Blindfold",
+        "15: Faceless",
+        "16: Santa Hat"
+    };
+
+    if(afterbirthEnabled)
+    {
+        costumeList.append(QStringList {
+            "17: Holy Glow",
+            "18: Black Ghost",
+            "19: Inverted Cross",
+            "20: Fun Guy",
+            "21: Seraphim",
+            "22: Bob (Sloth)",
+            "23: Spun",
+            "24: Mom",
+            "25: Cojoined",
+            "26: Leviathan",
+            "27: Crap",
+            "28: Unknown",
+            "29: Shaky Eyeless Head",
+            "30: Boomerang",
+            "31: Mega Satan",
+            "32: Lazarus' Hair",
+            "33: Lazarus 2's Hair",
+            "34: Lilith's Hair"
+        });
+        costumeList.replace(2, "2: I Found Pills");
+    }
+
+    ReplaceComboBoxItems(this->ui->costumeComboBox, costumeList);
+}
+
+void MainWindow::GenerateSkinColorComboBox()
+{
+    QStringList skinColorList {
+        "Regular",
+        "White",
+        "Black",
+        "Blue",
+        "Red",
+        "Green"
+    };
+
+    ReplaceComboBoxItems(this->ui->skinColorComboBox, skinColorList);
+}
+
 std::array<QLabel*, 12> MainWindow::SetUpHeartLabels()
 {
     std::array<QLabel*, 12> heartLabels;
@@ -486,6 +552,10 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
     this->ui->pillCheckBox->setChecked(character.Pill == 1);
     this->ui->cardCheckBox->setChecked(character.Card > 0);
     this->ui->cardComboBox->setCurrentIndex(character.Card);
+
+    //Uses (skin color + 1) because it starts at -1 as opposed to 0.
+    this->ui->costumeComboBox->setCurrentIndex(character.Costume);
+    this->ui->skinColorComboBox->setCurrentIndex(character.SkinColor + 1);
 
     //If character holds a trinket, get the trinkets name and loop through the ComboBox.
     //Once an index with the same name is found, set it.
@@ -588,6 +658,19 @@ void MainWindow::SetTrinket(QString value)
     this->_draw.Trinket(this->ui->trinketImageLabel, trinket);
 }
 
+void MainWindow::SetCostume(int costumeIndex)
+{
+    Character* character = &characterMap.at(currentCharacter);
+    character->Costume = costumeIndex;
+}
+
+void MainWindow::SetSkinColor(int skinColorIndex)
+{
+    //Uses (skin color - 1) because the colors start at -1 as opposed to 0.
+    Character* character = &characterMap.at(currentCharacter);
+    character->SkinColor = skinColorIndex - 1;
+}
+
 void MainWindow::SetTears(int checkState)
 {
     Character* character = &characterMap.at(currentCharacter);
@@ -667,6 +750,30 @@ void MainWindow::PathTextEditChanged()
     this->_isaacPath = this->ui->pathTextEdit->toPlainText();
 }
 
+void MainWindow::EditNameButtonClicked()
+{
+    if(this->ui->editNameButton->text() == "Edit")
+    {
+        this->ui->nameLineEdit->show();
+        this->ui->characterComboBox->hide();
+
+        this->ui->nameLineEdit->setText(characterMap.at(currentCharacter).Name);
+        this->ui->editNameButton->setText("Save");
+
+        this->ui->nameLineEdit->setFocus(Qt::OtherFocusReason);
+        this->ui->nameLineEdit->selectAll();
+    }
+    else if(this->ui->editNameButton->text() == "Save")
+    {
+        this->ui->nameLineEdit->hide();
+        this->ui->characterComboBox->show();
+
+        characterMap.at(currentCharacter).Name = this->ui->nameLineEdit->text();
+        this->ui->editNameButton->setText("Edit");
+        GenerateCharacterComboBox();
+    }
+}
+
 void MainWindow::RestoreDefaultPath()
 {
     this->ui->pathTextEdit->setText(this->_defaultPath);
@@ -710,4 +817,70 @@ void MainWindow::ReadButtonClicked()
 void MainWindow::ExportButtonClicked()
 {
     XML(this->_isaacPath).WriteXML();
+}
+
+void MainWindow::RandomSpacebarButtonClicked()
+{
+    this->_rng.SetRandomComboBoxIndex(this->ui->spacebarComboBox);
+}
+
+void MainWindow::RandomCardButtonClicked()
+{
+    if(this->ui->cardCheckBox->isChecked())
+        this->_rng.SetRandomComboBoxIndex(this->ui->cardComboBox);
+}
+
+void MainWindow::RandomTrinketButtonClicked()
+{
+    if(this->ui->trinketCheckBox->isChecked())
+        this->_rng.SetRandomComboBoxIndex(this->ui->trinketComboBox);
+}
+
+void MainWindow::RandomCostumeButtonClicked()
+{
+    this->_rng.SetRandomComboBoxIndex(this->ui->costumeComboBox);
+    this->_rng.SetRandomComboBoxIndex(this->ui->skinColorComboBox);
+}
+
+void MainWindow::RandomEverythingButtonClicked()
+{
+    RandomCostumeButtonClicked();
+
+    this->ui->cardCheckBox->setChecked(this->_rng.RandomInt(0, 1));
+    if(this->ui->cardCheckBox->isChecked()) RandomCardButtonClicked();
+
+    this->ui->trinketCheckBox->setChecked(this->_rng.RandomInt(0, 1));
+    if(this->ui->trinketCheckBox->isChecked()) RandomTrinketButtonClicked();
+
+    int redHearts = 0, soulHearts = 0, blackHearts = 0;
+    for(int i = 0; i < 6; ++i)
+    {
+        switch(this->_rng.RandomInt(0, 3))
+        {
+        case 1:
+            ++redHearts;
+            break;
+        case 2:
+            ++soulHearts;
+            break;
+        case 3:
+            ++blackHearts;
+            break;
+        }
+    }
+
+    this->ui->redHeartLineEdit->setText(QString::number(redHearts));
+    this->ui->soulHeartLineEdit->setText(QString::number(soulHearts));
+    this->ui->blackHeartLineEdit->setText(QString::number(blackHearts));
+
+    this->ui->coinLineEdit->setText(QString::number(this->_rng.RandomInt(0, 2)));
+    this->ui->bombLineEdit->setText(QString::number(this->_rng.RandomInt(0, 2)));
+    this->ui->keyLineEdit->setText(QString::number(this->_rng.RandomInt(0, 2)));
+
+    QString randomItemsString = "";
+    randomItemsString += possibleInputs.at(this->_rng.RandomInt(0, possibleInputs.size() - 1)).Name;
+    randomItemsString += ", ";
+    randomItemsString += possibleInputs.at(this->_rng.RandomInt(0, possibleInputs.size() - 1)).Name;
+    this->ui->itemTextEdit->setText(randomItemsString);
+    this->ui->itemTextEdit->ProcessItems();
 }

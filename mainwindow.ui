@@ -607,32 +607,6 @@
      <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="randomCardButton">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>322</y>
-      <width>24</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="randomTrinketButton">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>347</y>
-      <width>24</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="ItemEdit" name="itemTextEdit">
     <property name="geometry">
      <rect>
@@ -741,6 +715,68 @@
     </property>
     <property name="text">
      <string>press enter to set items</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="nameLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>284</x>
+      <y>116</y>
+      <width>127</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="randomSpacebarButton">
+    <property name="geometry">
+     <rect>
+      <x>165</x>
+      <y>83</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="randomCardButton">
+    <property name="geometry">
+     <rect>
+      <x>472</x>
+      <y>324</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="randomTrinketButton">
+    <property name="geometry">
+     <rect>
+      <x>472</x>
+      <y>349</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="randomEverythingButton">
+    <property name="geometry">
+     <rect>
+      <x>251</x>
+      <y>265</y>
+      <width>150</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Randomize everything</string>
     </property>
    </widget>
   </widget>
@@ -1123,6 +1159,150 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>editNameButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>EditNameButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>258</x>
+     <y>126</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>181</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>nameLineEdit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>editNameButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>274</x>
+     <y>126</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>costumeComboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SetCostume(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>245</x>
+     <y>222</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>skinColorComboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SetSkinColor(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>327</x>
+     <y>175</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>randomCostumeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>RandomCostumeButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>406</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>440</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>randomCardButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>RandomCardButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>487</x>
+     <y>332</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>471</x>
+     <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>randomTrinketButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>RandomTrinketButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>477</x>
+     <y>358</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>362</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>randomSpacebarButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>RandomSpacebarButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>178</x>
+     <y>143</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>randomEverythingButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>RandomEverythingButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>281</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>214</x>
+     <y>231</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SetCurrentCharacter(int)</slot>
@@ -1150,5 +1330,13 @@
   <slot>SetItemsButtonClicked()</slot>
   <slot>CompassButtonClicked()</slot>
   <slot>NotepadButtonClicked()</slot>
+  <slot>EditNameButtonClicked()</slot>
+  <slot>SetCostume(int)</slot>
+  <slot>SetSkinColor(int)</slot>
+  <slot>RandomCostumeButtonClicked()</slot>
+  <slot>RandomSpacebarButtonClicked()</slot>
+  <slot>RandomCardButtonClicked()</slot>
+  <slot>RandomTrinketButtonClicked()</slot>
+  <slot>RandomEverythingButtonClicked()</slot>
  </slots>
 </ui>

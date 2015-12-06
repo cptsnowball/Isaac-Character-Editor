@@ -73,7 +73,7 @@ QString XML::GetPlayerLine(const Character &player)
     AppendToLine(line, "id", player.ID);
     AppendToLine(line, "name", player.Name);
     if(afterbirthEnabled) AppendToLine(line, "nameimage", player.NameImage);
-    AppendToLine(line, "skin", player.SkinFile);
+    AppendToLine(line, "skin", (player.SkinFile.split('.')[0] + "%1.png").arg(GetSkinColorString(player)));
     if(player.Costume != 0) AppendToLine(line, "costume", player.Costume);
     if(player.RedHearts != 0) AppendToLine(line, "hp", player.RedHearts);
     if(player.SoulHearts != 0) AppendToLine(line, "armor", player.SoulHearts);
@@ -108,4 +108,33 @@ QString XML::GetItemString(const Character &player)
     for(const auto& itemID : itemIDs)
         itemStringList.push_back(QString::number(itemID));
     return itemStringList.join(",");
+}
+
+QString XML::GetSkinColorString(const Character &player)
+{
+    std::vector<int> skinColorlessCharacterIDs = {
+        _blueBaby.ID, _theLost.ID, _azazel.ID,
+        _blackJudas.ID, _lilith.ID, _theKeeper.ID
+    };
+    if(VectorContains(skinColorlessCharacterIDs, player.ID)) return "";
+    else {
+        switch(player.SkinColor)
+        {
+        case -1:
+            return "";
+        case 0:
+            return "_white";
+        case 1:
+            return "_black";
+        case 2:
+            return "_blue";
+        case 3:
+            return "_red";
+        case 4:
+            return "_green";
+        default:
+            return "";
+
+        }
+    }
 }

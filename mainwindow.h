@@ -28,6 +28,8 @@ public:
     void GenerateSpacebarComboBox();
     void GenerateCardComboBox();
     void GenerateTrinketComboBox();
+    void GenerateCostumeComboBox();
+    void GenerateSkinColorComboBox();
     std::array<QLabel*, 12> SetUpHeartLabels();
 public slots:
     void SetCurrentCharacter(int characterToSet);
@@ -41,6 +43,8 @@ public slots:
     void SetSpacebar(QString value);
     void SetCard(int cardIndex);
     void SetTrinket(QString value);
+    void SetCostume(int costumeIndex);
+    void SetSkinColor(int skinColorIndex);
     void SetTears(int checkState);
     void PillCheckBoxChanged(int checkState);
     void CardCheckBoxChanged(int checkState);
@@ -48,15 +52,22 @@ public slots:
     void SortCheckBoxChanged(int checkState);
     void AfterbirthCheckBoxChanged(int checkState);
     void PathTextEditChanged();
+    void EditNameButtonClicked();
     void RestoreDefaultPath();
     void CompassButtonClicked();
     void NotepadButtonClicked();
     void PurgeButtonClicked();
     void ReadButtonClicked();
     void ExportButtonClicked();
+    void RandomSpacebarButtonClicked();
+    void RandomCardButtonClicked();
+    void RandomTrinketButtonClicked();
+    void RandomCostumeButtonClicked();
+    void RandomEverythingButtonClicked();
 private:
     Ui::MainWindow* ui;
     Draw _draw;
+    Random _rng = Random();
     QIntValidator* _healthValidator = new QIntValidator(0, 24, this);
     QIntValidator* _consumableValidator = new QIntValidator(0, 99, this);
     std::array<QLabel*, 12> _heartLabels = SetUpHeartLabels();

@@ -20,5 +20,5 @@ int Random::RandomInt(int min, int max)
 
 void Random::SetRandomComboBoxIndex(QComboBox* comboBox)
 {
-    comboBox->setCurrentIndex(RandomInt(1, comboBox->count()));
+    comboBox->setCurrentIndex(RandomInt(0, comboBox->count() - 1));
 }
