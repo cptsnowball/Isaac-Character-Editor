@@ -2,6 +2,7 @@
 
 bool afterbirthEnabled = true;
 bool sortAlphabetically = false;
+bool vaporwaveAesthetics = false;
 
 Characters currentCharacter = Characters::Isaac;
 
@@ -100,3 +101,4 @@ std::map<QString, int> trinketMap {
 std::vector<Input> possibleInputs;
 
 QComboBox* spacebarComboBoxPtr;
+MainWindow* mainWindowPtr;

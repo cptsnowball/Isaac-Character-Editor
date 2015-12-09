@@ -17,10 +17,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     this->ui->setupUi(this);
-    this->DrawBackground(true);
+
+    //Sets the path, sort/afterbirth checkboxes and draws the background.
+    this->LoadSettings();
 
     possibleInputs = Input::getPossibleUserInputs();
     spacebarComboBoxPtr = this->ui->spacebarComboBox;
+    mainWindowPtr = this;
 
     this->ui->redHeartLineEdit->setValidator(this->_healthValidator);
     this->ui->soulHeartLineEdit->setValidator(this->_healthValidator);
@@ -29,8 +32,6 @@ MainWindow::MainWindow(QWidget *parent) :
     this->ui->coinLineEdit->setValidator(this->_consumableValidator);
     this->ui->bombLineEdit->setValidator(this->_consumableValidator);
     this->ui->keyLineEdit->setValidator(this->_consumableValidator);
-
-    this->ui->pathTextEdit->setText(this->_defaultPath);
 
     this->ui->cardComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
     this->ui->trinketComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
@@ -80,6 +81,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    this->SaveSettings();
     delete ui;
     delete this->_healthValidator;
     delete this->_consumableValidator;
@@ -883,4 +885,26 @@ void MainWindow::RandomEverythingButtonClicked()
     randomItemsString += possibleInputs.at(this->_rng.RandomInt(0, possibleInputs.size() - 1)).Name;
     this->ui->itemTextEdit->setText(randomItemsString);
     this->ui->itemTextEdit->ProcessItems();
+}
+
+void MainWindow::LoadSettings()
+{
+    QSettings settings("Portal-chan", "Isaac Character Editor");
+    settings.beginGroup("Editor");
+    this->ui->afterbirthCheckBox->setChecked(settings.value("afterbirthenabled", true).toBool());
+    this->ui->sortCheckBox->setChecked(settings.value("sortalphabetically", false).toBool());
+    this->DrawBackground(settings.value("vaporwave", false).toBool());
+    this->ui->pathTextEdit->setPlainText(settings.value("path", this->_defaultPath).toString());
+    settings.endGroup();
+}
+
+void MainWindow::SaveSettings()
+{
+    QSettings settings("Portal-chan", "Isaac Character Editor");
+    settings.beginGroup("Editor");
+    settings.setValue("afterbirthenabled", afterbirthEnabled);
+    settings.setValue("sortalphabetically", sortAlphabetically);
+    settings.setValue("vaporwave", vaporwaveAesthetics);
+    settings.setValue("path", this->_isaacPath);
+    settings.endGroup();
 }

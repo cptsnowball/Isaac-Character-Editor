@@ -2,10 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QDir>
+#include <QIntValidator>
 #include <QLabel>
 #include <QMainWindow>
-#include <QIntValidator>
-#include <QPointer>
+#include <QSettings>
 #include <array>
 #include "draw.h"
 
@@ -65,6 +65,8 @@ public slots:
     void RandomCostumeButtonClicked();
     void RandomEverythingButtonClicked();
 private:
+    void LoadSettings();
+    void SaveSettings();
     Ui::MainWindow* ui;
     Draw _draw;
     Random _rng = Random();

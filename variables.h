@@ -4,6 +4,7 @@
 #include "character.h"
 #include "constants.h"
 #include "input.h"
+#include "mainwindow.h"
 
 #include <array>
 #include <map>
@@ -12,6 +13,7 @@
 
 extern bool afterbirthEnabled;
 extern bool sortAlphabetically;
+extern bool vaporwaveAesthetics;
 
 extern Characters currentCharacter;
 
@@ -41,6 +43,9 @@ extern std::vector<Input> possibleInputs;
 //Needed to set the selected spacebar item outside of the MainWindow class.
 //Probably a terrible work around.
 extern QComboBox* spacebarComboBoxPtr;
+
+//Used to access DrawBackground() outside of MainWindow.
+extern MainWindow* mainWindowPtr;
 
 #endif // VARIABLES
 

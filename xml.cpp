@@ -1,12 +1,14 @@
 #include "xml.h"
 
 #include "functions.h"
+#include "character.h"
 #include "variables.h"
 #include <sstream>
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QXmlStreamReader>
 
 XML::XML(QString filename) :
     _filename(filename) { }
@@ -64,7 +66,77 @@ void XML::WriteXML()
 
 void XML::ReadXML()
 {
-    //pass
+    if(!QDir(_filename + "/resources").exists())
+    {
+        QMessageBox(QMessageBox::Critical, "Error", QString("%1 is not found!").arg(_filename)).exec();
+        return;
+    }
+
+    QFile file(_filename + "/resources/players.xml");
+    if(!file.exists())
+    {
+        QMessageBox(QMessageBox::Warning, "Information", "players.xml doesn't exist.").exec();
+        return;
+    }
+
+    if(file.open(QIODevice::ReadOnly))
+    {
+        QXmlStreamReader xml;
+        xml.setDevice(&file);
+        int currentCharacterIndex = 0;
+
+        while(!xml.atEnd()) {
+            xml.readNext();
+            if(xml.isStartElement()) {
+                if(xml.name() == "player")
+                {
+                    //If theres more characters in the .xml than in the map (why), break.
+                    if(currentCharacterIndex >= constants::TOTAL_CHARACTER_COUNT) break;
+
+                    foreach(const QXmlStreamAttribute &attribute, xml.attributes()) {
+                        if(attribute.name().toString() == "name")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).Name = attribute.value().toString();
+                        else if(attribute.name().toString() == "skinColor")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).SkinColor = attribute.value().toInt();
+                        else if(attribute.name().toString() == "costume")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).Costume = attribute.value().toInt();
+                        else if(attribute.name().toString() == "hp")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).RedHearts = attribute.value().toInt();
+                        else if(attribute.name().toString() == "armor")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).SoulHearts = attribute.value().toInt();
+                        else if(attribute.name().toString() == "black")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).BlackHearts = attribute.value().toInt();
+                        else if(attribute.name().toString() == "coins")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).Coins = attribute.value().toInt();
+                        else if(attribute.name().toString() == "bombs")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).Bombs = attribute.value().toInt();
+                        else if(attribute.name().toString() == "keys")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).Keys = attribute.value().toInt();
+                        else if(attribute.name().toString() == "items")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).Items = GetItemNamesFromItemList(attribute.value().toString().split(','), false);
+                        else if(attribute.name().toString() == "pill")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).Pill = attribute.value().toInt();
+                        else if(attribute.name().toString() == "card")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).Card = attribute.value().toInt();
+                        else if(attribute.name().toString() == "trinket")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).Trinket = attribute.value().toInt();
+                        else if(attribute.name().toString() == "canShoot")
+                            characterMap.at(static_cast<Characters>(currentCharacterIndex)).CanShoot = attribute.value() == "true" ? true : false;
+                    }
+
+                    //Move on to the next character in the map.
+                    ++currentCharacterIndex;
+                }
+            }
+        }
+
+        mainWindowPtr->SetCurrentCharacter(static_cast<int>(currentCharacter));
+    }
+
+    file.close();
+
+    QMessageBox message(QMessageBox::Information, "Success!", "players.xml read successful.");
+    message.exec();
 }
 
 QString XML::GetPlayerLine(const Character &player)
@@ -72,7 +144,10 @@ QString XML::GetPlayerLine(const Character &player)
     QString line = QString("\t<player ");
     AppendToLine(line, "id", player.ID);
     AppendToLine(line, "name", player.Name);
+    AppendToLine(line, "skinColor", player.SkinColor);
     if(afterbirthEnabled) AppendToLine(line, "nameimage", player.NameImage);
+    AppendToLine(line, "portrait", player.Portrait);
+    AppendToLine(line, "bigportrait", player.BigPortrait);
     AppendToLine(line, "skin", (player.SkinFile.split('.')[0] + "%1.png").arg(GetSkinColorString(player)));
     if(player.Costume != 0) AppendToLine(line, "costume", player.Costume);
     if(player.RedHearts != 0) AppendToLine(line, "hp", player.RedHearts);
