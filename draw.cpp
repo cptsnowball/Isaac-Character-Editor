@@ -5,6 +5,7 @@
 #include <QBitmap>
 #include <QLabel>
 #include <QPixmap>
+#include <QMessageBox>
 
 Draw::Draw() { }
 
@@ -171,21 +172,21 @@ void Draw::Spacebar(QLabel* spacebarImageLabel, int spacebarID)
 void Draw::Charge(QLabel* chargeLabel, int spacebarID)
 {
     const std::vector<int> charge1IDs = {36, 38, 111, 127, 145, 164, 285, 289, 298, 294, 338, 349, 352, 383, 427};
-    const std::vector<int> charge2IDs = {37, 44, 56, 66, 171, 175, 192, 288, 421, 422};
-    const std::vector<int> charge3IDs = {34, 39, 41, 42, 47, 49, 58, 65, 86, 123, 136, 147, 351, 386, 437};
-    const std::vector<int> charge4IDs = {45, 97, 124, 160, 286, 348, 357, 382, 406, 419, 439};
+    const std::vector<int> charge2IDs = {37, 44, 56, 66, 107, 171, 175, 192, 288, 421, 422};
+    const std::vector<int> charge3IDs = {34, 39, 41, 42, 47, 49, 58, 65, 86, 123, 136, 147, 351, 382, 386, 437};
+    const std::vector<int> charge4IDs = {45, 97, 124, 160, 286, 348, 357, 406, 419, 439};
     const std::vector<int> charge6IDs = {
-                    33, 35, 77, 78, 83, 84, 85, 93, 102, 105, 107, 130, 146, 158, 166, 181, 283, 284, 287,
+                    33, 35, 77, 78, 83, 84, 85, 93, 102, 105, 130, 146, 158, 166, 181, 283, 284, 287,
                     291, 292, 293, 323, 324, 325, 326
                 };
     const std::vector<int> charge12IDs = {441};
 
-    if(VectorContains(charge1IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge1.png");
-    else if(VectorContains(charge2IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge2.png");
-    else if(VectorContains(charge3IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge3.png");
-    else if(VectorContains(charge4IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge4.png");
-    else if(VectorContains(charge6IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge6.png");
-    else if(VectorContains(charge12IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge12.png");
+    if(SortedVectorContains(charge1IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge1.png");
+    else if(SortedVectorContains(charge2IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge2.png");
+    else if(SortedVectorContains(charge3IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge3.png");
+    else if(SortedVectorContains(charge4IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge4.png");
+    else if(SortedVectorContains(charge6IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge6.png");
+    else if(SortedVectorContains(charge12IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge12.png");
     else chargeLabel->clear();
 }
 
@@ -217,4 +218,54 @@ void Draw::Trinket(QLabel* trinketImageLabel, int trinketID)
 {
     if(trinketID == 0) trinketImageLabel->clear();
     else PixmapToLabel(trinketImageLabel, QString(":/Resources/Trinkets/Trinket_%1.png").arg(QString::number(trinketID)));
+}
+
+void Draw::Familiar(QLabel* familiarImageLabel, std::vector<int> itemIDs) {
+    const std::vector<int> possibleFamiliars {
+        //Shooters
+        8, 113, 88, 99, 100, 95, 67, 188, 163, 167, 174, 267, 269, 322, 275,
+        //Spawners
+        131, 94, 96, 98, 144, 266, 271, 278,
+        //Orbitals
+        128, 57, 112, 10, 172, 264, 274, 207, 73, 279,
+        //Followers
+        265, 270, 273, 276, 277, 280, 281, 319, 320,
+        //Other
+        11, 81, 178, 187,
+        //Afterbirth
+        360, 361, 362, 363, 364, 365, 372, 384, 385, 387, 388, 389, 390, 403, 404, 405,
+        417, 426, 430, 431, 435, 436,
+        //Sample for trinket familiars and Super Bum.
+        997, 998, 999
+    };
+
+    //Create a vector that contains the IDs for the available familiars.
+    std::vector<int> familiars;
+    for(const int itemID : itemIDs)
+    {
+        if(VectorContains(possibleFamiliars, itemID))
+            familiars.push_back(itemID);
+    }
+
+    if(trinketComboBoxPtr->currentText() == "Isaac's Head") familiars.push_back(997);
+    if(trinketComboBoxPtr->currentText() == "\?\?\?'s Soul") familiars.push_back(998);
+    if(currentCharacter == Characters::Lilith) familiars.push_back(360);
+    if(VectorContains(familiars, 144) && VectorContains(familiars, 278) && VectorContains(familiars, 388))
+    {
+        RemoveValueFromVector(familiars, 144);
+        RemoveValueFromVector(familiars, 278);
+        RemoveValueFromVector(familiars, 388);
+        familiars.push_back(999);
+    }
+
+    if(familiars.empty())
+    {
+        familiarImageLabel->clear();
+        return;
+    }
+
+    int familiarToDraw = familiars.at(this->_rng.RandomInt(0, familiars.size() - 1));
+    if (familiarToDraw == 405)
+        PixmapToLabel(familiarImageLabel, QString(":/Resources/Familiars/Familiar_%1_%2.png").arg(familiarToDraw, this->_rng.RandomInt(1, 4)));
+    else PixmapToLabel(familiarImageLabel, QString(":/Resources/Familiars/Familiar_%1.png").arg(familiarToDraw));
 }

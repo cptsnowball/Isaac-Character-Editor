@@ -44,6 +44,9 @@ extern std::vector<Input> possibleInputs;
 //Probably a terrible work around.
 extern QComboBox* spacebarComboBoxPtr;
 
+//Needed to access from Draw::Familiar()
+extern QComboBox* trinketComboBoxPtr;
+
 //Used to access DrawBackground() outside of MainWindow.
 extern MainWindow* mainWindowPtr;
 

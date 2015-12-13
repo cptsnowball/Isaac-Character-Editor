@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     possibleInputs = Input::getPossibleUserInputs();
     spacebarComboBoxPtr = this->ui->spacebarComboBox;
+    trinketComboBoxPtr = this->ui->trinketComboBox;
     mainWindowPtr = this;
 
     this->ui->redHeartLineEdit->setValidator(this->_healthValidator);
@@ -85,6 +86,9 @@ MainWindow::~MainWindow()
     delete ui;
     delete this->_healthValidator;
     delete this->_consumableValidator;
+    free(spacebarComboBoxPtr);
+    free(trinketComboBoxPtr);
+    free(mainWindowPtr);
 }
 
 void MainWindow::DrawBackground(bool vaporwave)
@@ -488,7 +492,8 @@ void MainWindow::GenerateCostumeComboBox()
             "31: Mega Satan",
             "32: Lazarus' Hair",
             "33: Lazarus 2's Hair",
-            "34: Lilith's Hair"
+            "34: Lilith's Hair",
+            "35: Satoru Iwata"
         });
         costumeList.replace(2, "2: I Found Pills");
     }
@@ -508,6 +513,11 @@ void MainWindow::GenerateSkinColorComboBox()
     };
 
     ReplaceComboBoxItems(this->ui->skinColorComboBox, skinColorList);
+}
+
+void MainWindow::DefaultDrawFamiliar(std::vector<int> itemIDs)
+{
+    this->_draw.Familiar(this->ui->familiarImageLabel, itemIDs);
 }
 
 std::array<QLabel*, 12> MainWindow::SetUpHeartLabels()
@@ -585,6 +595,7 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
     else this->ui->spacebarComboBox->setCurrentIndex(0);
 
     this->SetItems();
+    this->DefaultDrawFamiliar(GetItemIDsFromItemList(character.Items));
     this->ui->canShootCheckBox->setChecked(character.CanShoot);
 }
 

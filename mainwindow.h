@@ -30,6 +30,7 @@ public:
     void GenerateTrinketComboBox();
     void GenerateCostumeComboBox();
     void GenerateSkinColorComboBox();
+    void DefaultDrawFamiliar(std::vector<int>);
     std::array<QLabel*, 12> SetUpHeartLabels();
 public slots:
     void SetCurrentCharacter(int characterToSet);

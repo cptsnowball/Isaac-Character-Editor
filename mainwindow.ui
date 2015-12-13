@@ -779,6 +779,19 @@
      <string>Randomize everything</string>
     </property>
    </widget>
+   <widget class="QLabel" name="familiarImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>269</x>
+      <y>73</y>
+      <width>48</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

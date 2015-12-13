@@ -5,6 +5,7 @@
 #include "random.h"
 #include <QLabel>
 #include <array>
+#include <vector>
 
 class Draw : public QObject
 {
@@ -21,6 +22,7 @@ public:
     void Pill(QLabel*);
     void Card(QLabel*, int);
     void Trinket(QLabel*, int);
+    void Familiar(QLabel*, std::vector<int>);
     int DrawnPill = 0;
 private:
     Random _rng = Random();

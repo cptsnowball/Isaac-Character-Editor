@@ -26,6 +26,8 @@ void ItemEdit::ProcessItems()
     Character* character = &characterMap.at(currentCharacter);
     character->Items = items;
 
+    mainWindowPtr->DefaultDrawFamiliar(GetItemIDsFromItemList(items));
+
     //Set the plain text according to the found items and their proper names.
     this->setPlainText(items.join(", "));
     QTextCursor cursor(this->textCursor());

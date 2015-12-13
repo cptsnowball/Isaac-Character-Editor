@@ -23,10 +23,24 @@ Key GetKeyFromValue(const std::map<Key, Value> &map, const Value &valueToFind) {
 }
 
 template<typename T>
+inline bool SortedVectorContains(const std::vector<T> &vector, const T &value)
+{
+    //Returns true if the vector contains the value and false otherwise.
+    //Vector has to be sorted for it to work, use VectorContains otherwise.
+    return std::binary_search(vector.begin(), vector.end(), value);
+}
+
+template<typename T>
 inline bool VectorContains(const std::vector<T> &vector, const T &value)
 {
-    //Returns true if the vector contains the value and false otherwise
-    return std::binary_search(vector.begin(), vector.end(), value);
+    //Returns true if the vector contains the value and false otherwise.
+    return std::find(vector.begin(), vector.end(), value) != vector.end();
+}
+
+template<typename T>
+inline void RemoveValueFromVector(std::vector<T> &vector, const T value)
+{
+    vector.erase(std::remove(vector.begin(), vector.end(), value), vector.end());
 }
 
 std::vector<int> GetItemIDsFromItemList(QStringList itemList);

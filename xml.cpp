@@ -191,7 +191,7 @@ QString XML::GetSkinColorString(const Character &player)
         _blueBaby.ID, _theLost.ID, _azazel.ID,
         _blackJudas.ID, _lilith.ID, _theKeeper.ID
     };
-    if(VectorContains(skinColorlessCharacterIDs, player.ID)) return "";
+    if(SortedVectorContains(skinColorlessCharacterIDs, player.ID)) return "";
     else {
         switch(player.SkinColor)
         {

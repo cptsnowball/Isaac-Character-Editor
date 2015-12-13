@@ -219,7 +219,7 @@
   <input userinput="bbf" id="272" name="BBF" />
   <input userinput="bobsbrain" id="273" name="Bob's Brain" />
   <input userinput="bestbud" id="274" name="Best Bud" />
-  <input userinput="lilbrimstone,brimstonebaby" id="275" name="Lil' Brimstone" />
+  <input userinput="lilbrimstone,brimstonebaby,lilbrim" id="275" name="Lil' Brimstone" />
   <input userinput="isaacsheart" id="276" name="Isaac's Heart" />
   <input userinput="lilhaunt" id="277" name="Lil' Haunt" />
   <input userinput="darkbum,dankbum" id="278" name="Dark Bum" />

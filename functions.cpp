@@ -1,4 +1,5 @@
 #include "functions.h"
+#include <QMessageBox>
 
 std::vector<int> GetItemIDsFromItemList(QStringList itemList)
 {
@@ -71,7 +72,8 @@ QStringList SimplifyItemString(QStringList itemList)
     {
         item = item.toLower();
         for(const auto &character : charsToRemove) item.remove(character);
-        for(const auto &string : stringsToRemove) item.remove(string + " ");
+        for(const auto &string : stringsToRemove)
+            if(item.startsWith(string + " ")) item.remove(string);
         item.remove(' ');
         simplifiedItemList.push_back(item);
     }
