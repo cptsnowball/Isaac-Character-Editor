@@ -86,9 +86,6 @@ MainWindow::~MainWindow()
     delete ui;
     delete this->_healthValidator;
     delete this->_consumableValidator;
-    free(spacebarComboBoxPtr);
-    free(trinketComboBoxPtr);
-    free(mainWindowPtr);
 }
 
 void MainWindow::DrawBackground(bool vaporwave)
