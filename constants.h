@@ -17,8 +17,8 @@ namespace constants {
     const int COMBOBOX_VIEW_MIN_WIDTH = 162;
 
     const QString TITLE = "Isaac Character Editor Rewritten";
-    const QString VERSION = "v6.1";
-    const QString VAPORWAVE_VERSION = "v6.1 - \"Dad I'm 6 what's vaporwave\"";
+    const QString VERSION = "v6.1.1";
+    const QString VAPORWAVE_VERSION = "v6.1.1 - \"Dad I'm 6 what's vaporwave\"";
 }
 
 #endif // CONSTANTS

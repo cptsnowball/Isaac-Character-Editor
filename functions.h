@@ -11,7 +11,8 @@
 #include "variables.h"
 
 template<typename Key, typename Value>
-Key GetKeyFromValue(const std::map<Key, Value> &map, const Value &valueToFind) {
+Key GetKeyFromValue(const std::map<Key, Value> &map, const Value &valueToFind)
+{
     for (const auto& keyValuePair : map)
     {
         if(keyValuePair.second == valueToFind) return keyValuePair.first;
