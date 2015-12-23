@@ -18,9 +18,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     this->ui->setupUi(this);
 
-    //Sets the path, sort/afterbirth checkboxes and draws the background.
-    this->LoadSettings();
-
     possibleInputs = Input::getPossibleUserInputs();
     spacebarComboBoxPtr = this->ui->spacebarComboBox;
     trinketComboBoxPtr = this->ui->trinketComboBox;
@@ -33,7 +30,6 @@ MainWindow::MainWindow(QWidget *parent) :
     this->ui->coinLineEdit->setValidator(this->_consumableValidator);
     this->ui->bombLineEdit->setValidator(this->_consumableValidator);
     this->ui->keyLineEdit->setValidator(this->_consumableValidator);
-
     this->ui->cardComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
     this->ui->trinketComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
 
@@ -67,6 +63,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QApplication::setWindowIcon(QIcon(":Resources/Icons/PurpleKey.ico"));
     QApplication::setFont(this->_font);
     QWidget::setFixedSize(this->size());
+
+    //Sets the path, sort/afterbirth checkboxes and draws the background.
+    this->LoadSettings();
 
     SetUpHealthAndConsumableLabels();
     GenerateCharacterComboBox();
