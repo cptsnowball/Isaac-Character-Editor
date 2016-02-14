@@ -361,10 +361,10 @@
   <input userinput="teleport" spacebar="true" name="Teleport"/>
   <input userinput="yumheart" spacebar="true" name="Yum Heart"/>
   <input userinput="doctorsremote" spacebar="true" name="Doctor's Remote"/>
-  <input userinput="shoopdawoop" spacebar="true" name="Shoop Da Whoop"/>
+  <input userinput="shoopdawoop,shoopdawhoop" spacebar="true" name="Shoop Da Whoop"/>
   <input userinput="lemonmishap" spacebar="true" name="Lemon Mishap"/>
   <input userinput="bookofshadows" spacebar="true" name="Book of Shadows"/>
-  <input userinput="anarchistscookbook" spacebar="true" name="Anarchist's Cookbook"/>
+  <input userinput="anarchistscookbook,anarchistcookbook,cookbook" spacebar="true" name="Anarchist Cookbook"/>
   <input userinput="hourglass" spacebar="true" name="The Hourglass"/>
   <input userinput="mylittleunicorn,mylittlepony" spacebar="true" name="My Little Unicorn"/>
   <input userinput="bookofrevelations" spacebar="true" name="Book of Revelations"/>

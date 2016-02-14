@@ -58,8 +58,8 @@ std::map<Characters, Character> characterMap {
 std::map<QString, int> spacebarMap {
     {"None", 0}, {"The Bible", 33}, {"The Book of Belial", 34}, {"The Necronomicon", 35}, {"The Poop", 36},
     {"Mr. Boom", 37}, {"Tammy's Head", 38}, {"Mom's Bra", 39}, {"Kamikaze", 40}, {"Mom's Pad", 41},
-    {"Bob's Rotten Head", 42}, {"Teleport", 44}, {"Yum Heart", 45}, {"Doctor's Remote", 47}, {"Shoop Da Woop", 49},
-    {"Lemon Mishap", 56}, {"Book of Shadows", 58}, {"Anarchist's Cookbook", 65}, {"The Hourglass", 66}, {"My Little Unicorn", 77},
+    {"Bob's Rotten Head", 42}, {"Teleport", 44}, {"Yum Heart", 45}, {"Doctor's Remote", 47}, {"Shoop Da Whoop", 49},
+    {"Lemon Mishap", 56}, {"Book of Shadows", 58}, {"Anarchist Cookbook", 65}, {"The Hourglass", 66}, {"My Little Unicorn", 77},
     {"Book of Revelations", 78}, {"The Nail", 83}, {"We Need To Go Deeper", 84}, {"Deck of Cards", 85}, {"Monstro's Tooth", 86},
     {"The Gamekid", 93}, {"The Book of Sin", 97}, {"Mom's Bottle of Pills", 102}, {"The D6", 105}, {"Pinking Shears", 107},
     {"The Bean", 111}, {"Monster Manual", 123}, {"Dead Sea Scrolls", 124}, {"Razor Blade", 126}, {"Forget Me Now", 127},

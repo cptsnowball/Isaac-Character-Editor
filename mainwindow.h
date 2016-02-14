@@ -80,7 +80,6 @@ private:
     const QString _defaultPath = "C:/Program Files (x86)/Steam/SteamApps/common/The Binding of Isaac Rebirth";
     const QFont _font = QFont("Segoe UI", 9);
 #elif defined(Q_OS_MAC)
-    //not sure yet
     const QString _defaultPath = QDir::homePath() + "/Library/Application Support/Steam/steamapps/common/The Binding of Isaac Rebirth/The Binding of Isaac Rebirth.app/Contents/Resources/";
     QFont _font = QFont("Helvetica Neue", 12);
 #elif defined(Q_OS_LINUX)

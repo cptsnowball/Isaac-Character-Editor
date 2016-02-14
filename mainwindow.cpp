@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     this->ui->setupUi(this);
-
     possibleInputs = Input::getPossibleUserInputs();
     spacebarComboBoxPtr = this->ui->spacebarComboBox;
     trinketComboBoxPtr = this->ui->trinketComboBox;
@@ -173,10 +172,10 @@ void MainWindow::GenerateSpacebarComboBox()
         "Teleport",
         "Yum Heart",
         "Doctor's Remote",
-        "Shoop Da Woop",
+        "Shoop Da Whoop",
         "Lemon Mishap",
         "Book of Shadows",
-        "Anarchist's Cookbook",
+        "Anarchist Cookbook",
         "The Hourglass",
         "My Little Unicorn",
         "Book of Revelations", //20
