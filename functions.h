@@ -1,5 +1,4 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#pragma once
 
 #include <algorithm>
 #include <iterator>
@@ -24,14 +23,6 @@ Key GetKeyFromValue(const std::map<Key, Value> &map, const Value &valueToFind)
 }
 
 template<typename T>
-inline bool SortedVectorContains(const std::vector<T> &vector, const T &value)
-{
-    //Returns true if the vector contains the value and false otherwise.
-    //Vector has to be sorted for it to work, use VectorContains otherwise.
-    return std::binary_search(vector.begin(), vector.end(), value);
-}
-
-template<typename T>
 inline bool VectorContains(const std::vector<T> &vector, const T &value)
 {
     //Returns true if the vector contains the value and false otherwise.
@@ -49,5 +40,3 @@ QStringList GetItemNamesFromItemList(QStringList itemList, bool sideEffects = tr
 QStringList SimplifyItemString(QStringList itemList);
 void ReplaceComboBoxItems(QComboBox* comboBox, QStringList items);
 void FindAndSetValueInComboBox(QComboBox* comboBox, QString value);
-
-#endif // FUNCTIONS_H

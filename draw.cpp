@@ -181,18 +181,18 @@ void Draw::Charge(QLabel* chargeLabel, int spacebarID)
                 };
     const std::vector<int> charge12IDs = {441};
 
-    if(SortedVectorContains(charge1IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge1.png");
-    else if(SortedVectorContains(charge2IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge2.png");
-    else if(SortedVectorContains(charge3IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge3.png");
-    else if(SortedVectorContains(charge4IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge4.png");
-    else if(SortedVectorContains(charge6IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge6.png");
-    else if(SortedVectorContains(charge12IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge12.png");
+    if(VectorContains(charge1IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge1.png");
+    else if(VectorContains(charge2IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge2.png");
+    else if(VectorContains(charge3IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge3.png");
+    else if(VectorContains(charge4IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge4.png");
+    else if(VectorContains(charge6IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge6.png");
+    else if(VectorContains(charge12IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge12.png");
     else chargeLabel->clear();
 }
 
 void Draw::Pill(QLabel* cardImageLabel)
 {
-    int pills = afterbirthEnabled ? constants::TOTAL_PILL_COUNT : constants::REBIRTH_PILL_COUNT;
+    int pills = afterbirthEnabled ? constants::TotalPillCount : constants::RebirthPillCount;
     QString pillToDraw = QString(":/Resources/Cards/Pill%1.png").arg(this->_rng.RandomInt(pills));
     PixmapToLabel(cardImageLabel, pillToDraw);
     this->DrawnPill = pillToDraw.toInt();
@@ -200,7 +200,7 @@ void Draw::Pill(QLabel* cardImageLabel)
 
 void Draw::Card(QLabel* cardImageLabel, int cardIndex)
 {
-    QString rune = QString(":/Resources/Cards/Rune%1.png").arg(this->_rng.RandomInt(constants::RUNE_COUNT));
+    QString rune = QString(":/Resources/Cards/Rune%1.png").arg(this->_rng.RandomInt(constants::RuneCount));
     if(cardIndex == 0) cardImageLabel->clear();
     else if(cardIndex > 0 && cardIndex <= 22) PixmapToLabel(cardImageLabel, ":/Resources/Cards/TarotCard.png");
     else if(cardIndex >= 23 && cardIndex <= 27) PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");

@@ -1,5 +1,4 @@
-#ifndef CHARACTER_H
-#define CHARACTER_H
+#pragma once
 
 #include <QString>
 #include <QStringList>
@@ -24,5 +23,3 @@ public:
     bool CanShoot;
     QStringList Items;
 };
-
-#endif // CHARACTER_H

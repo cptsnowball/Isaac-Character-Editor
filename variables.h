@@ -1,5 +1,4 @@
-#ifndef VARIABLES_H
-#define VARIABLES_H
+#pragma once
 
 #include "character.h"
 #include "constants.h"
@@ -33,7 +32,7 @@ extern Character _blackJudas;
 extern Character _lilith;
 extern Character _theKeeper;
 
-extern std::array<Character, constants::TOTAL_CHARACTER_COUNT> characterList;
+extern std::array<Character, constants::TotalCharacterCount> characterList;
 extern std::map<Characters, Character> characterMap;
 extern std::map<QString, int> spacebarMap;
 extern std::map<QString, int> trinketMap;
@@ -49,6 +48,3 @@ extern QComboBox* trinketComboBoxPtr;
 
 //Used to access DrawBackground() outside of MainWindow.
 extern MainWindow* mainWindowPtr;
-
-#endif // VARIABLES
-

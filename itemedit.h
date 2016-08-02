@@ -1,5 +1,4 @@
-#ifndef ITEMEDIT_H
-#define ITEMEDIT_H
+#pragma once
 
 #include "mainwindow.h"
 
@@ -11,9 +10,7 @@ class ItemEdit : public QTextEdit
 {
     Q_OBJECT
 public:
-    explicit ItemEdit(QWidget* parent = 0);
+    explicit ItemEdit(QWidget* parent = nullptr);
     void keyPressEvent(QKeyEvent* event);
     void ProcessItems();
 };
-
-#endif // ITEMEDIT_H

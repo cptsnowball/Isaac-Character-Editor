@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QDir>
 #include <QIntValidator>
@@ -18,7 +17,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget* parent = 0);
+    explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
     Character* GetCurrentCharacter();
     void DrawBackground(bool vaporwave = false);
@@ -92,5 +91,3 @@ private:
 
     QString _isaacPath = _defaultPath;
 };
-
-#endif // MAINWINDOW_H

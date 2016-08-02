@@ -1,5 +1,4 @@
-#ifndef RANDOM_H
-#define RANDOM_H
+#pragma once
 
 #include <random>
 #include <QComboBox>
@@ -14,5 +13,3 @@ public:
 private:
     std::mt19937 _mt;
 };
-
-#endif // RANDOM_H

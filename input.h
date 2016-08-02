@@ -1,5 +1,4 @@
-#ifndef INPUT_H
-#define INPUT_H
+#pragma once
 
 #include <QString>
 #include <QStringList>
@@ -17,5 +16,3 @@ public:
     void ShowInput();
 private:
 };
-
-#endif // INPUT_H

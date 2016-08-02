@@ -1,5 +1,4 @@
-#ifndef XML_H
-#define XML_H
+#pragma once
 
 #include <QString>
 #include "character.h"
@@ -26,5 +25,3 @@ private:
         if(arg == false) line.append(QString("%1=\"false\" ").arg(attribute));
     }
 };
-
-#endif // XML_H

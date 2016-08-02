@@ -1,5 +1,4 @@
-#ifndef DRAW_H
-#define DRAW_H
+#pragma once
 
 #include "character.h"
 #include "random.h"
@@ -27,5 +26,3 @@ public:
 private:
     Random _rng = Random();
 };
-
-#endif // DRAW_H

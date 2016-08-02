@@ -29,8 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->ui->coinLineEdit->setValidator(this->_consumableValidator);
     this->ui->bombLineEdit->setValidator(this->_consumableValidator);
     this->ui->keyLineEdit->setValidator(this->_consumableValidator);
-    this->ui->cardComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
-    this->ui->trinketComboBox->view()->setMinimumWidth(constants::COMBOBOX_VIEW_MIN_WIDTH);
+    this->ui->cardComboBox->view()->setMinimumWidth(constants::ComboboxViewMinWidth);
+    this->ui->trinketComboBox->view()->setMinimumWidth(constants::ComboboxViewMinWidth);
 
     this->ui->nameLineEdit->hide();
 
@@ -92,7 +92,7 @@ void MainWindow::DrawBackground(bool vaporwave)
 
     if(vaporwave)
     {
-        setWindowTitle(constants::TITLE + " " + constants::VAPORWAVE_VERSION);
+        setWindowTitle(constants::Title + " " + constants::VaporwaveVersion);
         result.fill(Qt::transparent);
         QPainter painter(&result);
         painter.drawPixmap(0, 0, QPixmap(":/Resources/BackgroundVaporwave/BackgroundVaporwave.png"));
@@ -102,7 +102,7 @@ void MainWindow::DrawBackground(bool vaporwave)
     }
     else
     {
-        setWindowTitle(constants::TITLE + " " + constants::VERSION);
+        setWindowTitle(constants::Title + " " + constants::Version);
         result.fill(Qt::transparent);
         QPainter painter(&result);
         painter.drawPixmap(0, 0, QPixmap(":/Resources/Background/Background.png"));
@@ -143,10 +143,10 @@ void MainWindow::GenerateComboBoxes()
 void MainWindow::GenerateCharacterComboBox()
 {
     QStringList characterNames;
-    for(int i = 0; i < constants::REBIRTH_CHARACTER_COUNT; ++i)
+    for(int i = 0; i < constants::RebirthCharacterCount; ++i)
         characterNames.append(characterMap.at(static_cast<Characters>(i)).Name);
-    if(afterbirthEnabled) for(int i = 0; i < constants::AFTERBIRTH_CHARACTER_COUNT; ++i)
-        characterNames.append(characterMap.at(static_cast<Characters>(constants::REBIRTH_CHARACTER_COUNT + i)).Name);
+    if(afterbirthEnabled) for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
+        characterNames.append(characterMap.at(static_cast<Characters>(constants::RebirthCharacterCount + i)).Name);
 
     int previousIndex = this->ui->characterComboBox->currentIndex();
     this->ui->characterComboBox->clear();
@@ -522,11 +522,11 @@ std::array<QLabel*, 12> MainWindow::SetUpHeartLabels()
     for(int i = 0; i < 12; ++i)
     {
         QLabel* tempHeartLabel = new QLabel(this);
-        tempHeartLabel->setGeometry(x, y, constants::HEART_LABEL_SIZE, constants::HEART_LABEL_SIZE);
-        x += constants::HEART_LABEL_SIZE;
+        tempHeartLabel->setGeometry(x, y, constants::HeartLabelSize, constants::HeartLabelSize);
+        x += constants::HeartLabelSize;
         if(i == 5)
         {
-            y += constants::HEART_LABEL_SIZE;
+            y += constants::HeartLabelSize;
             x = 62;
         }
         heartLabels.at(i) = tempHeartLabel;
@@ -744,7 +744,7 @@ void MainWindow::AfterbirthCheckBoxChanged(int checkState)
         afterbirthEnabled = false;
         //Enable tears for all Rebirth characters because canShoot is Afterbirth exclusive
         //Leave Afterbirth characters intact because they need Afterbirth enabled anyways.
-        for(int i = 0; i < constants::REBIRTH_CHARACTER_COUNT; ++i)
+        for(int i = 0; i < constants::RebirthCharacterCount; ++i)
             characterMap.at(static_cast<Characters>(i)).CanShoot = true;
     }
     GenerateCharacterComboBox();

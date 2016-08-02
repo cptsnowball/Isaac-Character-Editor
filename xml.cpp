@@ -51,10 +51,10 @@ void XML::WriteXML()
         else
             stream << "<players root=\"resources/gfx/characters/costumes/\" portraitroot=\"resources/gfx/ui/boss/\" bigportraitroot=\"resources/gfx/ui/stage/\">\r\n";
 
-        for(int i = 0; i < constants::REBIRTH_CHARACTER_COUNT; ++i)
+        for(int i = 0; i < constants::RebirthCharacterCount; ++i)
             stream << GetPlayerLine(characterMap.at(static_cast<Characters>(i)));
-        if(afterbirthEnabled) for(int i = 0; i < constants::AFTERBIRTH_CHARACTER_COUNT; ++i)
-            stream << GetPlayerLine(characterMap.at(static_cast<Characters>(constants::REBIRTH_CHARACTER_COUNT + i)));
+        if(afterbirthEnabled) for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
+            stream << GetPlayerLine(characterMap.at(static_cast<Characters>(constants::RebirthCharacterCount + i)));
         stream << "</players>\r\n";
     }
 
@@ -91,7 +91,7 @@ void XML::ReadXML()
                 if(xml.name() == "player")
                 {
                     //If theres more characters in the .xml than in the map (why), break.
-                    if(currentCharacterIndex >= constants::TOTAL_CHARACTER_COUNT) break;
+                    if(currentCharacterIndex >= constants::TotalCharacterCount) break;
 
                     foreach(const QXmlStreamAttribute &attribute, xml.attributes()) {
                         if(attribute.name().toString() == "name")
@@ -191,7 +191,7 @@ QString XML::GetSkinColorString(const Character &player)
         _blueBaby.ID, _theLost.ID, _azazel.ID,
         _blackJudas.ID, _lilith.ID, _theKeeper.ID
     };
-    if(SortedVectorContains(skinColorlessCharacterIDs, player.ID)) return "";
+    if(VectorContains(skinColorlessCharacterIDs, player.ID)) return "";
     else {
         switch(player.SkinColor)
         {
