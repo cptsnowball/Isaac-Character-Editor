@@ -490,7 +490,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Export players.xml</string>
+     <string>Save players.xml</string>
     </property>
    </widget>
    <widget class="QToolButton" name="readButton">
@@ -526,7 +526,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Purge players.xml</string>
+     <string>Delete players.xml</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="canShootCheckBox">
