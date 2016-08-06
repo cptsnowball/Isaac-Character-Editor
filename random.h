@@ -5,7 +5,7 @@
 #include <type_traits>
 #include <QComboBox>
 
-template<class IntType, typename = std::enable_if<std::is_integral<IntType>::value>>
+template<class IntType, typename std::enable_if<std::is_integral<IntType>::value>::type* = nullptr>
 struct Random
 {
 public:
