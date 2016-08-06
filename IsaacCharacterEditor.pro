@@ -16,7 +16,6 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     character.cpp \
     draw.cpp \
-    random.cpp \
     variables.cpp \
     xml.cpp \
     itemedit.cpp \

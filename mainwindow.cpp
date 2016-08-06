@@ -82,8 +82,11 @@ MainWindow::~MainWindow()
 {
     this->SaveSettings();
     delete ui;
+
     delete this->_healthValidator;
     delete this->_consumableValidator;
+
+    for(QLabel* heartLabel : this->_heartLabels) delete heartLabel;
 }
 
 void MainWindow::DrawBackground(bool vaporwave)

@@ -93,7 +93,7 @@ void XML::ReadXML()
                     //If theres more characters in the .xml than in the map (why), break.
                     if(currentCharacterIndex >= constants::TotalCharacterCount) break;
 
-                    foreach(const QXmlStreamAttribute &attribute, xml.attributes()) {
+                    for(const QXmlStreamAttribute &attribute : xml.attributes()) {
                         if(attribute.name().toString() == "name")
                             characterMap.at(static_cast<Characters>(currentCharacterIndex)).Name = attribute.value().toString();
                         else if(attribute.name().toString() == "skinColor")

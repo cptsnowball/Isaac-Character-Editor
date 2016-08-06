@@ -69,7 +69,7 @@ private:
     void SaveSettings();
     Ui::MainWindow* ui;
     Draw _draw;
-    Random _rng = Random();
+    Random<std::uint32_t> _rng{};
     QIntValidator* _healthValidator = new QIntValidator(0, 24, this);
     QIntValidator* _consumableValidator = new QIntValidator(0, 99, this);
     std::array<QLabel*, 12> _heartLabels = SetUpHeartLabels();

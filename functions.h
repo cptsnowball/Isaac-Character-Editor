@@ -9,7 +9,7 @@
 #include "input.h"
 #include "variables.h"
 
-template<typename Key, typename Value>
+template<class Key, class Value>
 Key GetKeyFromValue(const std::map<Key, Value> &map, const Value &valueToFind)
 {
     for (const auto& keyValuePair : map)
@@ -22,14 +22,14 @@ Key GetKeyFromValue(const std::map<Key, Value> &map, const Value &valueToFind)
     throw std::invalid_argument("Value does not have a key!");
 }
 
-template<typename T>
+template<class T>
 inline bool VectorContains(const std::vector<T> &vector, const T &value)
 {
     //Returns true if the vector contains the value and false otherwise.
     return std::find(vector.begin(), vector.end(), value) != vector.end();
 }
 
-template<typename T>
+template<class T>
 inline void RemoveValueFromVector(std::vector<T> &vector, const T value)
 {
     vector.erase(std::remove(vector.begin(), vector.end(), value), vector.end());

@@ -24,5 +24,5 @@ public:
     void Familiar(QLabel*, std::vector<int>);
     int DrawnPill = 0;
 private:
-    Random _rng = Random();
+    Random<std::uint32_t> _rng{};
 };
