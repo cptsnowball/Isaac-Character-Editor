@@ -40,6 +40,10 @@ RESOURCES += \
 
 CONFIG += c++14
 
+win32 {
+    RC_ICONS += Resources/Icons/PurpleKey.ico
+}
+
 macx {
     ICON = Resources/Icons/PurpleKey.icns
 
