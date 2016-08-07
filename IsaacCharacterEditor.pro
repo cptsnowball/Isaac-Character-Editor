@@ -41,6 +41,8 @@ RESOURCES += \
 CONFIG += c++14
 
 macx {
+    ICON = Resources/Icons/PurpleKey.icns
+
     #The standard library isn't included properly in Mac
     #while using C++14 without this.
     QMAKE_CXXFLAGS += -stdlib=libc++
