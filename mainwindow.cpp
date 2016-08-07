@@ -17,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     this->ui->setupUi(this);
+    setWindowTitle(QString("Isaac Character Editor Rewritten %1").arg(constants::Version));
+
     possibleInputs = Input::getPossibleUserInputs();
     spacebarComboBoxPtr = this->ui->spacebarComboBox;
     trinketComboBoxPtr = this->ui->trinketComboBox;
@@ -95,7 +97,6 @@ void MainWindow::DrawBackground(bool vaporwave)
 
     if(vaporwave)
     {
-        setWindowTitle(constants::Title + " " + constants::VaporwaveVersion);
         result.fill(Qt::transparent);
         QPainter painter(&result);
         painter.drawPixmap(0, 0, QPixmap(":/Resources/BackgroundVaporwave/BackgroundVaporwave.png"));
@@ -105,7 +106,6 @@ void MainWindow::DrawBackground(bool vaporwave)
     }
     else
     {
-        setWindowTitle(constants::Title + " " + constants::Version);
         result.fill(Qt::transparent);
         QPainter painter(&result);
         painter.drawPixmap(0, 0, QPixmap(":/Resources/Background/Background.png"));

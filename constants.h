@@ -17,5 +17,4 @@ namespace constants {
 
     const QString Title = "Isaac Character Editor Rewritten";
     const QString Version = "v6.2";
-    const QString VaporwaveVersion = "v6.2 - \"Dad I'm 6 what's vaporwave\"";
 }
