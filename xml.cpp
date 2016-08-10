@@ -11,7 +11,15 @@
 #include <QXmlStreamReader>
 
 XML::XML(QString filename) :
-    _filename(filename) { }
+    _filename(filename) {
+
+    //If filename ends with /resources, remove it.
+    if(QDir(_filename).dirName() == "resources") {
+        QDir dir = QDir(_filename);
+        dir.cdUp();
+        _filename = dir.absolutePath();
+    }
+}
 
 void XML::DeleteXML()
 {
@@ -30,7 +38,7 @@ void XML::DeleteXML()
 
     file.remove();
 
-    QMessageBox message(QMessageBox::Information, "Success!", "players.xml purged.");
+    QMessageBox message(QMessageBox::Information, "Success!", "players.xml deleted.");
     message.exec();
 }
 
