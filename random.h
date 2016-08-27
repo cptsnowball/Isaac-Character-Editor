@@ -5,13 +5,14 @@
 #include <type_traits>
 #include <QComboBox>
 
-template<class IntType, typename std::enable_if<std::is_integral<IntType>::value>::type* = nullptr>
+template<class IntType>
 struct Random
 {
+    static_assert(std::is_integral<IntType>{}, "Random<IntType>: type must be integral.");
 public:
-    Random()
+    Random(std::time_t seed = nullptr)
     {
-        this->_mt.seed(std::time(nullptr));
+        this->_mt.seed(std::time(seed));
     }
 
     IntType RandomInt(IntType max)

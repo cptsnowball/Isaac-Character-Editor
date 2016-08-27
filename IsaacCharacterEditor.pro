@@ -52,7 +52,7 @@ macx {
     QMAKE_CXXFLAGS += -stdlib=libc++
 }
 
-VERSION = 6.2.0.0
+VERSION = 6.2.1.0
 QMAKE_TARGET_COMPANY = Portal-chan
 QMAKE_TARGET_PRODUCT = Isaac Character Editor
 QMAKE_TARGET_DESCRIPTION =

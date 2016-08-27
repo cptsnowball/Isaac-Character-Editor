@@ -1,16 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QDesktopServices>
-#include <QFileDialog>
-#include <QPainter>
-#include <QMessageBox>
 #include "character.h"
 #include "constants.h"
 #include "functions.h"
 #include "itemedit.h"
 #include "variables.h"
 #include "xml.h"
+
+#include <QDesktopServices>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QPainter>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

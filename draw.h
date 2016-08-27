@@ -2,9 +2,10 @@
 
 #include "character.h"
 #include "random.h"
-#include <QLabel>
+
 #include <array>
 #include <vector>
+#include <QLabel>
 
 class Draw : public QObject
 {

@@ -1,13 +1,14 @@
 #pragma once
 
+#include "input.h"
+#include "variables.h"
+
 #include <algorithm>
 #include <iterator>
 #include <map>
 #include <stdexcept>
 #include <vector>
 #include <QStringList>
-#include "input.h"
-#include "variables.h"
 
 template<class Key, class Value>
 Key GetKeyFromValue(const std::map<Key, Value> &map, const Value &valueToFind)

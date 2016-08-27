@@ -1,8 +1,8 @@
 #include "input.h"
 
 #include <QFile>
-#include <QXmlStreamReader>
 #include <QMessageBox>
+#include <QXmlStreamReader>
 
 std::vector<Input> Input::getPossibleUserInputs()
 {

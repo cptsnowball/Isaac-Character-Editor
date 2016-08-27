@@ -2,8 +2,8 @@
 
 #include "mainwindow.h"
 
-#include <QObject>
 #include <QKeyEvent>
+#include <QObject>
 #include <QTextEdit>
 
 class ItemEdit : public QTextEdit

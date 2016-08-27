@@ -1,5 +1,6 @@
-#include "functions.h"
 #include "itemedit.h"
+
+#include "functions.h"
 #include "input.h"
 #include "variables.h"
 

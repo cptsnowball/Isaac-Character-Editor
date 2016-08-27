@@ -1,8 +1,8 @@
 #pragma once
 
+#include <vector>
 #include <QString>
 #include <QStringList>
-#include <vector>
 
 class Input
 {

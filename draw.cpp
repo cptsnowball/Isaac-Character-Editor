@@ -1,11 +1,12 @@
 #include "draw.h"
+
 #include "functions.h"
 #include "variables.h"
 
 #include <QBitmap>
 #include <QLabel>
-#include <QPixmap>
 #include <QMessageBox>
+#include <QPixmap>
 
 Draw::Draw() { }
 

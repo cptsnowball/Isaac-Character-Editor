@@ -49,8 +49,8 @@ QStringList GetItemNamesFromItemList(QStringList itemList, bool sideEffects)
                 if(userInput == item)
                 {
                     if(!afterbirthEnabled && possibleInput.Afterbirth) continue;
-                    else if(possibleInput.Spacebar && sideEffects)
-                        FindAndSetValueInComboBox(spacebarComboBoxPtr, possibleInput.Name);
+                    //else if(possibleInput.Spacebar && sideEffects)
+                    //    FindAndSetValueInComboBox(spacebarComboBoxPtr, possibleInput.Name);
                     else itemNames.push_back(possibleInput.Name);
                 }
             }

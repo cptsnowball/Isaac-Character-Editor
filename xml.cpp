@@ -1,13 +1,14 @@
 #include "xml.h"
 
-#include "functions.h"
 #include "character.h"
+#include "functions.h"
 #include "variables.h"
+
 #include <sstream>
 #include <QDir>
 #include <QFile>
-#include <QTextStream>
 #include <QMessageBox>
+#include <QTextStream>
 #include <QXmlStreamReader>
 
 XML::XML(QString filename) :

@@ -1,12 +1,13 @@
 #pragma once
 
+#include "draw.h"
+
+#include <array>
 #include <QDir>
 #include <QIntValidator>
 #include <QLabel>
 #include <QMainWindow>
 #include <QSettings>
-#include <array>
-#include "draw.h"
 
 namespace Ui {
     class MainWindow;
