@@ -52,6 +52,7 @@ public slots:
     void TrinketCheckBoxChanged(int checkState);
     void SortCheckBoxChanged(int checkState);
     void AfterbirthCheckBoxChanged(int checkState);
+    void NameImagesCheckBoxChanged(int checkState);
     void PathTextEditChanged();
     void EditNameButtonClicked();
     void RestoreDefaultPath();

@@ -11,7 +11,7 @@
 #include <QTextStream>
 #include <QXmlStreamReader>
 
-XML::XML(QString filename) :
+XML::XML(const QString &filename) :
     _filename(filename) {
 
     //If filename ends with /resources, remove it.

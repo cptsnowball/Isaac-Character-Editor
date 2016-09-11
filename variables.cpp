@@ -1,6 +1,7 @@
 #include "variables.h"
 
 bool afterbirthEnabled = true;
+bool nameImagesEnabled = true;
 bool sortAlphabetically = false;
 bool vaporwaveAesthetics = false;
 
@@ -96,6 +97,24 @@ std::map<QString, int> trinketMap {
     {"Poker Chip", 76}, {"Blister", 77}, {"Second Hand", 78}, {"Endless Nameless", 79}, {"Black Feather", 80},
     {"Blind Rage", 81}, {"Golden Horse Shoe", 82}, {"Store Key", 83}, {"Rib of Greed", 84}, {"Karma", 85},
     {"Lil Larva", 86}, {"Mom's Locket", 87}, {"NO!", 88}, {"Child Leash", 89}, {"Brown Cap", 90}
+};
+
+std::map<Characters, QString> defaultNames {
+    {Characters::Isaac, "Isaac"},
+    {Characters::Maggy, "Magdalene"},
+    {Characters::Cain, "Cain"},
+    {Characters::Judas, "Judas"},
+    {Characters::BlueBaby, "???"},
+    {Characters::Eve, "Eve"},
+    {Characters::Samson, "Samson"},
+    {Characters::Azazel, "Azazel"},
+    {Characters::Lazarus, "Lazarus"},
+    {Characters::Eden, "Eden"},
+    {Characters::TheLost, "The Lost"},
+    {Characters::Lazarus2, "Lazarus II"},
+    {Characters::BlackJudas, "Black Judas"},
+    {Characters::Lilith, "Lilith"},
+    {Characters::TheKeeper, "The Keeper"}
 };
 
 std::vector<Input> possibleInputs;

@@ -16,5 +16,5 @@ namespace constants {
     const int ComboboxViewMinWidth = 162;
 
     const QString Title = "Isaac Character Editor Rewritten";
-    const QString Version = "v6.2.1";
+    const QString Version = "v6.6.6";
 }

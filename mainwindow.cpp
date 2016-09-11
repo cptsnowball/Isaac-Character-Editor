@@ -5,6 +5,7 @@
 #include "constants.h"
 #include "functions.h"
 #include "itemedit.h"
+#include "png.h"
 #include "variables.h"
 #include "xml.h"
 
@@ -757,6 +758,11 @@ void MainWindow::AfterbirthCheckBoxChanged(int checkState)
     this->ui->itemTextEdit->ProcessItems();
 }
 
+void MainWindow::NameImagesCheckBoxChanged(int checkState)
+{
+    nameImagesEnabled = (checkState == Qt::Checked);
+}
+
 void MainWindow::PathTextEditChanged()
 {
     this->_isaacPath = this->ui->pathTextEdit->toPlainText();
@@ -819,6 +825,7 @@ void MainWindow::NotepadButtonClicked()
 void MainWindow::PurgeButtonClicked()
 {
     XML(this->_isaacPath).DeleteXML();
+    PNG(this->_isaacPath).DeletePNGs();
 }
 
 void MainWindow::ReadButtonClicked()
@@ -829,6 +836,7 @@ void MainWindow::ReadButtonClicked()
 void MainWindow::ExportButtonClicked()
 {
     XML(this->_isaacPath).WriteXML();
+    PNG(this->_isaacPath).SavePNGs();
 }
 
 void MainWindow::RandomSpacebarButtonClicked()

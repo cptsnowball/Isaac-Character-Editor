@@ -10,9 +10,9 @@ struct Random
 {
     static_assert(std::is_integral<IntType>{}, "Random<IntType>: type must be integral.");
 public:
-    Random(std::time_t seed = nullptr)
+    Random(std::time_t seed = std::time(nullptr))
     {
-        this->_mt.seed(std::time(seed));
+        this->_mt.seed(seed);
     }
 
     IntType RandomInt(IntType max)

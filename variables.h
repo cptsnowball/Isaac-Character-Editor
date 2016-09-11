@@ -11,6 +11,7 @@
 #include <QComboBox>
 
 extern bool afterbirthEnabled;
+extern bool nameImagesEnabled;
 extern bool sortAlphabetically;
 extern bool vaporwaveAesthetics;
 
@@ -36,6 +37,7 @@ extern std::array<Character, constants::TotalCharacterCount> characterList;
 extern std::map<Characters, Character> characterMap;
 extern std::map<QString, int> spacebarMap;
 extern std::map<QString, int> trinketMap;
+extern std::map<Characters, QString> defaultNames;
 
 extern std::vector<Input> possibleInputs;
 

@@ -533,7 +533,7 @@
     <property name="geometry">
      <rect>
       <x>570</x>
-      <y>307</y>
+      <y>328</y>
       <width>125</width>
       <height>19</height>
      </rect>
@@ -790,6 +790,22 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="nameImagesCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>307</y>
+      <width>125</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Create names?</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -1116,7 +1132,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>627</x>
-     <y>315</y>
+     <y>336</y>
     </hint>
     <hint type="destinationlabel">
      <x>467</x>
@@ -1316,6 +1332,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>nameImagesCheckBox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>NameImagesCheckBoxChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>309</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>437</x>
+     <y>252</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SetCurrentCharacter(int)</slot>
@@ -1351,5 +1383,6 @@
   <slot>RandomCardButtonClicked()</slot>
   <slot>RandomTrinketButtonClicked()</slot>
   <slot>RandomEverythingButtonClicked()</slot>
+  <slot>NameImagesCheckBoxChanged(int)</slot>
  </slots>
 </ui>

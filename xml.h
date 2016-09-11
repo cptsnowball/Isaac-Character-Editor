@@ -7,7 +7,7 @@
 class XML
 {
 public:
-    explicit XML(QString filename);
+    explicit XML(const QString &filename);
     void WriteXML();
     void DeleteXML();
     void ReadXML();

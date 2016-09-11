@@ -322,5 +322,6 @@
         <file>Resources/Familiars/Familiar_997.png</file>
         <file>Resources/Familiars/Familiar_998.png</file>
         <file>Resources/Familiars/Familiar_999.png</file>
+        <file>Resources/Fonts/IsaacHandwritten.ttf</file>
     </qresource>
 </RCC>
