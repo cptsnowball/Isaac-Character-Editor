@@ -28,10 +28,8 @@ void PNG::SavePNGs()
         return;
     }
 
-    if(!QDir(_filename + "/resources/gfx/ui/boss").exists())
-    {
-        QDir().mkpath(_filename + "/resources/gfx/ui/boss");
-    }
+    CreateDirIfDoesntExist(_filename + "/resources/gfx/ui/boss");
+    CreateDirIfDoesntExist(_filename + "/resources/gfx/ui/main menu");
 
     for(int i = 0; i < constants::RebirthCharacterCount; ++i)
     {
@@ -39,20 +37,50 @@ void PNG::SavePNGs()
     }
     if(afterbirthEnabled) for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
     {
-        SaveVsBossImage(static_cast<Characters>(i));
+        SaveVsBossImage(static_cast<Characters>(constants::RebirthCharacterCount + i));
     }
+
+    auto charSelectMenu = afterbirthEnabled ?
+                _nameImages.GenerateAfterbirthCharMenu() :
+                _nameImages.GenerateRebirthCharMenu();
+
+    SaveCharSelectMenu(charSelectMenu);
 }
 
 void PNG::DeletePNGs()
 {
+    for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
+    {
+        QFile imageFile(_filename + "/resources/gfx/ui/boss/" + characterMap.at(static_cast<Characters>(i)).NameImage);
+        if (imageFile.exists()) imageFile.remove();
+    }
 
+    QFile charSelectMenu(_filename + "/resources/gfx/ui/main menu/charactermenu.png");
+    if (charSelectMenu.exists()) charSelectMenu.remove();
+}
+
+void PNG::CreateDirIfDoesntExist(const QString &dirname)
+{
+    if(!QDir(dirname).exists()) QDir().mkpath(dirname);
 }
 
 void PNG::SaveVsBossImage(Characters character)
 {
     if (character == Characters::BlackJudas || character == Characters::Lazarus2) return;
+    auto image = _nameImages.GenerateVsBossImage(characterMap.at(character).Name);
+
+    QFile imageFile(_filename + "/resources/gfx/ui/boss/" + characterMap.at(character).NameImage);
+
+    if (imageFile.exists()) imageFile.remove();
+
     if (defaultNames.at(character) == characterMap.at(character).Name) return;
 
-    auto image = _nameImages.GenerateVsBossImage(characterMap.at(character).Name);
     image.save(_filename + "/resources/gfx/ui/boss/" + characterMap.at(character).NameImage);
+}
+
+void PNG::SaveCharSelectMenu(const QImage &image)
+{
+    QFile imageFile(_filename + "/resources/gfx/ui/main menu/charactermenu.png");
+    if(imageFile.exists()) imageFile.remove();
+    image.save(_filename + "/resources/gfx/ui/main menu/charactermenu.png");
 }

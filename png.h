@@ -14,5 +14,7 @@ public:
 private:
     NameImages _nameImages;
     QString _filename;
+    void CreateDirIfDoesntExist(const QString &dirname);
     void SaveVsBossImage(Characters character);
+    void SaveCharSelectMenu(const QImage &image);
 };

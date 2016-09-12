@@ -117,6 +117,22 @@ std::map<Characters, QString> defaultNames {
     {Characters::TheKeeper, "The Keeper"}
 };
 
+std::map<Characters, QPoint> charSelectMenuOffsets {
+    {Characters::Isaac, {0, 288}},
+    {Characters::Maggy, {0, 352}},
+    {Characters::Cain, {0, 320}},
+    {Characters::Judas, {0, 384}},
+    {Characters::BlueBaby, {0, 448}},
+    {Characters::Eve, {0, 416}},
+    {Characters::Samson, {0, 480}},
+    {Characters::Azazel, {80, 320}},
+    {Characters::Lazarus, {80, 288}},
+    {Characters::Eden, {80, 352}},
+    {Characters::TheLost, {80, 384}},
+    {Characters::Lilith, {176, 480}},
+    {Characters::TheKeeper, {176, 512}}
+};
+
 std::vector<Input> possibleInputs;
 
 QComboBox* spacebarComboBoxPtr;

@@ -323,5 +323,7 @@
         <file>Resources/Familiars/Familiar_998.png</file>
         <file>Resources/Familiars/Familiar_999.png</file>
         <file>Resources/Fonts/IsaacHandwritten.ttf</file>
+        <file>Resources/UI/DefaultCharacterMenuAfterbirth.png</file>
+        <file>Resources/UI/DefaultCharacterMenuRebirth.png</file>
     </qresource>
 </RCC>

@@ -4,6 +4,7 @@
 #include "constants.h"
 #include "input.h"
 #include "mainwindow.h"
+#include "png.h"
 
 #include <array>
 #include <map>
@@ -38,6 +39,7 @@ extern std::map<Characters, Character> characterMap;
 extern std::map<QString, int> spacebarMap;
 extern std::map<QString, int> trinketMap;
 extern std::map<Characters, QString> defaultNames;
+extern std::map<Characters, QPoint> charSelectMenuOffsets;
 
 extern std::vector<Input> possibleInputs;
 
