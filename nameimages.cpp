@@ -29,7 +29,7 @@ QImage NameImages::GenerateVsBossImage(const QString &name)
     while(!fontFits && currentPixelSize >= 12)
     {
         _isaacFont.setPixelSize(currentPixelSize);
-        if (QFontMetrics(_isaacFont).width(name) > _vsBossWidth - 16) currentPixelSize -= 2;
+        if (QFontMetrics(_isaacFont).width(name) > _vsBossWidth - 24) currentPixelSize -= 2;
         else fontFits = true;
     }
 
@@ -74,7 +74,21 @@ QImage NameImages::GenerateCharSelectImage(const QString &name)
 QImage NameImages::GenerateRebirthCharMenu()
 {
     QImage startingImage(":/Resources/UI/DefaultCharacterMenuRebirth.png");
-
+    QPainter painter(&startingImage);
+    painter.setCompositionMode(QPainter::CompositionMode::CompositionMode_Source);
+    for(int i = 0; i < constants::RebirthCharacterCount; ++i)
+    {
+        auto character = static_cast<Characters>(i);
+        if (defaultNames.at(character) == characterMap.at(character).Name) continue;
+        else if (character == Characters::BlackJudas || character == Characters::Lazarus2) continue;
+        else
+        {
+            auto characterRect = QRect(charSelectMenuOffsets.at(character).x(), charSelectMenuOffsets.at(character).y(),
+                                    _characterSelectWidth, _characterSelectHeight);
+            painter.fillRect(characterRect, Qt::transparent);
+            painter.drawImage(charSelectMenuOffsets.at(character), GenerateCharSelectImage(characterMap.at(character).Name));
+        }
+    }
     return startingImage;
 }
 

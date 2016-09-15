@@ -836,7 +836,7 @@ void MainWindow::ReadButtonClicked()
 void MainWindow::ExportButtonClicked()
 {
     XML(this->_isaacPath).WriteXML();
-    PNG(this->_isaacPath).SavePNGs();
+    if (nameImagesEnabled) PNG(this->_isaacPath).SavePNGs();
 }
 
 void MainWindow::RandomSpacebarButtonClicked()
@@ -911,6 +911,7 @@ void MainWindow::LoadSettings()
     settings.beginGroup("Editor");
     this->ui->afterbirthCheckBox->setChecked(settings.value("afterbirthenabled", true).toBool());
     this->ui->sortCheckBox->setChecked(settings.value("sortalphabetically", false).toBool());
+    this->ui->nameImagesCheckBox->setChecked(settings.value("nameimages", true).toBool());
     this->DrawBackground(settings.value("vaporwave", false).toBool());
     this->ui->pathTextEdit->setPlainText(settings.value("path", this->_defaultPath).toString());
     settings.endGroup();
@@ -922,6 +923,7 @@ void MainWindow::SaveSettings()
     settings.beginGroup("Editor");
     settings.setValue("afterbirthenabled", afterbirthEnabled);
     settings.setValue("sortalphabetically", sortAlphabetically);
+    settings.setValue("nameimages", nameImagesEnabled);
     settings.setValue("vaporwave", vaporwaveAesthetics);
     settings.setValue("path", this->_isaacPath);
     settings.endGroup();
