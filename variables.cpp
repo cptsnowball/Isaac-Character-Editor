@@ -7,35 +7,35 @@ bool vaporwaveAesthetics = false;
 
 Characters currentCharacter = Characters::Isaac;
 
-Character _isaac(0, "Isaac", "PlayerName_01_Isaac.png", "Character_001_Isaac.png", "PlayerPortrait_01_Isaac.png", "PlayerPortraitBig_01_Isaac.png",
+Character _isaac(0, "Isaac", "playername_01_isaac.png", "Character_001_Isaac.png", "PlayerPortrait_01_Isaac.png", "PlayerPortraitBig_01_Isaac.png",
                  -1, 0, 6, 0, 0, 0, 1, 0, 0, 0, 0, 105, true);
-Character _maggy(1, "Magdalene", "PlayerName_02_Magdalene.png", "Character_002_Magdalene.png", "PlayerPortrait_02_Magdalene.png", "PlayerPortraitBig_02_Magdalene.png",
+Character _maggy(1, "Magdalene", "playername_02_magdalene.png", "Character_002_Magdalene.png", "PlayerPortrait_02_Magdalene.png", "PlayerPortraitBig_02_Magdalene.png",
                 -1, 7, 8, 0, 0, 0, 0, 0, 0, 0, 0, 45, true);
-Character _cain(2, "Cain", "PlayerName_03_Cain.png", "Character_003_Cain.png", "PlayerPortrait_03_Cain.png", "PlayerPortraitBig_03_Cain.png",
+Character _cain(2, "Cain", "playername_03_cain.png", "Character_003_Cain.png", "PlayerPortrait_03_Cain.png", "PlayerPortraitBig_03_Cain.png",
                 -1, 8, 4, 0, 0, 0, 0, 1, 0, 0, 19, 0, true, QStringList {"Lucky Foot"});
-Character _judas(3, "Judas", "PlayerName_04_Judas.png", "Character_004_Judas.png", "PlayerPortrait_04_Judas.png", "PlayerPortraitBig_04_Judas.png",
+Character _judas(3, "Judas", "playername_04_judas.png", "Character_004_Judas.png", "PlayerPortrait_04_Judas.png", "PlayerPortraitBig_04_Judas.png",
                  -1, 9, 2, 0, 0, 3, 0, 0, 0, 0, 0, 34, true);
-Character _blueBaby(4, "???", "PlayerName_06_BlueBaby.png", "Character_006_Bluebaby.png", "PlayerPortrait_06_BlueBaby.png", "PlayerPortraitBig_06_Bluebaby.png",
+Character _blueBaby(4, "???", "playername_06_bluebaby.png", "Character_006_Bluebaby.png", "PlayerPortrait_06_BlueBaby.png", "PlayerPortraitBig_06_Bluebaby.png",
                     2, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 36, true);
-Character _eve(5, "Eve", "PlayerName_05_Eve.png", "Character_005_Eve.png", "PlayerPortrait_05_Eve.png", "PlayerPortraitBig_05_Eve.png",
+Character _eve(5, "Eve", "playername_05_eve.png", "Character_005_Eve.png", "PlayerPortrait_05_Eve.png", "PlayerPortraitBig_05_Eve.png",
                -1, 10, 4, 0, 0, 0, 0, 0, 0, 0, 0, 126, true, QStringList {"Dead Bird", "Whore of Babylon"});
-Character _samson(6, "Samson", "PlayerName_07_Samson.png", "Character_007_Samson.png", "PlayerPortrait_07_Samson.png", "PlayerPortraitBig_07_Samson.png",
+Character _samson(6, "Samson", "playername_07_samson.png", "Character_007_Samson.png", "PlayerPortrait_07_Samson.png", "PlayerPortraitBig_07_Samson.png",
                   -1, 13, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, true, QStringList {"Bloody Lust"});
-Character _azazel(7, "Azazel", "PlayerName_08_Azazel.png", "Character_008_Azazel.png", "PlayerPortrait_08_Azazel.png", "PlayerPortraitBig_08_Azazel.png",
+Character _azazel(7, "Azazel", "playername_08_azazel.png", "Character_008_Azazel.png", "PlayerPortrait_08_Azazel.png", "PlayerPortraitBig_08_Azazel.png",
                   1, 11, 0, 0, 6, 0, 0, 0, 0, 1, 0, 0, true);
-Character _lazarus(8, "Lazarus", "PlayerName_10_Lazarus.png", "Character_009_Lazarus.png", "PlayerPortrait_09_Lazarus.png", "PlayerPortraitBig_09_Lazarus.png",
+Character _lazarus(8, "Lazarus", "playername_10_lazarus.png", "Character_009_Lazarus.png", "PlayerPortrait_09_Lazarus.png", "PlayerPortraitBig_09_Lazarus.png",
                    -1, 32, 6, 0, 0, 0, 0, 0, 1, 0, 0, 0, true);
-Character _eden(9,  "Eden", "PlayerName_09_Eden.png", "Character_009_Eden.png", "PlayerPortrait_09_Eden.png", "PlayerPortraitBig_09_Eden.png",
+Character _eden(9,  "Eden", "playername_09_eden.png", "Character_009_Eden.png", "PlayerPortrait_09_Eden.png", "PlayerPortraitBig_09_Eden.png",
                 -1, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, true);
-Character _theLost(10, "The Lost", "PlayerName_12_TheLost.png", "Character_012_TheLost.png", "PlayerPortrait_12_TheLost.png", "PlayerPortraitBig_12_TheLost.png",
+Character _theLost(10, "The Lost", "playername_12_thelost.png", "Character_012_TheLost.png", "PlayerPortrait_12_TheLost.png", "PlayerPortraitBig_12_TheLost.png",
                    0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 284, true, QStringList {"Holy Mantle"});
-Character _lazarus2(11, "Lazarus II", "PlayerName_10_Lazarus.png", "Character_010_Lazarus2.png", "PlayerPortrait_10_Lazarus2.png", "PlayerPortraitBig_10_Lazarus2.png",
+Character _lazarus2(11, "Lazarus II", "playername_10_lazarus.png", "Character_010_Lazarus2.png", "PlayerPortrait_10_Lazarus2.png", "PlayerPortraitBig_10_Lazarus2.png",
                     -1, 33, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, true, QStringList {"Anemic"});
-Character _blackJudas(12, "Black Judas", "PlayerName_04_Judas.png", "Character_013_BlackJudas.png", "PlayerPortrait_BlackJudas.png", "PlayerPortraitBig_BlackJudas.png",
+Character _blackJudas(12, "Black Judas", "playername_04_judas.png", "Character_013_BlackJudas.png", "PlayerPortrait_BlackJudas.png", "PlayerPortraitBig_BlackJudas.png",
                       1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, true);
-Character _lilith(13, "Lilith", "PlayerName_13_Lilith.png", "Character_014_Lilith.png", "PlayerPortrait_13_Lilith.png", "PlayerPortraitBig_Lilith.png",
+Character _lilith(13, "Lilith", "playername_13_lilith.png", "Character_014_Lilith.png", "PlayerPortrait_13_Lilith.png", "PlayerPortraitBig_Lilith.png",
                   1, 34, 2, 0, 4, 0, 0, 0, 0, 0, 0, 357, false, QStringList {"Cambion Conception"});
-Character _theKeeper(14, "The Keeper", "PlayerName_14_TheKeeper.png", "Character_015_Keeper.png", "PlayerPortrait_14_Keeper.png", "PlayerPortraitBig_Keeper.png",
+Character _theKeeper(14, "The Keeper", "playername_14_thekeeper.png", "Character_015_Keeper.png", "PlayerPortrait_14_Keeper.png", "PlayerPortraitBig_Keeper.png",
                      -1, 0, 4, 0, 0, 1, 1, 0, 0, 0, 83, 349, true);
 
 std::map<Characters, Character> characterMap {
