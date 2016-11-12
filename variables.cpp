@@ -1,6 +1,7 @@
 #include "variables.h"
 
 bool afterbirthEnabled = true;
+bool godmodeEnabled = true;
 bool nameImagesEnabled = true;
 bool sortAlphabetically = false;
 bool vaporwaveAesthetics = false;

@@ -93,20 +93,16 @@ MainWindow::~MainWindow()
     for(QLabel* heartLabel : this->_heartLabels) delete heartLabel;
 }
 
-void MainWindow::DrawBackground(bool vaporwave)
+bool MainWindow::DetectGodmode()
+{
+    return QDir(_isaacPath + "/resources/gfx/bosses/godmode").exists();
+}
+
+void MainWindow::DrawBackground(Background background)
 {
     QPixmap result(this->size());
 
-    if(vaporwave)
-    {
-        result.fill(Qt::transparent);
-        QPainter painter(&result);
-        painter.drawPixmap(0, 0, QPixmap(":/Resources/BackgroundVaporwave/BackgroundVaporwave.png"));
-        painter.drawPixmap(0, 0, QPixmap(":/Resources/Background/BackgroundOverlay.png"));
-        painter.drawPixmap(224, 10, QPixmap(":/Resources/BackgroundVaporwave/WhoAmI.png"));
-        painter.drawPixmap(453, 135, QPixmap(":/Resources/BackgroundVaporwave/MyStuff.png"));
-    }
-    else
+    if (background == Background::Default)
     {
         result.fill(Qt::transparent);
         QPainter painter(&result);
@@ -115,7 +111,15 @@ void MainWindow::DrawBackground(bool vaporwave)
         painter.drawPixmap(224, 10, QPixmap(":/Resources/Background/WhoAmI.png"));
         painter.drawPixmap(453, 135, QPixmap(":/Resources/Background/MyStuff.png"));
     }
-
+    else if (background == Background::Vaporwave)
+    {
+        result.fill(Qt::transparent);
+        QPainter painter(&result);
+        painter.drawPixmap(0, 0, QPixmap(":/Resources/BackgroundVaporwave/BackgroundVaporwave.png"));
+        painter.drawPixmap(0, 0, QPixmap(":/Resources/Background/BackgroundOverlay.png"));
+        painter.drawPixmap(224, 10, QPixmap(":/Resources/BackgroundVaporwave/WhoAmI.png"));
+        painter.drawPixmap(453, 135, QPixmap(":/Resources/BackgroundVaporwave/MyStuff.png"));
+    }
 
     result = result.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
@@ -825,7 +829,7 @@ void MainWindow::NotepadButtonClicked()
 void MainWindow::PurgeButtonClicked()
 {
     XML(this->_isaacPath).DeleteXML();
-    PNG(this->_isaacPath).DeletePNGs();
+    if (nameImagesEnabled) PNG(this->_isaacPath).DeletePNGs();
 }
 
 void MainWindow::ReadButtonClicked()
@@ -835,6 +839,7 @@ void MainWindow::ReadButtonClicked()
 
 void MainWindow::ExportButtonClicked()
 {
+    godmodeEnabled = DetectGodmode();
     XML(this->_isaacPath).WriteXML();
     if (nameImagesEnabled) PNG(this->_isaacPath).SavePNGs();
 }
@@ -912,7 +917,7 @@ void MainWindow::LoadSettings()
     this->ui->afterbirthCheckBox->setChecked(settings.value("afterbirthenabled", true).toBool());
     this->ui->sortCheckBox->setChecked(settings.value("sortalphabetically", false).toBool());
     this->ui->nameImagesCheckBox->setChecked(settings.value("nameimages", true).toBool());
-    this->DrawBackground(settings.value("vaporwave", false).toBool());
+    this->DrawBackground(settings.value("vaporwave", false).toBool() ? Background::Vaporwave : Background::Default);
     this->ui->pathTextEdit->setPlainText(settings.value("path", this->_defaultPath).toString());
     settings.endGroup();
 }

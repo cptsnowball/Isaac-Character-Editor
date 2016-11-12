@@ -12,6 +12,7 @@
 #include <QComboBox>
 
 extern bool afterbirthEnabled;
+extern bool godmodeEnabled;
 extern bool nameImagesEnabled;
 extern bool sortAlphabetically;
 extern bool vaporwaveAesthetics;

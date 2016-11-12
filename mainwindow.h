@@ -13,6 +13,11 @@ namespace Ui {
     class MainWindow;
 }
 
+enum class Background {
+    Default,
+    Vaporwave
+};
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -21,7 +26,8 @@ public:
     explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
     Character* GetCurrentCharacter();
-    void DrawBackground(bool vaporwave = false);
+    bool DetectGodmode();
+    void DrawBackground(Background background = Background::Default);
     void SetUpHealthAndConsumableLabels();
     void GenerateComboBoxes();
     void GenerateCharacterComboBox();

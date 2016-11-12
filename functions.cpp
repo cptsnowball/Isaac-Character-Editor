@@ -29,7 +29,7 @@ QStringList GetItemNamesFromItemList(QStringList itemList, bool sideEffects)
         {
             //Invert the value and draw background accordingly.
             vaporwaveAesthetics = !vaporwaveAesthetics;
-            mainWindowPtr->DrawBackground(vaporwaveAesthetics);
+            mainWindowPtr->DrawBackground(vaporwaveAesthetics ? Background::Vaporwave : Background::Default);
             continue;
         }
 

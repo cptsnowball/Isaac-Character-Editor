@@ -325,5 +325,6 @@
         <file>Resources/Fonts/IsaacHandwritten.ttf</file>
         <file>Resources/UI/DefaultCharacterMenuAfterbirth.png</file>
         <file>Resources/UI/DefaultCharacterMenuRebirth.png</file>
+        <file>Resources/Fonts/Godmode.ttf</file>
     </qresource>
 </RCC>

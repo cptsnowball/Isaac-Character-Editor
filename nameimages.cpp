@@ -12,63 +12,49 @@
 NameImages::NameImages()
 {
     QFontDatabase db;
-    int id = db.addApplicationFont(":/Resources/Fonts/IsaacHandwritten.ttf");
-    _isaacFont = db.applicationFontFamilies(id).first();
+    int isaacID = db.addApplicationFont(":/Resources/Fonts/IsaacHandwritten.ttf"),
+        godmodeID = db.addApplicationFont(":/Resources/Fonts/Godmode.ttf");
+    _isaacFont = db.applicationFontFamilies(isaacID).first();
+    _godmodeFont = db.applicationFontFamilies(godmodeID).first();
 }
 
-QImage NameImages::GenerateVsBossImage(const QString &name)
+QImage NameImages::GenericImageGenerator(const QString &name, int width, int height,
+                                         int pixelSize, QFont font, QColor color)
 {
-    QImage image(_vsBossWidth, _vsBossHeight, QImage::Format_ARGB32);
+    QImage image(width, height, QImage::Format_ARGB32);
     image.fill(Qt::transparent);
 
     QPainter painter(&image);
 
     bool fontFits = false;
-    int currentPixelSize = _vsBossPixelSize;
 
-    while(!fontFits && currentPixelSize >= 12)
+    while(!fontFits && pixelSize >= 12)
     {
-        _isaacFont.setPixelSize(currentPixelSize);
-        if (QFontMetrics(_isaacFont).width(name) > _vsBossWidth - 24) currentPixelSize -= 2;
+        font.setPixelSize(pixelSize);
+        if (QFontMetrics(font).width(name) > width - 24) pixelSize -= 2;
         else fontFits = true;
     }
 
     QPen pen;
-    pen.setColor(_vsBossColor);
+    pen.setColor(color);
 
-    painter.setFont(_isaacFont);
+    painter.setFont(font);
     painter.setPen(pen);
     painter.drawText(image.rect(), Qt::AlignCenter | Qt::AlignVCenter, name);
 
     return image;
 }
 
+QImage NameImages::GenerateVsBossImage(const QString &name)
+{
+    return GenericImageGenerator(name, _vsBossWidth, _vsBossHeight, _vsBossPixelSize,
+                                 (godmodeEnabled ? _godmodeFont : _isaacFont), _vsBossColor);
+}
+
 QImage NameImages::GenerateCharSelectImage(const QString &name)
 {
-    QImage image(_characterSelectWidth, _characterSelectHeight, QImage::Format_ARGB32);
-    image.fill(Qt::transparent);
-
-    QPainter painter(&image);
-
-    bool fontFits = false;
-    int currentPixelSize = _characterSelectPixelSize;
-
-    while(!fontFits && currentPixelSize >= 12)
-    {
-        _isaacFont.setPixelSize(currentPixelSize);
-        if (QFontMetrics(_isaacFont).width(name) > _characterSelectWidth) currentPixelSize -= 2;
-        else fontFits = true;
-    }
-
-    QPen pen;
-    pen.setColor(_characterSelectColor);
-
-    painter.setFont(_isaacFont);
-    painter.setPen(pen);
-
-    painter.drawText(image.rect(), Qt::AlignCenter | Qt::AlignBottom, name);
-
-    return image;
+    return GenericImageGenerator(name, _characterSelectWidth, _characterSelectHeight, _characterSelectPixelSize,
+                                 (godmodeEnabled ? _godmodeFont : _isaacFont), _characterSelectColor);
 }
 
 QImage NameImages::GenerateRebirthCharMenu()

@@ -9,12 +9,13 @@ class NameImages
 {
 public:
     NameImages();
+    QImage GenericImageGenerator(const QString &name, int width, int height, int pixelSize, QFont font, QColor color);
     QImage GenerateVsBossImage(const QString &name);
     QImage GenerateCharSelectImage(const QString &name);
     QImage GenerateRebirthCharMenu();
     QImage GenerateAfterbirthCharMenu();
 private:
-    QFont _isaacFont;
+    QFont _isaacFont, _godmodeFont;
 
     const QColor _vsBossColor = QColor(199, 178, 153);
     const int _vsBossWidth = 192;
