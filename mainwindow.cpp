@@ -152,15 +152,19 @@ void MainWindow::GenerateComboBoxes()
 void MainWindow::GenerateCharacterComboBox()
 {
     QStringList characterNames;
-    for(int i = 0; i < constants::RebirthCharacterCount; ++i)
+    for (int i = 0; i < constants::RebirthCharacterCount; ++i)
         characterNames.append(characterMap.at(static_cast<Characters>(i)).Name);
-    if(afterbirthEnabled) for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
-        characterNames.append(characterMap.at(static_cast<Characters>(constants::RebirthCharacterCount + i)).Name);
+
+    if (game == Game::Afterbirth || game == Game::AfterbirthPlus)
+    {
+        for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
+            characterNames.append(characterMap.at(static_cast<Characters>(constants::RebirthCharacterCount + i)).Name);
+    }
 
     int previousIndex = this->ui->characterComboBox->currentIndex();
     this->ui->characterComboBox->clear();
     this->ui->characterComboBox->addItems(characterNames);
-    if(previousIndex > 0 && previousIndex < this->ui->characterComboBox->count())
+    if (previousIndex > 0 && previousIndex < this->ui->characterComboBox->count())
         this->ui->characterComboBox->setCurrentIndex(previousIndex);
 }
 
@@ -244,7 +248,7 @@ void MainWindow::GenerateSpacebarComboBox()
         "Boomerang"
     };
 
-    if(afterbirthEnabled)
+    if(game == Game::Afterbirth || game == Game::AfterbirthPlus)
     {
         spacebarList.append(QStringList {
             "Diplopia",
@@ -326,7 +330,7 @@ void MainWindow::GenerateCardComboBox()
         "Suicide King" //41
     };
 
-    if(afterbirthEnabled)
+    if(game == Game::Afterbirth || game == Game::AfterbirthPlus)
     {
         //Blank Rune is ID 36 in Afterbirth, moving the other Rebirth cards' IDs up by one
         cardList.insert(36, "Blank Rune"); //36
@@ -408,7 +412,7 @@ void MainWindow::GenerateTrinketComboBox()
         "The Left Hand"
     };
 
-    if(afterbirthEnabled)
+    if(game == Game::Afterbirth || game == Game::AfterbirthPlus)
     {
         trinketList.append(QStringList {
             "Shiny Rock",
@@ -476,7 +480,7 @@ void MainWindow::GenerateCostumeComboBox()
         "16: Santa Hat"
     };
 
-    if(afterbirthEnabled)
+    if(game == Game::Afterbirth || game == Game::AfterbirthPlus)
     {
         costumeList.append(QStringList {
             "17: Holy Glow",
@@ -747,18 +751,46 @@ void MainWindow::SortCheckBoxChanged(int checkState)
 
 void MainWindow::AfterbirthCheckBoxChanged(int checkState)
 {
-    if(checkState == Qt::Checked) afterbirthEnabled = true;
-    else if(checkState == Qt::Unchecked)
+    if (checkState == Qt::Checked)
     {
-        afterbirthEnabled = false;
+        if (game != Game::AfterbirthPlus) game = Game::Afterbirth;
+    }
+    else if (checkState == Qt::Unchecked)
+    {
+        game = Game::Rebirth;
+
+        //Uncheck Afterbirth+ because it needs Afterbirth enabled.
+        this->ui->afterbirthPlusCheckBox->setChecked(false);
+
         //Enable tears for all Rebirth characters because canShoot is Afterbirth exclusive
         //Leave Afterbirth characters intact because they need Afterbirth enabled anyways.
-        for(int i = 0; i < constants::RebirthCharacterCount; ++i)
+        for (int i = 0; i < constants::RebirthCharacterCount; ++i)
             characterMap.at(static_cast<Characters>(i)).CanShoot = true;
     }
+
     GenerateCharacterComboBox();
     GenerateComboBoxes();
-    this->ui->canShootCheckBox->setEnabled(afterbirthEnabled);
+    this->ui->canShootCheckBox->setEnabled(checkState == Qt::Checked);
+    this->ui->itemTextEdit->ProcessItems();
+}
+
+void MainWindow::AfterbirthPlusCheckBoxChanged(int checkState)
+{
+    if (checkState == Qt::Checked)
+    {
+        game = Game::AfterbirthPlus;
+
+        //Enable Afterbirth checkbox because you can't have Afterbirth+ without it anyways.
+        this->ui->afterbirthCheckBox->setChecked(true);
+    }
+    else if (checkState == Qt::Unchecked)
+    {
+        if (game != Game::Rebirth) game = Game::Afterbirth;
+    }
+
+    GenerateCharacterComboBox();
+    GenerateComboBoxes();
+    this->ui->canShootCheckBox->setEnabled(true);
     this->ui->itemTextEdit->ProcessItems();
 }
 
@@ -914,7 +946,11 @@ void MainWindow::LoadSettings()
 {
     QSettings settings("Portal-chan", "Isaac Character Editor");
     settings.beginGroup("Editor");
-    this->ui->afterbirthCheckBox->setChecked(settings.value("afterbirthenabled", true).toBool());
+
+    game = GameFromString(settings.value("gamevariant", "afterbirth").toString());
+    this->ui->afterbirthCheckBox->setChecked(game == Game::Afterbirth || game == Game::AfterbirthPlus);
+    this->ui->afterbirthPlusCheckBox->setChecked(game == Game::AfterbirthPlus);
+
     this->ui->sortCheckBox->setChecked(settings.value("sortalphabetically", false).toBool());
     this->ui->nameImagesCheckBox->setChecked(settings.value("nameimages", true).toBool());
     this->DrawBackground(settings.value("vaporwave", false).toBool() ? Background::Vaporwave : Background::Default);
@@ -926,7 +962,7 @@ void MainWindow::SaveSettings()
 {
     QSettings settings("Portal-chan", "Isaac Character Editor");
     settings.beginGroup("Editor");
-    settings.setValue("afterbirthenabled", afterbirthEnabled);
+    settings.setValue("gamevariant", StringFromGame(game));
     settings.setValue("sortalphabetically", sortAlphabetically);
     settings.setValue("nameimages", nameImagesEnabled);
     settings.setValue("vaporwave", vaporwaveAesthetics);

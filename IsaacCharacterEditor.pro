@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     input.cpp \
     functions.cpp \
     nameimages.cpp \
-    png.cpp
+    png.cpp \
+    game.cpp
 
 HEADERS  += mainwindow.h \
     constants.h \
@@ -35,7 +36,8 @@ HEADERS  += mainwindow.h \
     itemedit.h \
     input.h \
     nameimages.h \
-    png.h
+    png.h \
+    game.h
 
 FORMS    += mainwindow.ui
 
@@ -56,7 +58,7 @@ macx {
     QMAKE_CXXFLAGS += -stdlib=libc++
 }
 
-VERSION = 6.7.0.0
+VERSION = 7.0.0.0
 QMAKE_TARGET_COMPANY = Portal-chan
 QMAKE_TARGET_PRODUCT = Isaac Character Editor
 QMAKE_TARGET_DESCRIPTION =

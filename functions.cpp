@@ -10,7 +10,7 @@ std::vector<int> GetItemIDsFromItemList(QStringList itemList)
             for(auto& userInput : possibleInput.UserInputsList)
                 if(userInput == item)
                 {
-                    if(!afterbirthEnabled && possibleInput.Afterbirth) continue;
+                    if(!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.Afterbirth) continue;
                     else itemIDs.push_back(possibleInput.ID);
                 }
 
@@ -38,7 +38,7 @@ QStringList GetItemNamesFromItemList(QStringList itemList, bool sideEffects)
             //If user input is an item ID set it and move to next item.
             if(QString::number(possibleInput.ID) == item)
             {
-                if(!afterbirthEnabled && possibleInput.Afterbirth) continue;
+                if(!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.Afterbirth) continue;
                 else itemNames.push_back(possibleInput.Name);
                 continue;
             }
@@ -48,7 +48,7 @@ QStringList GetItemNamesFromItemList(QStringList itemList, bool sideEffects)
             {
                 if(userInput == item)
                 {
-                    if(!afterbirthEnabled && possibleInput.Afterbirth) continue;
+                    if(!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.Afterbirth) continue;
                     //else if(possibleInput.Spacebar && sideEffects)
                     //    FindAndSetValueInComboBox(spacebarComboBoxPtr, possibleInput.Name);
                     else itemNames.push_back(possibleInput.Name);

@@ -83,7 +83,7 @@ QImage NameImages::GenerateAfterbirthCharMenu()
     QImage startingImage(":/Resources/UI/DefaultCharacterMenuAfterbirth.png");
     QPainter painter(&startingImage);
     painter.setCompositionMode(QPainter::CompositionMode::CompositionMode_Source);
-    for(int i = 0; i < constants::TotalCharacterCount; ++i)
+    for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
     {
         auto character = static_cast<Characters>(i);
         if (defaultNames.at(character) == characterMap.at(character).Name) continue;

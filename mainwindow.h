@@ -1,6 +1,7 @@
 #pragma once
 
 #include "draw.h"
+#include "game.h"
 
 #include <array>
 #include <QDir>
@@ -58,6 +59,7 @@ public slots:
     void TrinketCheckBoxChanged(int checkState);
     void SortCheckBoxChanged(int checkState);
     void AfterbirthCheckBoxChanged(int checkState);
+    void AfterbirthPlusCheckBoxChanged(int checkState);
     void NameImagesCheckBoxChanged(int checkState);
     void PathTextEditChanged();
     void EditNameButtonClicked();

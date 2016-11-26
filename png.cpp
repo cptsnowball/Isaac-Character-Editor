@@ -35,12 +35,12 @@ void PNG::SavePNGs()
     {
         SaveVsBossImage(static_cast<Characters>(i));
     }
-    if(afterbirthEnabled) for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
+    if(game == Game::Afterbirth) for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
     {
         SaveVsBossImage(static_cast<Characters>(constants::RebirthCharacterCount + i));
     }
 
-    auto charSelectMenu = afterbirthEnabled ?
+    auto charSelectMenu = (game == Game::Afterbirth) ?
                 _nameImages.GenerateAfterbirthCharMenu() :
                 _nameImages.GenerateRebirthCharMenu();
 

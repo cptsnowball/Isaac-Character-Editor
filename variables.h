@@ -11,12 +11,12 @@
 #include <vector>
 #include <QComboBox>
 
-extern bool afterbirthEnabled;
 extern bool godmodeEnabled;
 extern bool nameImagesEnabled;
 extern bool sortAlphabetically;
 extern bool vaporwaveAesthetics;
 
+extern Game game;
 extern Characters currentCharacter;
 
 extern Character _isaac;

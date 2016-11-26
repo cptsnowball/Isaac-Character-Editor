@@ -795,6 +795,25 @@
    <widget class="QCheckBox" name="nameImagesCheckBox">
     <property name="geometry">
      <rect>
+      <x>311</x>
+      <y>194</y>
+      <width>100</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Create names?</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="afterbirthPlusCheckBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
       <x>570</x>
       <y>307</y>
       <width>125</width>
@@ -802,7 +821,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Create names?</string>
+     <string>Enable Afterbirth+</string>
     </property>
     <property name="checked">
      <bool>true</bool>
@@ -977,22 +996,6 @@
     <hint type="destinationlabel">
      <x>591</x>
      <y>224</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>afterbirthCheckBox</sender>
-   <signal>stateChanged(int)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>AfterbirthCheckBoxChanged(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>616</x>
-     <y>299</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>664</x>
-     <y>248</y>
     </hint>
    </hints>
   </connection>
@@ -1339,12 +1342,44 @@
    <slot>NameImagesCheckBoxChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>640</x>
-     <y>309</y>
+     <x>381</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
      <x>437</x>
      <y>252</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>afterbirthPlusCheckBox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>AfterbirthPlusCheckBoxChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>616</x>
+     <y>316</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>441</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>afterbirthCheckBox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>AfterbirthCheckBoxChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>616</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>664</x>
+     <y>248</y>
     </hint>
    </hints>
   </connection>
@@ -1384,5 +1419,6 @@
   <slot>RandomTrinketButtonClicked()</slot>
   <slot>RandomEverythingButtonClicked()</slot>
   <slot>NameImagesCheckBoxChanged(int)</slot>
+  <slot>AfterbirthPlusCheckBoxChanged(int)</slot>
  </slots>
 </ui>

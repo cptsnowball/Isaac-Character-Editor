@@ -1,12 +1,12 @@
 #include "variables.h"
 
-bool afterbirthEnabled = true;
 bool godmodeEnabled = true;
 bool nameImagesEnabled = true;
 bool sortAlphabetically = false;
 bool vaporwaveAesthetics = false;
 
 Characters currentCharacter = Characters::Isaac;
+Game game = Game::Rebirth;
 
 Character _isaac(0, "Isaac", "playername_01_isaac.png", "Character_001_Isaac.png", "PlayerPortrait_01_Isaac.png", "PlayerPortraitBig_01_Isaac.png",
                  -1, 0, 6, 0, 0, 0, 1, 0, 0, 0, 0, 105, true);

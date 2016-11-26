@@ -55,14 +55,14 @@ void XML::WriteXML()
     if(file.open(QIODevice::WriteOnly))
     {
         QTextStream stream(&file);
-        if(afterbirthEnabled)
+        if(game == Game::Afterbirth)
             stream << "<players bigportraitroot=\"gfx/ui/stage/\" nameimageroot=\"gfx/ui/boss/\" portraitroot=\"gfx/ui/boss/\" root=\"gfx/characters/costumes/\">\r\n";
         else
             stream << "<players root=\"resources/gfx/characters/costumes/\" portraitroot=\"resources/gfx/ui/boss/\" bigportraitroot=\"resources/gfx/ui/stage/\">\r\n";
 
         for(int i = 0; i < constants::RebirthCharacterCount; ++i)
             stream << GetPlayerLine(characterMap.at(static_cast<Characters>(i)));
-        if(afterbirthEnabled) for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
+        if(game == Game::Afterbirth) for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
             stream << GetPlayerLine(characterMap.at(static_cast<Characters>(constants::RebirthCharacterCount + i)));
         stream << "</players>\r\n";
     }
@@ -154,7 +154,7 @@ QString XML::GetPlayerLine(const Character &player)
     AppendToLine(line, "id", player.ID);
     AppendToLine(line, "name", player.Name);
     AppendToLine(line, "skinColor", player.SkinColor);
-    if(afterbirthEnabled) AppendToLine(line, "nameimage", player.NameImage);
+    if(game == Game::Afterbirth) AppendToLine(line, "nameimage", player.NameImage);
     AppendToLine(line, "portrait", player.Portrait);
     AppendToLine(line, "bigportrait", player.BigPortrait);
     AppendToLine(line, "skin", (player.SkinFile.split('.')[0] + "%1.png").arg(GetSkinColorString(player)));
@@ -170,7 +170,7 @@ QString XML::GetPlayerLine(const Character &player)
     if(player.Pill != 0) AppendToLine(line, "pill", player.Pill);
     if(player.Card != 0) AppendToLine(line, "card", player.Card);
     if(player.Trinket != 0) AppendToLine(line, "trinket", player.Trinket);
-    if(afterbirthEnabled) AppendToLine(line, "canShoot", player.CanShoot);
+    if(game == Game::Afterbirth) AppendToLine(line, "canShoot", player.CanShoot);
     if(player.ID == 9) //Eden
     {
         line.append(">\r\n");

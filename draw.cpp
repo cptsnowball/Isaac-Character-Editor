@@ -193,7 +193,7 @@ void Draw::Charge(QLabel* chargeLabel, int spacebarID)
 
 void Draw::Pill(QLabel* cardImageLabel)
 {
-    int pills = afterbirthEnabled ? constants::TotalPillCount : constants::RebirthPillCount;
+    int pills = (game == Game::Afterbirth) ? constants::TotalPillCount : constants::RebirthPillCount;
     QString pillToDraw = QString(":/Resources/Cards/Pill%1.png").arg(this->_rng.RandomInt(pills));
     PixmapToLabel(cardImageLabel, pillToDraw);
     this->DrawnPill = pillToDraw.toInt();
@@ -207,7 +207,7 @@ void Draw::Card(QLabel* cardImageLabel, int cardIndex)
     else if(cardIndex >= 23 && cardIndex <= 27) PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
     else if(cardIndex >= 36 && cardIndex <= 43)
     {
-        if(afterbirthEnabled && cardIndex == 36) PixmapToLabel(cardImageLabel, rune);
+        if(game == Game::Afterbirth && cardIndex == 36) PixmapToLabel(cardImageLabel, rune);
         else PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
     }
     else if(cardIndex >= 28 && cardIndex <= 35) PixmapToLabel(cardImageLabel, rune);
