@@ -36,6 +36,7 @@ public:
     void GenerateCardComboBox();
     void GenerateTrinketComboBox();
     void GenerateCostumeComboBox();
+    void GenerateGameComboBox();
     void GenerateSkinColorComboBox();
     void DefaultDrawFamiliar(std::vector<int>);
     std::array<QLabel*, 12> SetUpHeartLabels();
@@ -58,8 +59,7 @@ public slots:
     void CardCheckBoxChanged(int checkState);
     void TrinketCheckBoxChanged(int checkState);
     void SortCheckBoxChanged(int checkState);
-    void AfterbirthCheckBoxChanged(int checkState);
-    void AfterbirthPlusCheckBoxChanged(int checkState);
+    void GameComboBoxChanged(int gameIndex);
     void NameImagesCheckBoxChanged(int checkState);
     void PathTextEditChanged();
     void EditNameButtonClicked();

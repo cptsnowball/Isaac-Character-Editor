@@ -344,22 +344,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QCheckBox" name="afterbirthCheckBox">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>286</y>
-      <width>125</width>
-      <height>19</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Enable Afterbirth</string>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QCheckBox" name="trinketCheckBox">
     <property name="geometry">
      <rect>
@@ -533,7 +517,7 @@
     <property name="geometry">
      <rect>
       <x>570</x>
-      <y>328</y>
+      <y>312</y>
       <width>125</width>
       <height>19</height>
      </rect>
@@ -808,23 +792,35 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QCheckBox" name="afterbirthPlusCheckBox">
+   <widget class="QComboBox" name="gameComboBox">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>307</y>
-      <width>125</width>
-      <height>19</height>
+      <x>559</x>
+      <y>286</y>
+      <width>120</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <kerning>false</kerning>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gameHelpLabel">
+    <property name="geometry">
+     <rect>
+      <x>518</x>
+      <y>286</y>
+      <width>35</width>
+      <height>22</height>
      </rect>
     </property>
     <property name="text">
-     <string>Enable Afterbirth+</string>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
+     <string>Game:</string>
     </property>
    </widget>
   </widget>
@@ -1135,7 +1131,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>627</x>
-     <y>336</y>
+     <y>320</y>
     </hint>
     <hint type="destinationlabel">
      <x>467</x>
@@ -1352,34 +1348,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>afterbirthPlusCheckBox</sender>
-   <signal>stateChanged(int)</signal>
+   <sender>gameComboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
    <receiver>MainWindow</receiver>
-   <slot>AfterbirthPlusCheckBoxChanged(int)</slot>
+   <slot>GameComboBoxChanged(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>616</x>
-     <y>316</y>
+     <x>612</x>
+     <y>290</y>
     </hint>
     <hint type="destinationlabel">
-     <x>441</x>
-     <y>214</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>afterbirthCheckBox</sender>
-   <signal>stateChanged(int)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>AfterbirthCheckBoxChanged(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>616</x>
-     <y>299</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>664</x>
-     <y>248</y>
+     <x>583</x>
+     <y>266</y>
     </hint>
    </hints>
   </connection>
@@ -1420,5 +1400,6 @@
   <slot>RandomEverythingButtonClicked()</slot>
   <slot>NameImagesCheckBoxChanged(int)</slot>
   <slot>AfterbirthPlusCheckBoxChanged(int)</slot>
+  <slot>GameComboBoxChanged(int)</slot>
  </slots>
 </ui>

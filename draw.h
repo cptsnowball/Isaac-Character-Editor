@@ -4,6 +4,7 @@
 #include "random.h"
 
 #include <array>
+#include <cstdint>
 #include <vector>
 #include <QLabel>
 

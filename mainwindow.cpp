@@ -67,7 +67,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QApplication::setFont(this->_font);
     QWidget::setFixedSize(this->size());
 
-    //Sets the path, sort/afterbirth checkboxes and draws the background.
+    //Sets the path, the game combobox and draws the background.
+    GenerateGameComboBox();
     this->LoadSettings();
 
     SetUpHealthAndConsumableLabels();
@@ -509,6 +510,17 @@ void MainWindow::GenerateCostumeComboBox()
     ReplaceComboBoxItems(this->ui->costumeComboBox, costumeList);
 }
 
+void MainWindow::GenerateGameComboBox()
+{
+    QStringList gameList {
+        "Rebirth",
+        "Afterbirth",
+        "Afterbirth+"
+    };
+
+    ReplaceComboBoxItems(this->ui->gameComboBox, gameList);
+}
+
 void MainWindow::GenerateSkinColorComboBox()
 {
     QStringList skinColorList {
@@ -749,48 +761,27 @@ void MainWindow::SortCheckBoxChanged(int checkState)
     GenerateComboBoxes();
 }
 
-void MainWindow::AfterbirthCheckBoxChanged(int checkState)
+void MainWindow::GameComboBoxChanged(int gameIndex)
 {
-    if (checkState == Qt::Checked)
+    game = static_cast<Game>(gameIndex);
+    switch (game)
     {
-        if (game != Game::AfterbirthPlus) game = Game::Afterbirth;
-    }
-    else if (checkState == Qt::Unchecked)
-    {
-        game = Game::Rebirth;
-
-        //Uncheck Afterbirth+ because it needs Afterbirth enabled.
-        this->ui->afterbirthPlusCheckBox->setChecked(false);
-
+        case Game::Rebirth:
         //Enable tears for all Rebirth characters because canShoot is Afterbirth exclusive
         //Leave Afterbirth characters intact because they need Afterbirth enabled anyways.
-        for (int i = 0; i < constants::RebirthCharacterCount; ++i)
-            characterMap.at(static_cast<Characters>(i)).CanShoot = true;
+            for (int i = 0; i < constants::RebirthCharacterCount; ++i)
+                characterMap.at(static_cast<Characters>(i)).CanShoot = true;
+            this->ui->canShootCheckBox->setEnabled(false);
+            break;
+        case Game::Afterbirth:
+        case Game::AfterbirthPlus:
+            this->ui->canShootCheckBox->setEnabled(false);
+            break;
     }
 
     GenerateCharacterComboBox();
     GenerateComboBoxes();
-    this->ui->canShootCheckBox->setEnabled(checkState == Qt::Checked);
-    this->ui->itemTextEdit->ProcessItems();
-}
-
-void MainWindow::AfterbirthPlusCheckBoxChanged(int checkState)
-{
-    if (checkState == Qt::Checked)
-    {
-        game = Game::AfterbirthPlus;
-
-        //Enable Afterbirth checkbox because you can't have Afterbirth+ without it anyways.
-        this->ui->afterbirthCheckBox->setChecked(true);
-    }
-    else if (checkState == Qt::Unchecked)
-    {
-        if (game != Game::Rebirth) game = Game::Afterbirth;
-    }
-
-    GenerateCharacterComboBox();
-    GenerateComboBoxes();
-    this->ui->canShootCheckBox->setEnabled(true);
+    this->ui->canShootCheckBox->setEnabled(game != Game::Rebirth);
     this->ui->itemTextEdit->ProcessItems();
 }
 
@@ -948,9 +939,7 @@ void MainWindow::LoadSettings()
     settings.beginGroup("Editor");
 
     game = GameFromString(settings.value("gamevariant", "afterbirth").toString());
-    this->ui->afterbirthCheckBox->setChecked(game == Game::Afterbirth || game == Game::AfterbirthPlus);
-    this->ui->afterbirthPlusCheckBox->setChecked(game == Game::AfterbirthPlus);
-
+    this->ui->gameComboBox->setCurrentIndex(static_cast<int>(game));
     this->ui->sortCheckBox->setChecked(settings.value("sortalphabetically", false).toBool());
     this->ui->nameImagesCheckBox->setChecked(settings.value("nameimages", true).toBool());
     this->DrawBackground(settings.value("vaporwave", false).toBool() ? Background::Vaporwave : Background::Default);

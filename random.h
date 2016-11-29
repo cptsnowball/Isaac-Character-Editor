@@ -8,7 +8,7 @@
 template<class IntType>
 struct Random
 {
-    static_assert(std::is_integral<IntType>{}, "Random<IntType>: type must be integral.");
+    static_assert(std::is_integral<IntType>::value, "Random<IntType>: type must be integral.");
 public:
     Random(std::time_t seed = std::time(nullptr))
     {
