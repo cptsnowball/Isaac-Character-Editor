@@ -38,6 +38,8 @@ Character _lilith(13, "Lilith", "playername_13_lilith.png", "Character_014_Lilit
                   1, 34, 2, 0, 4, 0, 0, 0, 0, 0, 0, 357, false, QStringList {"Cambion Conception"});
 Character _theKeeper(14, "The Keeper", "playername_14_thekeeper.png", "Character_015_Keeper.png", "PlayerPortrait_14_Keeper.png", "PlayerPortraitBig_Keeper.png",
                      -1, 0, 4, 0, 0, 1, 1, 0, 0, 0, 83, 349, true);
+Character _apollyon(15, "Apollyon", "playername_15_apollyon.png", "Character_016_apollyon.png", "PlayerPortrait_15_Apollyon.png", "PlayerPortraitBig_Apollyon.png",
+                     0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 467, true);
 
 std::map<Characters, Character> characterMap {
     {Characters::Isaac, _isaac},
@@ -54,7 +56,8 @@ std::map<Characters, Character> characterMap {
     {Characters::Lazarus2, _lazarus2},
     {Characters::BlackJudas, _blackJudas},
     {Characters::Lilith, _lilith},
-    {Characters::TheKeeper, _theKeeper}
+    {Characters::TheKeeper, _theKeeper},
+    {Characters::Apollyon, _apollyon}
 };
 
 std::map<QString, int> spacebarMap {
@@ -115,7 +118,8 @@ std::map<Characters, QString> defaultNames {
     {Characters::Lazarus2, "Lazarus II"},
     {Characters::BlackJudas, "Black Judas"},
     {Characters::Lilith, "Lilith"},
-    {Characters::TheKeeper, "The Keeper"}
+    {Characters::TheKeeper, "The Keeper"},
+    {Characters::Apollyon, "Apollyon"}
 };
 
 std::map<Characters, QPoint> charSelectMenuOffsets {
@@ -131,7 +135,8 @@ std::map<Characters, QPoint> charSelectMenuOffsets {
     {Characters::Eden, {80, 352}},
     {Characters::TheLost, {80, 384}},
     {Characters::Lilith, {176, 480}},
-    {Characters::TheKeeper, {176, 512}}
+    {Characters::TheKeeper, {176, 512}},
+    {Characters::Apollyon, {0, 0}}
 };
 
 std::vector<Input> possibleInputs;

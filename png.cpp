@@ -31,16 +31,23 @@ void PNG::SavePNGs()
     CreateDirIfDoesntExist(_filename + "/resources/gfx/ui/boss");
     CreateDirIfDoesntExist(_filename + "/resources/gfx/ui/main menu");
 
-    for(int i = 0; i < constants::RebirthCharacterCount; ++i)
+    switch (game)
     {
-        SaveVsBossImage(static_cast<Characters>(i));
+        case Game::Rebirth:
+            for (int i = 0; i < constants::RebirthCharacterCount; ++i)
+                SaveVsBossImage(static_cast<Characters>(i));
+            break;
+        case Game::Afterbirth:
+            for (int i = 0; i < constants::AfterbirthCharacterCount; ++i) {
+                QMessageBox(QMessageBox::Warning, "Information", QString("%1").arg(i)).exec();
+                SaveVsBossImage(static_cast<Characters>(i)); }
+            break;
+        case Game::AfterbirthPlus:
+            for (int i = 0; i < constants::AfterbirthPlusCharacterCount; ++i)
+                SaveVsBossImage(static_cast<Characters>(i));
+            break;
     }
-    if(game == Game::Afterbirth) for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
-    {
-        SaveVsBossImage(static_cast<Characters>(constants::RebirthCharacterCount + i));
-    }
-
-    auto charSelectMenu = (game == Game::Afterbirth) ?
+    auto charSelectMenu = (game == Game::Afterbirth || game == Game::AfterbirthPlus) ?
                 _nameImages.GenerateAfterbirthCharMenu() :
                 _nameImages.GenerateRebirthCharMenu();
 
@@ -49,7 +56,7 @@ void PNG::SavePNGs()
 
 void PNG::DeletePNGs()
 {
-    for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
+    for(int i = 0; i < constants::UniqueCharacterCount; ++i)
     {
         QFile imageFile(_filename + "/resources/gfx/ui/boss/" + characterMap.at(static_cast<Characters>(i)).NameImage);
         if (imageFile.exists()) imageFile.remove();

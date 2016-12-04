@@ -9,27 +9,29 @@ std::vector<Input> Input::getPossibleUserInputs()
     std::vector<Input> inputs;
 
     QFile file(":/inputs.xml");
-    if(file.open(QIODevice::ReadOnly))
+    if (file.open(QIODevice::ReadOnly))
     {
         QXmlStreamReader xml;
         xml.setDevice(&file);
 
-        while(!xml.atEnd()) {
+        while (!xml.atEnd()) {
             xml.readNext();
-            if(xml.isStartElement()) {
-                if(xml.name() == "input") {
+            if (xml.isStartElement()) {
+                if (xml.name() == "input") {
                     Input input;
-                    foreach(const QXmlStreamAttribute &attribute, xml.attributes()) {
-                        if(attribute.name().toString() == "userinput")
+                    for (const QXmlStreamAttribute &attribute : xml.attributes()) {
+                        if (attribute.name().toString() == "userinput")
                             input.UserInputsList = attribute.value().toString().split(',');
-                        else if(attribute.name().toString() == "name")
+                        else if (attribute.name().toString() == "name")
                             input.Name = attribute.value().toString();
-                        else if(attribute.name().toString() == "id")
+                        else if (attribute.name().toString() == "id")
                             input.ID = attribute.value().toInt();
-                        else if(attribute.name().toString() == "spacebar")
+                        else if (attribute.name().toString() == "spacebar")
                             input.Spacebar = attribute.value().toString() == "true" ? true : false;
-                        else if(attribute.name().toString() == "afterbirth")
-                            input.Afterbirth = attribute.value().toString() == "true" ? true : false;
+                        else if (attribute.name().toString() == "afterbirth")
+                            input.WhichGame = attribute.value().toString() == "true" ? Game::Afterbirth : Game::Rebirth;
+                        else if (attribute.name().toString() == "afterbirthplus")
+                            input.WhichGame = attribute.value().toString() == "true" ? Game::AfterbirthPlus : Game::Rebirth;
                     }
                     inputs.push_back(input);
                 }
@@ -40,6 +42,7 @@ std::vector<Input> Input::getPossibleUserInputs()
     return inputs;
 }
 
+// Unusued in release code.
 void Input::ShowInput()
 {
     QMessageBox msg;
@@ -47,6 +50,6 @@ void Input::ShowInput()
                 .arg(this->UserInputsList.join(", "),
                      this->Name,
                      QString::number(this->ID),
-                     this->Afterbirth == true ? "true" : "false"));
+                     this->WhichGame == Game::Afterbirth ? "true" : "false"));
     msg.exec();
 }

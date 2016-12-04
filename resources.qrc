@@ -326,5 +326,6 @@
         <file>Resources/UI/DefaultCharacterMenuAfterbirth.png</file>
         <file>Resources/UI/DefaultCharacterMenuRebirth.png</file>
         <file>Resources/Fonts/Godmode.ttf</file>
+        <file>Resources/Buttons/FolderButton.png</file>
     </qresource>
 </RCC>

@@ -34,8 +34,9 @@ extern Character _lazarus2;
 extern Character _blackJudas;
 extern Character _lilith;
 extern Character _theKeeper;
+extern Character _apollyon;
 
-extern std::array<Character, constants::TotalCharacterCount> characterList;
+extern std::array<Character, constants::UniqueCharacterCount> characterList;
 extern std::map<Characters, Character> characterMap;
 extern std::map<QString, int> spacebarMap;
 extern std::map<QString, int> trinketMap;

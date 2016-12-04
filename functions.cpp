@@ -1,16 +1,19 @@
 #include "functions.h"
 
+#include <QMessageBox>
+
 std::vector<int> GetItemIDsFromItemList(QStringList itemList)
 {
     //Loops through all possible inputs and returns a vector containing matched item IDs
     itemList = SimplifyItemString(itemList);
     std::vector<int> itemIDs;
-    for(const auto& item : itemList)
-        for(auto& possibleInput : possibleInputs)
-            for(auto& userInput : possibleInput.UserInputsList)
-                if(userInput == item)
+    for (const auto& item : itemList)
+        for (const auto& possibleInput : possibleInputs)
+            for (const auto& userInput : possibleInput.UserInputsList)
+                if (userInput == item)
                 {
-                    if(!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.Afterbirth) continue;
+                    if (!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::Afterbirth) continue;
+                    else if (!(game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::AfterbirthPlus) continue;
                     else itemIDs.push_back(possibleInput.ID);
                 }
 
@@ -23,9 +26,9 @@ QStringList GetItemNamesFromItemList(QStringList itemList, bool sideEffects)
     //Also sets the spacebar combo box if a spacebar item was found.
     itemList = SimplifyItemString(itemList);
     QStringList itemNames;
-    for(const auto& item : itemList)
+    for (const auto& item : itemList)
     {
-        if(item == "vaporwave" && sideEffects)
+        if (item == "vaporwave" && sideEffects)
         {
             //Invert the value and draw background accordingly.
             vaporwaveAesthetics = !vaporwaveAesthetics;
@@ -33,24 +36,26 @@ QStringList GetItemNamesFromItemList(QStringList itemList, bool sideEffects)
             continue;
         }
 
-        for(auto& possibleInput : possibleInputs)
+        for (auto& possibleInput : possibleInputs)
         {
             //If user input is an item ID set it and move to next item.
-            if(QString::number(possibleInput.ID) == item)
+            if (QString::number(possibleInput.ID) == item)
             {
-                if(!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.Afterbirth) continue;
-                else itemNames.push_back(possibleInput.Name);
+                if (!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::Afterbirth) continue;
+                else if (!(game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::AfterbirthPlus) continue;
+                else if (!possibleInput.Spacebar) itemNames.push_back(possibleInput.Name);
                 continue;
             }
 
             //Else loop through possible ways of spelling an item.
-            for(auto& userInput : possibleInput.UserInputsList)
+            for (auto& userInput : possibleInput.UserInputsList)
             {
-                if(userInput == item)
+                if (userInput == item)
                 {
-                    if(!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.Afterbirth) continue;
-                    //else if(possibleInput.Spacebar && sideEffects)
-                    //    FindAndSetValueInComboBox(spacebarComboBoxPtr, possibleInput.Name);
+                    if (!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::Afterbirth) continue;
+                    else if (!(game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::AfterbirthPlus) continue;
+                    else if (possibleInput.Spacebar && sideEffects)
+                        FindAndSetValueInComboBox(spacebarComboBoxPtr, possibleInput.Name);
                     else itemNames.push_back(possibleInput.Name);
                 }
             }
@@ -67,13 +72,17 @@ QStringList SimplifyItemString(QStringList itemList)
 
     //Loop through items and simplify their strings.
     QStringList simplifiedItemList;
-    for(auto& item : itemList)
+    for (auto& item : itemList)
     {
         item = item.toLower();
-        for(const auto &character : charsToRemove) item.remove(character);
-        for(const auto &string : stringsToRemove)
-            if(item.startsWith(string + " ") || item.startsWith(" " + string + " "))
+        for (const auto &character : charsToRemove) item.remove(character);
+        for (const auto &string : stringsToRemove)
+        {
+            //Mom's Box and Box are different items.
+            if (string == "moms" && item.contains("box")) continue;
+            if (item.startsWith(string + " ") || item.startsWith(" " + string + " "))
                 item.replace(item.indexOf(string), string.size(), "");
+        }
         item.remove(' ');
         simplifiedItemList.push_back(item);
     }
@@ -89,15 +98,15 @@ void ReplaceComboBoxItems(QComboBox* comboBox, QStringList items)
     comboBox->clear();
     comboBox->addItems(items);
 
-    for(int i = 0; i < comboBox->count(); ++i)
-        if(previousSelection == comboBox->itemText(i))
+    for (int i = 0; i < comboBox->count(); ++i)
+        if (previousSelection == comboBox->itemText(i))
             comboBox->setCurrentIndex(i);
 }
 
 void FindAndSetValueInComboBox(QComboBox* comboBox, QString value)
 {
     //int is used instead of size_t because count() returns a const int.
-    for(int i = 0; i < comboBox->count(); ++i)
-        if(value == spacebarComboBoxPtr->itemText(i))
+    for (int i = 0; i < comboBox->count(); ++i)
+        if (value == spacebarComboBoxPtr->itemText(i))
             comboBox->setCurrentIndex(i);
 }

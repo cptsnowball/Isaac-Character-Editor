@@ -4,7 +4,7 @@
 #include <QStringList>
 
 enum class Characters : int {
-    Isaac = 0, Maggy, Cain, Judas, BlueBaby, Eve, Samson, Azazel, Lazarus, Eden, TheLost, Lazarus2, BlackJudas, Lilith, TheKeeper
+    Isaac = 0, Maggy, Cain, Judas, BlueBaby, Eve, Samson, Azazel, Lazarus, Eden, TheLost, Lazarus2, BlackJudas, Lilith, TheKeeper, Apollyon
 };
 
 class Character

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "game.h"
+
 #include <vector>
 #include <QString>
 #include <QStringList>
@@ -11,7 +13,7 @@ public:
     QString Name;
     int ID;
     bool Spacebar = false;
-    bool Afterbirth = false;
+    Game WhichGame = Game::Rebirth;
     static std::vector<Input> getPossibleUserInputs();
     void ShowInput();
 private:

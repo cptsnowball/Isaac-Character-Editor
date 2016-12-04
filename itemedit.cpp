@@ -26,7 +26,6 @@ void ItemEdit::ProcessItems()
     //Set the current character items
     Character* character = &characterMap.at(currentCharacter);
     character->Items = items;
-
     mainWindowPtr->DefaultDrawFamiliar(GetItemIDsFromItemList(items));
 
     //Set the plain text according to the found items and their proper names.

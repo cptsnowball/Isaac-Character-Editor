@@ -4,8 +4,9 @@
 
 namespace constants {
     const int RebirthCharacterCount = 13;
-    const int AfterbirthCharacterCount = 2;
-    const int TotalCharacterCount = RebirthCharacterCount + AfterbirthCharacterCount;
+    const int AfterbirthCharacterCount = 15;
+    const int AfterbirthPlusCharacterCount = 16;
+    const int UniqueCharacterCount = 16;
 
     const int RebirthPillCount = 9;
     const int AfterbirthPillCount = 4;

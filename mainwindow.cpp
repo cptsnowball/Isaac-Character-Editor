@@ -38,8 +38,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->ui->nameLineEdit->hide();
 
+    this->ui->folderButton->setIcon(QIcon(":/Resources/Buttons/FolderButton.png"));
     this->ui->notepadButton->setIcon(QIcon(":/Resources/Buttons/NotepadButton.png"));
+
     this->ui->compassButton->setIcon(QIcon(":/Resources/Buttons/CompassButton.png"));
+    this->ui->compassButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 
     this->ui->randomSpacebarButton->setIcon(QIcon(":/Resources/Buttons/DiceButton.png"));
     this->ui->randomCardButton->setIcon(QIcon(":/Resources/Buttons/DiceButton.png"));
@@ -91,7 +94,7 @@ MainWindow::~MainWindow()
     delete this->_healthValidator;
     delete this->_consumableValidator;
 
-    for(QLabel* heartLabel : this->_heartLabels) delete heartLabel;
+    for (QLabel* heartLabel : this->_heartLabels) delete heartLabel;
 }
 
 bool MainWindow::DetectGodmode()
@@ -153,16 +156,26 @@ void MainWindow::GenerateComboBoxes()
 void MainWindow::GenerateCharacterComboBox()
 {
     QStringList characterNames;
-    for (int i = 0; i < constants::RebirthCharacterCount; ++i)
-        characterNames.append(characterMap.at(static_cast<Characters>(i)).Name);
 
-    if (game == Game::Afterbirth || game == Game::AfterbirthPlus)
+    switch (game)
     {
-        for(int i = 0; i < constants::AfterbirthCharacterCount; ++i)
-            characterNames.append(characterMap.at(static_cast<Characters>(constants::RebirthCharacterCount + i)).Name);
+        case Game::Rebirth:
+            for (int i = 0; i < constants::RebirthCharacterCount; ++i)
+                characterNames.append(characterMap.at(static_cast<Characters>(i)).Name);
+            break;
+        case Game::Afterbirth:
+            for (int i = 0; i < constants::AfterbirthCharacterCount; ++i)
+                characterNames.append(characterMap.at(static_cast<Characters>(i)).Name);
+            break;
+        case Game::AfterbirthPlus:
+            for (int i = 0; i < constants::AfterbirthPlusCharacterCount; ++i)
+                characterNames.append(characterMap.at(static_cast<Characters>(i)).Name);
+            break;
     }
 
+    auto previousCharacter = static_cast<int>(currentCharacter);
     int previousIndex = this->ui->characterComboBox->currentIndex();
+
     this->ui->characterComboBox->clear();
     this->ui->characterComboBox->addItems(characterNames);
     if (previousIndex > 0 && previousIndex < this->ui->characterComboBox->count())
@@ -249,7 +262,7 @@ void MainWindow::GenerateSpacebarComboBox()
         "Boomerang"
     };
 
-    if(game == Game::Afterbirth || game == Game::AfterbirthPlus)
+    if (game == Game::Afterbirth || game == Game::AfterbirthPlus)
     {
         spacebarList.append(QStringList {
             "Diplopia",
@@ -274,7 +287,7 @@ void MainWindow::GenerateSpacebarComboBox()
         });
     }
 
-    if(sortAlphabetically)
+    if (sortAlphabetically)
     {
         //Removes and inserts "None" so it's always the first, regardless of sorting.
         spacebarList.removeAt(0);
@@ -562,16 +575,17 @@ std::array<QLabel*, 12> MainWindow::SetUpHeartLabels()
 void MainWindow::SetCurrentCharacter(int characterToSet)
 {
     //Happens when the ComboBox is cleared.
-    if(characterToSet == -1) return;
-
+    if (characterToSet == -1) return;
     currentCharacter = static_cast<Characters>(characterToSet);
-    Character character = characterMap.at(currentCharacter);
+
+    auto character = characterMap.at(currentCharacter);
+
     this->_draw.Character(this->ui->characterImageLabel, currentCharacter);
     this->_draw.Health(this->_heartLabels, character.RedHearts, character.SoulHearts, character.BlackHearts,
                        currentCharacter == Characters::TheKeeper);
 
-    if(character.Pill == 1) this->_draw.Pill(this->ui->cardImageLabel);
-    else if(character.Card > 0) this->_draw.Card(this->ui->cardImageLabel, character.Card);
+    if (character.Pill == 1) this->_draw.Pill(this->ui->cardImageLabel);
+    else if (character.Card > 0) this->_draw.Card(this->ui->cardImageLabel, character.Card);
 
     this->ui->redHeartLineEdit->setText(QString::number(character.RedHearts));
     this->ui->soulHeartLineEdit->setText(QString::number(character.SoulHearts));
@@ -586,30 +600,33 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
     this->ui->cardComboBox->setCurrentIndex(character.Card);
 
     //Uses (skin color + 1) because it starts at -1 as opposed to 0.
-    this->ui->costumeComboBox->setCurrentIndex(character.Costume);
     this->ui->skinColorComboBox->setCurrentIndex(character.SkinColor + 1);
+    this->ui->costumeComboBox->setCurrentIndex(character.Costume);
+
+    //Lazarus hair is messy.
+    if (this->ui->costumeComboBox->currentIndex() < 0) this->ui->costumeComboBox->setCurrentIndex(0);
 
     //If character holds a trinket, get the trinkets name and loop through the ComboBox.
     //Once an index with the same name is found, set it.
     //This is used to make it work with both alphabetical sorting and not.
-    if(character.Trinket > 0)
+    if (character.Trinket > 0)
     {
         this->ui->trinketCheckBox->setChecked(true);
         QString trinket = GetKeyFromValue(trinketMap, character.Trinket);
 
-        for(int i = 0; i < this->ui->trinketComboBox->count(); ++i)
-            if(ui->trinketComboBox->itemText(i) == trinket)
+        for (int i = 0; i < this->ui->trinketComboBox->count(); ++i)
+            if (ui->trinketComboBox->itemText(i) == trinket)
                 this->ui->trinketComboBox->setCurrentIndex(i);
     }
     else this->ui->trinketCheckBox->setChecked(false);
 
     //Almost the same thing, except this time with a spacebar item.
-    if(character.Spacebar > 0)
+    if (character.Spacebar > 0)
     {
         QString spacebar = GetKeyFromValue(spacebarMap, character.Spacebar);
 
-        for(int i = 0; i < this->ui->spacebarComboBox->count(); ++i)
-            if(ui->spacebarComboBox->itemText(i) == spacebar)
+        for (int i = 0; i < this->ui->spacebarComboBox->count(); ++i)
+            if (ui->spacebarComboBox->itemText(i) == spacebar)
                 this->ui->spacebarComboBox->setCurrentIndex(i);
     }
     else this->ui->spacebarComboBox->setCurrentIndex(0);
@@ -693,6 +710,8 @@ void MainWindow::SetTrinket(QString value)
 
 void MainWindow::SetCostume(int costumeIndex)
 {
+    //Blame Rebirth/Afterbirth switching.
+    if (costumeIndex < 0) costumeIndex = 0;
     Character* character = &characterMap.at(currentCharacter);
     character->Costume = costumeIndex;
 }
@@ -775,13 +794,12 @@ void MainWindow::GameComboBoxChanged(int gameIndex)
             break;
         case Game::Afterbirth:
         case Game::AfterbirthPlus:
-            this->ui->canShootCheckBox->setEnabled(false);
+            this->ui->canShootCheckBox->setEnabled(true);
             break;
     }
 
     GenerateCharacterComboBox();
     GenerateComboBoxes();
-    this->ui->canShootCheckBox->setEnabled(game != Game::Rebirth);
     this->ui->itemTextEdit->ProcessItems();
 }
 
@@ -844,9 +862,17 @@ void MainWindow::CompassButtonClicked()
 void MainWindow::NotepadButtonClicked()
 {
     //Opens the file in a default text editor.
-    if(QFile(this->_isaacPath + "/resources/players.xml").exists())
+    if (QFile(this->_isaacPath + "/resources/players.xml").exists())
         QDesktopServices::openUrl(QUrl("file:///" + this->_isaacPath + "/resources/players.xml"));
     else QMessageBox(QMessageBox::Warning, "Information", "players.xml can't be opened.").exec();
+}
+
+void MainWindow::FolderButtonClicked()
+{
+    //Opens the Isaac folder.
+    if (QDir(this->_isaacPath).exists())
+        QDesktopServices::openUrl(QUrl("file:///" + this->_isaacPath));
+    else QMessageBox(QMessageBox::Warning, "Information", "The Binding of Isaac path can't be opened.").exec();
 }
 
 void MainWindow::PurgeButtonClicked()
@@ -905,15 +931,15 @@ void MainWindow::RandomEverythingButtonClicked()
     {
         switch(this->_rng.RandomInt(0, 3))
         {
-        case 1:
-            ++redHearts;
-            break;
-        case 2:
-            ++soulHearts;
-            break;
-        case 3:
-            ++blackHearts;
-            break;
+            case 1:
+                ++redHearts;
+                break;
+            case 2:
+                ++soulHearts;
+                break;
+            case 3:
+                ++blackHearts;
+                break;
         }
     }
 

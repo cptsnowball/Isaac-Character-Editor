@@ -66,6 +66,7 @@ public slots:
     void RestoreDefaultPath();
     void CompassButtonClicked();
     void NotepadButtonClicked();
+    void FolderButtonClicked();
     void PurgeButtonClicked();
     void ReadButtonClicked();
     void ExportButtonClicked();

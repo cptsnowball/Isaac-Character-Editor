@@ -412,9 +412,9 @@
    <widget class="QToolButton" name="defaultPathButton">
     <property name="geometry">
      <rect>
-      <x>581</x>
+      <x>616</x>
       <y>100</y>
-      <width>100</width>
+      <width>65</width>
       <height>20</height>
      </rect>
     </property>
@@ -423,8 +423,11 @@
       <kerning>false</kerning>
      </font>
     </property>
+    <property name="toolTip">
+     <string>Restore the default The Binding of Isaac: Rebirth path.</string>
+    </property>
     <property name="text">
-     <string>Restore default</string>
+     <string>Restore</string>
     </property>
    </widget>
    <widget class="QLabel" name="trinketImageLabel">
@@ -454,6 +457,9 @@
       <pointsize>9</pointsize>
       <kerning>false</kerning>
      </font>
+    </property>
+    <property name="toolTip">
+     <string>Choose whether the items are sorted alphabetically or by item IDs.</string>
     </property>
     <property name="text">
      <string>Sort alphabetically</string>
@@ -521,6 +527,9 @@
       <width>125</width>
       <height>19</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Choose whether the character can shoot tears.</string>
     </property>
     <property name="text">
      <string>Can shoot tears?</string>
@@ -606,27 +615,17 @@
      </font>
     </property>
    </widget>
-   <widget class="QPushButton" name="compassButton">
-    <property name="geometry">
-     <rect>
-      <x>559</x>
-      <y>100</y>
-      <width>20</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QPushButton" name="notepadButton">
     <property name="geometry">
      <rect>
-      <x>537</x>
+      <x>492</x>
       <y>100</y>
       <width>20</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Open players.xml with a text editor.</string>
     </property>
     <property name="text">
      <string/>
@@ -659,6 +658,9 @@
       <kerning>false</kerning>
      </font>
     </property>
+    <property name="toolTip">
+     <string/>
+    </property>
    </widget>
    <widget class="QComboBox" name="skinColorComboBox">
     <property name="geometry">
@@ -674,6 +676,9 @@
       <kerning>false</kerning>
      </font>
     </property>
+    <property name="toolTip">
+     <string/>
+    </property>
    </widget>
    <widget class="QPushButton" name="randomCostumeButton">
     <property name="geometry">
@@ -683,6 +688,9 @@
       <width>20</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Select a random skin color and costume.</string>
     </property>
     <property name="text">
      <string/>
@@ -720,6 +728,9 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Select a random active item.</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -732,6 +743,9 @@
       <width>20</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Select a random card/rune.</string>
     </property>
     <property name="text">
      <string/>
@@ -746,6 +760,9 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Select a random trinket.</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -758,6 +775,9 @@
       <width>150</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Select random health, consumables, items and appearance.</string>
     </property>
     <property name="text">
      <string>Randomize everything</string>
@@ -784,6 +804,9 @@
       <width>100</width>
       <height>19</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Creates images for names, allowing them to show up in the menu.</string>
     </property>
     <property name="text">
      <string>Create names?</string>
@@ -821,6 +844,38 @@
     </property>
     <property name="text">
      <string>Game:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="folderButton">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>100</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Open the selected folder in file explorer.</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="compassButton">
+    <property name="geometry">
+     <rect>
+      <x>514</x>
+      <y>100</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Browse to your The Binding of Isaac: Rebirth path.</string>
+    </property>
+    <property name="text">
+     <string>Select folder</string>
     </property>
    </widget>
   </widget>
@@ -1156,29 +1211,13 @@
    </hints>
   </connection>
   <connection>
-   <sender>compassButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>CompassButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>569</x>
-     <y>116</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>567</x>
-     <y>150</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>notepadButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>NotepadButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>542</x>
+     <x>511</x>
      <y>118</y>
     </hint>
     <hint type="destinationlabel">
@@ -1363,6 +1402,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>folderButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>FolderButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>480</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>426</x>
+     <y>38</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>compassButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>CompassButtonClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>567</x>
+     <y>105</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>500</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>SetCurrentCharacter(int)</slot>
@@ -1401,5 +1472,6 @@
   <slot>NameImagesCheckBoxChanged(int)</slot>
   <slot>AfterbirthPlusCheckBoxChanged(int)</slot>
   <slot>GameComboBoxChanged(int)</slot>
+  <slot>FolderButtonClicked()</slot>
  </slots>
 </ui>
