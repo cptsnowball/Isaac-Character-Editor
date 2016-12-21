@@ -10,6 +10,8 @@ QString StringFromGame(Game game)
             return "afterbirth";
         case Game::AfterbirthPlus:
             return "afterbirth+";
+        case Game::Antibirth:
+            return "antibirth";
         default:
             return "rebirth";
     }
@@ -20,5 +22,6 @@ Game GameFromString(QString string)
     if (string == "rebirth") return Game::Rebirth;
     else if (string == "afterbirth") return Game::Afterbirth;
     else if (string == "afterbirth+") return Game::AfterbirthPlus;
+    else if (string == "antibirth") return Game::Antibirth;
     else return Game::Rebirth;
 }

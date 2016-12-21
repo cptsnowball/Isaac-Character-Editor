@@ -327,5 +327,63 @@
         <file>Resources/UI/DefaultCharacterMenuRebirth.png</file>
         <file>Resources/Fonts/Godmode.ttf</file>
         <file>Resources/Buttons/FolderButton.png</file>
+        <file>Resources/Trinkets/Trinket_1000.png</file>
+        <file>Resources/Trinkets/Trinket_1001.png</file>
+        <file>Resources/Trinkets/Trinket_1002.png</file>
+        <file>Resources/Trinkets/Trinket_1003.png</file>
+        <file>Resources/Trinkets/Trinket_1004.png</file>
+        <file>Resources/Trinkets/Trinket_1005.png</file>
+        <file>Resources/Trinkets/Trinket_1006.png</file>
+        <file>Resources/Trinkets/Trinket_1007.png</file>
+        <file>Resources/Trinkets/Trinket_1008.png</file>
+        <file>Resources/Trinkets/Trinket_1009.png</file>
+        <file>Resources/Trinkets/Trinket_1010.png</file>
+        <file>Resources/Trinkets/Trinket_1011.png</file>
+        <file>Resources/Trinkets/Trinket_1012.png</file>
+        <file>Resources/Trinkets/Trinket_1013.png</file>
+        <file>Resources/Trinkets/Trinket_1014.png</file>
+        <file>Resources/Trinkets/Trinket_1015.png</file>
+        <file>Resources/Trinkets/Trinket_1016.png</file>
+        <file>Resources/Trinkets/Trinket_1017.png</file>
+        <file>Resources/Trinkets/Trinket_1018.png</file>
+        <file>Resources/Cards/CardAgainstHumanity.png</file>
+        <file>Resources/Cards/ChaosCard.png</file>
+        <file>Resources/Cards/CreditCard.png</file>
+        <file>Resources/Cards/Rune1x.png</file>
+        <file>Resources/Characters/Bethany.png</file>
+        <file>Resources/Characters/Esau.png</file>
+        <file>Resources/Characters/Jacob.png</file>
+        <file>Resources/Spacebar/Spacebar_1003.png</file>
+        <file>Resources/Spacebar/Spacebar_1004.png</file>
+        <file>Resources/Spacebar/Spacebar_1012.png</file>
+        <file>Resources/Spacebar/Spacebar_1013.png</file>
+        <file>Resources/Spacebar/Spacebar_1015.png</file>
+        <file>Resources/Spacebar/Spacebar_1024.png</file>
+        <file>Resources/Spacebar/Spacebar_1025.png</file>
+        <file>Resources/Spacebar/Spacebar_1027.png</file>
+        <file>Resources/Spacebar/Spacebar_1029.png</file>
+        <file>Resources/Spacebar/Spacebar_1031.png</file>
+        <file>Resources/Spacebar/Spacebar_1032.png</file>
+        <file>Resources/Spacebar/Spacebar_1051.png</file>
+        <file>Resources/Spacebar/Spacebar_1052.png</file>
+        <file>Resources/Spacebar/Spacebar_1056.png</file>
+        <file>Resources/Spacebar/Spacebar_1067.png</file>
+        <file>Resources/Spacebar/Spacebar_1070.png</file>
+        <file>Resources/Spacebar/Spacebar_1072.png</file>
+        <file>Resources/Spacebar/Spacebar_1078.png</file>
+        <file>Resources/Spacebar/Spacebar_1082.png</file>
+        <file>Resources/Spacebar/Spacebar_1083.png</file>
+        <file>Resources/Spacebar/Spacebar_1085.png</file>
+        <file>Resources/Spacebar/Spacebar_1086.png</file>
+        <file>Resources/Spacebar/Spacebar_1089.png</file>
+        <file>Resources/Familiars/Familiar_1014.png</file>
+        <file>Resources/Familiars/Familiar_1016.png</file>
+        <file>Resources/Familiars/Familiar_1028.png</file>
+        <file>Resources/Familiars/Familiar_1034.png</file>
+        <file>Resources/Familiars/Familiar_1055.png</file>
+        <file>Resources/Familiars/Familiar_1059.png</file>
+        <file>Resources/Familiars/Familiar_1062.png</file>
+        <file>Resources/Familiars/Familiar_1076.png</file>
+        <file>Resources/Familiars/Familiar_1092.png</file>
     </qresource>
 </RCC>

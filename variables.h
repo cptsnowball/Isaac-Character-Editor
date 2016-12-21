@@ -35,6 +35,9 @@ extern Character _blackJudas;
 extern Character _lilith;
 extern Character _theKeeper;
 extern Character _apollyon;
+extern Character _bethany;
+extern Character _jacob;
+extern Character _esau;
 
 extern std::array<Character, constants::UniqueCharacterCount> characterList;
 extern std::map<Characters, Character> characterMap;

@@ -5,7 +5,8 @@
 enum class Game {
     Rebirth,
     Afterbirth,
-    AfterbirthPlus
+    AfterbirthPlus,
+    Antibirth
 };
 
 QString StringFromGame(Game game);

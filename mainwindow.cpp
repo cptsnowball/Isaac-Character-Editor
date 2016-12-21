@@ -72,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Sets the path, the game combobox and draws the background.
     GenerateGameComboBox();
-    this->LoadSettings();
+    LoadSettings();
 
     SetUpHealthAndConsumableLabels();
     GenerateCharacterComboBox();
@@ -81,14 +81,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Generating ComboBoxes resets the spacebar item to 0
     //Workaround to set it to Isaac's spacebar item.
-    for(int i = 0; i < this->ui->spacebarComboBox->count(); ++i)
-        if(ui->spacebarComboBox->itemText(i) == "The D6")
+    for (int i = 0; i < this->ui->spacebarComboBox->count(); ++i)
+        if (ui->spacebarComboBox->itemText(i) == "The D6")
             this->ui->spacebarComboBox->setCurrentIndex(i);
 }
 
 MainWindow::~MainWindow()
 {
-    this->SaveSettings();
+    SaveSettings();
     delete ui;
 
     delete this->_healthValidator;
@@ -171,6 +171,12 @@ void MainWindow::GenerateCharacterComboBox()
             for (int i = 0; i < constants::AfterbirthPlusCharacterCount; ++i)
                 characterNames.append(characterMap.at(static_cast<Characters>(i)).Name);
             break;
+        case Game::Antibirth:
+            for (int i = 0; i < constants::RebirthCharacterCount; ++i)
+                characterNames.append(characterMap.at(static_cast<Characters>(i)).Name);
+            for (int i = constants::RebirthCharacterCount; i < constants::AntibirthCharacterCount; ++i)
+                characterNames.append(characterMap.at(static_cast<Characters>(i + constants::AntibirthOffset)).Name);
+            break;
     }
 
     auto previousCharacter = static_cast<int>(currentCharacter);
@@ -179,7 +185,12 @@ void MainWindow::GenerateCharacterComboBox()
     this->ui->characterComboBox->clear();
     this->ui->characterComboBox->addItems(characterNames);
     if (previousIndex > 0 && previousIndex < this->ui->characterComboBox->count())
-        this->ui->characterComboBox->setCurrentIndex(previousIndex);
+    {
+        if (!(game != Game::Antibirth && previousCharacter >= constants::AfterbirthPlusCharacterCount))
+            this->ui->characterComboBox->setCurrentIndex(previousIndex);
+        else if (game == Game::Antibirth && previousCharacter >= constants::RebirthCharacterCount)
+            this->ui->characterComboBox->setCurrentIndex(previousIndex);
+    }
 }
 
 void MainWindow::GenerateSpacebarComboBox()
@@ -287,6 +298,36 @@ void MainWindow::GenerateSpacebarComboBox()
         });
     }
 
+    if (game == Game::Antibirth)
+    {
+        spacebarList.append(QStringList {
+            "Sulfur",
+            "Fortune Cookie",
+            "Book of Despair",
+            "D12 ",
+            "Bowl of Tears",
+            "Damocles",
+            "Free Lemonade",
+            "Red Key",
+            "Black Mushroom",
+            "Book of Virtues",
+            "Alabaster Box",
+            "Mom's Bracelet",
+            "The Scooper",
+            "Eternal D6",
+            "Voodoo Pin",
+            "Sharp Key",
+            "Mega Mush",
+            "Meat Cleaver",
+            "Stitches",
+            "R Key",
+            "Eraser",
+            "Yuck Heart",
+            "Magic Skin"
+
+        });
+    }
+
     if (sortAlphabetically)
     {
         //Removes and inserts "None" so it's always the first, regardless of sorting.
@@ -344,7 +385,7 @@ void MainWindow::GenerateCardComboBox()
         "Suicide King" //41
     };
 
-    if(game == Game::Afterbirth || game == Game::AfterbirthPlus)
+    if (game == Game::Afterbirth || game == Game::AfterbirthPlus)
     {
         //Blank Rune is ID 36 in Afterbirth, moving the other Rebirth cards' IDs up by one
         cardList.insert(36, "Blank Rune"); //36
@@ -353,6 +394,17 @@ void MainWindow::GenerateCardComboBox()
             "? Card", //43
             "Dice Shard", //44
             "Emergency Contact" //45
+        });
+    }
+
+    if (game == Game::Antibirth)
+    {
+        cardList.append(QStringList {
+            "Rune of Gebo", //60
+            "Rune of Kenaz", //61
+            "Rune of Fehu", //62
+            "Rune of Ingwaz", //63
+            "Rune of Sowilo" //64
         });
     }
 
@@ -426,7 +478,7 @@ void MainWindow::GenerateTrinketComboBox()
         "The Left Hand"
     };
 
-    if(game == Game::Afterbirth || game == Game::AfterbirthPlus)
+    if (game == Game::Afterbirth || game == Game::AfterbirthPlus)
     {
         trinketList.append(QStringList {
             "Shiny Rock",
@@ -461,7 +513,32 @@ void MainWindow::GenerateTrinketComboBox()
         });
     }
 
-    if(sortAlphabetically)
+    if (game == Game::Antibirth)
+    {
+        trinketList.append(QStringList {
+            "Jawbreaker",
+            "Chewed Pen",
+            "Blessed Penny",
+            "Broken Syringe",
+            "Exploded Firecracker",
+            "Giant Bean",
+            "A Lighter",
+            "Broken Padlock",
+            "Myosotis",
+            " 'M",
+            "Teardrop Charm",
+            "Apple of Sodom",
+            "Song of the Siren",
+            "Beth's Faith",
+            "Old Capacitator",
+            "Brain Worm",
+            "Perfection",
+            "Devil's Crown",
+            "Electric Penny"
+        });
+    }
+
+    if (sortAlphabetically)
     {
         //Removes and inserts "None" so it's always the first, regardless of sorting.
         trinketList.removeAt(0);
@@ -528,7 +605,8 @@ void MainWindow::GenerateGameComboBox()
     QStringList gameList {
         "Rebirth",
         "Afterbirth",
-        "Afterbirth+"
+        "Afterbirth+",
+        "Antibirth"
     };
 
     ReplaceComboBoxItems(this->ui->gameComboBox, gameList);
@@ -576,7 +654,15 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
 {
     //Happens when the ComboBox is cleared.
     if (characterToSet == -1) return;
-    currentCharacter = static_cast<Characters>(characterToSet);
+    //Prevents an Antibirth crash.
+    else if (characterToSet >= this->ui->characterComboBox->count()) return;
+
+    if (game != Game::Antibirth) currentCharacter = static_cast<Characters>(characterToSet);
+    else
+    {
+        if (characterToSet >= constants::RebirthCharacterCount) currentCharacter = static_cast<Characters>(characterToSet + constants::AntibirthOffset);
+        else currentCharacter = static_cast<Characters>(characterToSet);
+    }
 
     auto character = characterMap.at(currentCharacter);
 
@@ -638,7 +724,7 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
 
 void MainWindow::SetRedHearts(QString value)
 {
-    Character* character = &characterMap.at(currentCharacter);
+    auto character = &characterMap.at(currentCharacter);
     character->RedHearts = value.toInt();
     this->_draw.Health(this->_heartLabels, character->RedHearts, character->SoulHearts, character->BlackHearts,
                        currentCharacter == Characters::TheKeeper);
@@ -646,7 +732,7 @@ void MainWindow::SetRedHearts(QString value)
 
 void MainWindow::SetSoulHearts(QString value)
 {
-    Character* character = &characterMap.at(currentCharacter);
+    auto character = &characterMap.at(currentCharacter);
     character->SoulHearts = value.toInt();
     this->_draw.Health(this->_heartLabels, character->RedHearts, character->SoulHearts, character->BlackHearts,
                        currentCharacter == Characters::TheKeeper);
@@ -654,7 +740,7 @@ void MainWindow::SetSoulHearts(QString value)
 
 void MainWindow::SetBlackHearts(QString value)
 {
-    Character* character = &characterMap.at(currentCharacter);
+    auto character = &characterMap.at(currentCharacter);
     character->BlackHearts = value.toInt();
     this->_draw.Health(this->_heartLabels, character->RedHearts, character->SoulHearts, character->BlackHearts,
                        currentCharacter == Characters::TheKeeper);
@@ -662,31 +748,38 @@ void MainWindow::SetBlackHearts(QString value)
 
 void MainWindow::SetCoins(QString value)
 {
-    Character* character = &characterMap.at(currentCharacter);
-    character->Coins = value.toInt();
+    characterMap.at(currentCharacter).Coins = value.toInt();
+
+    //Jacob & Esau consumable syncing.
+    if (currentCharacter == Characters::Jacob) characterMap.at(Characters::Esau).Coins = value.toInt();
+    else if (currentCharacter == Characters::Esau) characterMap.at(Characters::Jacob).Coins = value.toInt();
 }
 
 void MainWindow::SetBombs(QString value)
 {
-    Character* character = &characterMap.at(currentCharacter);
-    character->Bombs = value.toInt();
+    characterMap.at(currentCharacter).Bombs = value.toInt();
+
+    if (currentCharacter == Characters::Jacob) characterMap.at(Characters::Esau).Bombs = value.toInt();
+    else if (currentCharacter == Characters::Esau) characterMap.at(Characters::Jacob).Bombs = value.toInt();
 }
 
 void MainWindow::SetKeys(QString value)
 {
-    Character* character = &characterMap.at(currentCharacter);
-    character->Keys = value.toInt();
+    characterMap.at(currentCharacter).Keys = value.toInt();
+
+    if (currentCharacter == Characters::Jacob) characterMap.at(Characters::Esau).Keys = value.toInt();
+    else if (currentCharacter == Characters::Esau) characterMap.at(Characters::Jacob).Keys = value.toInt();
 }
 
 void MainWindow::SetItems()
 {
-    Character* character = &characterMap.at(currentCharacter);
+    auto character = &characterMap.at(currentCharacter);
     this->ui->itemTextEdit->setPlainText(character->Items.join(", "));
 }
 
 void MainWindow::SetSpacebar(QString value)
 {
-    Character* character = &characterMap.at(currentCharacter);
+    auto character = &characterMap.at(currentCharacter);
     int spacebar = spacebarMap[value];
     character->Spacebar = spacebar;
     this->_draw.Spacebar(this->ui->spacebarImageLabel, spacebar);
@@ -695,14 +788,16 @@ void MainWindow::SetSpacebar(QString value)
 
 void MainWindow::SetCard(int cardIndex)
 {
-    Character* character = &characterMap.at(currentCharacter);
+    auto character = &characterMap.at(currentCharacter);
+    //Antibirth cards are 19 IDs ahead of Rebirth ones.
+    if (game == Game::Antibirth && cardIndex > 40) cardIndex += 19;
     character->Card = cardIndex;
     this->_draw.Card(this->ui->cardImageLabel, cardIndex);
 }
 
 void MainWindow::SetTrinket(QString value)
 {
-    Character* character = &characterMap.at(currentCharacter);
+    auto character = &characterMap.at(currentCharacter);
     int trinket = trinketMap[value];
     character->Trinket = trinket;
     this->_draw.Trinket(this->ui->trinketImageLabel, trinket);
@@ -712,35 +807,35 @@ void MainWindow::SetCostume(int costumeIndex)
 {
     //Blame Rebirth/Afterbirth switching.
     if (costumeIndex < 0) costumeIndex = 0;
-    Character* character = &characterMap.at(currentCharacter);
+    auto character = &characterMap.at(currentCharacter);
     character->Costume = costumeIndex;
 }
 
 void MainWindow::SetSkinColor(int skinColorIndex)
 {
     //Uses (skin color - 1) because the colors start at -1 as opposed to 0.
-    Character* character = &characterMap.at(currentCharacter);
+    auto character = &characterMap.at(currentCharacter);
     character->SkinColor = skinColorIndex - 1;
 }
 
 void MainWindow::SetTears(int checkState)
 {
-    Character* character = &characterMap.at(currentCharacter);
+    auto character = &characterMap.at(currentCharacter);
     if(checkState == Qt::Checked) character->CanShoot = true;
     else if(checkState == Qt::Unchecked) character->CanShoot = false;
 }
 
 void MainWindow::PillCheckBoxChanged(int checkState)
 {
-    Character* character = &characterMap.at(currentCharacter);
-    if(checkState == Qt::Checked)
+    auto character = &characterMap.at(currentCharacter);
+    if (checkState == Qt::Checked)
     {
-        if(this->ui->cardCheckBox->isChecked())
+        if (this->ui->cardCheckBox->isChecked())
             this->ui->cardCheckBox->setChecked(false);
         character->Pill = 1;
         this->_draw.Pill(this->ui->cardImageLabel);
     }
-    else if(checkState == Qt::Unchecked)
+    else if (checkState == Qt::Unchecked)
     {
         character->Pill = 0;
         this->ui->cardImageLabel->clear();
@@ -749,13 +844,13 @@ void MainWindow::PillCheckBoxChanged(int checkState)
 
 void MainWindow::CardCheckBoxChanged(int checkState)
 {
-    if(checkState == Qt::Checked)
+    if (checkState == Qt::Checked)
     {
-        if(this->ui->pillCheckBox->isChecked())
+        if (this->ui->pillCheckBox->isChecked())
             this->ui->pillCheckBox->setChecked(false);
         this->ui->cardComboBox->setEnabled(true);
     }
-    else if(checkState == Qt::Unchecked)
+    else if (checkState == Qt::Unchecked)
     {
         this->ui->cardComboBox->setCurrentIndex(0);
         this->ui->cardComboBox->setEnabled(false);
@@ -764,9 +859,9 @@ void MainWindow::CardCheckBoxChanged(int checkState)
 
 void MainWindow::TrinketCheckBoxChanged(int checkState)
 {
-    if(checkState == Qt::Checked)
+    if (checkState == Qt::Checked)
         this->ui->trinketComboBox->setEnabled(true);
-    else if(checkState == Qt::Unchecked)
+    else if (checkState == Qt::Unchecked)
     {
         this->ui->trinketComboBox->setCurrentIndex(0);
         this->ui->trinketComboBox->setEnabled(false);
@@ -775,27 +870,35 @@ void MainWindow::TrinketCheckBoxChanged(int checkState)
 
 void MainWindow::SortCheckBoxChanged(int checkState)
 {
-    if(checkState == Qt::Checked) sortAlphabetically = true;
-    else if(checkState == Qt::Unchecked) sortAlphabetically = false;
+    if (checkState == Qt::Checked) sortAlphabetically = true;
+    else if (checkState == Qt::Unchecked) sortAlphabetically = false;
     GenerateComboBoxes();
 }
 
 void MainWindow::GameComboBoxChanged(int gameIndex)
 {
+    auto prev = game;
     game = static_cast<Game>(gameIndex);
     switch (game)
     {
         case Game::Rebirth:
+        case Game::Antibirth:
         //Enable tears for all Rebirth characters because canShoot is Afterbirth exclusive
         //Leave Afterbirth characters intact because they need Afterbirth enabled anyways.
             for (int i = 0; i < constants::RebirthCharacterCount; ++i)
                 characterMap.at(static_cast<Characters>(i)).CanShoot = true;
             this->ui->canShootCheckBox->setEnabled(false);
+            this->ui->nameImagesCheckBox->setEnabled(false);
             break;
         case Game::Afterbirth:
-        case Game::AfterbirthPlus:
             this->ui->canShootCheckBox->setEnabled(true);
+            this->ui->nameImagesCheckBox->setEnabled(true);
             break;
+        //Placeholder stuff until Afterbirth+.
+        case Game::AfterbirthPlus:
+            QMessageBox(QMessageBox::Warning, "Information", "Afterbirth+ is not yet supported or you're using an outdated version of Isaac Character Editor.").exec();
+            this->ui->gameComboBox->setCurrentIndex(static_cast<int>(prev));
+            return;
     }
 
     GenerateCharacterComboBox();
@@ -878,7 +981,7 @@ void MainWindow::FolderButtonClicked()
 void MainWindow::PurgeButtonClicked()
 {
     XML(this->_isaacPath).DeleteXML();
-    if (nameImagesEnabled) PNG(this->_isaacPath).DeletePNGs();
+    if (nameImagesEnabled && this->ui->nameImagesCheckBox->isEnabled()) PNG(this->_isaacPath).DeletePNGs();
 }
 
 void MainWindow::ReadButtonClicked()
@@ -890,7 +993,7 @@ void MainWindow::ExportButtonClicked()
 {
     godmodeEnabled = DetectGodmode();
     XML(this->_isaacPath).WriteXML();
-    if (nameImagesEnabled) PNG(this->_isaacPath).SavePNGs();
+    if (nameImagesEnabled && this->ui->nameImagesCheckBox->isEnabled()) PNG(this->_isaacPath).SavePNGs();
 }
 
 void MainWindow::RandomSpacebarButtonClicked()

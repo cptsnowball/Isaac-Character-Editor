@@ -799,7 +799,7 @@
    <widget class="QCheckBox" name="nameImagesCheckBox">
     <property name="geometry">
      <rect>
-      <x>311</x>
+      <x>310</x>
       <y>194</y>
       <width>100</width>
       <height>19</height>

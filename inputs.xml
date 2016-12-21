@@ -271,157 +271,225 @@
   <input userinput="snack" id="346" name="A Snack" />
 
   <input userinput="toxicshock,toxic" id="350" name="Toxic Shock" afterbirth="true" />
-  <input userinput="bomberboy,bomberman" id="353" name="Bomber Boy" afterbirth="true"/>
-  <input userinput="crackjacks" id="354" name="Crack Jacks" afterbirth="true"/>
-  <input userinput="pearls" id="355" name="Mom's Pearls" afterbirth="true"/>
-  <input userinput="carbattery" id="356" name="Car Battery" afterbirth="true"/>
-  <input userinput="wiz,wizard,dunce,duncecap" id="358" name="The Wiz" afterbirth="true"/>
-  <input userinput="8inchnails,eightinchnails,nails" id="359" name="8 Inch Nails" afterbirth="true"/>
-  <input userinput="incubus" id="360" name="Incubus" afterbirth="true"/>
-  <input userinput="fatesreward" id="361" name="Fate's Reward" afterbirth="true"/>
-  <input userinput="lilchest,chest" id="362" name="Lil Chest" afterbirth="true"/>
-  <input userinput="swornprotector,sworprotector" id="363" name="Sworn Protector" afterbirth="true"/>
-  <input userinput="friendzone,friendzonedagain" id="364" name="Friend Zone" afterbirth="true"/>
+  <input userinput="bomberboy,bomberman" id="353" name="Bomber Boy" afterbirth="true" />
+  <input userinput="crackjacks" id="354" name="Crack Jacks" afterbirth="true" />
+  <input userinput="pearls" id="355" name="Mom's Pearls" afterbirth="true" />
+  <input userinput="carbattery" id="356" name="Car Battery" afterbirth="true" />
+  <input userinput="wiz,wizard,dunce,duncecap" id="358" name="The Wiz" afterbirth="true" />
+  <input userinput="8inchnails,eightinchnails,nails" id="359" name="8 Inch Nails" afterbirth="true" />
+  <input userinput="incubus" id="360" name="Incubus" afterbirth="true" />
+  <input userinput="fatesreward" id="361" name="Fate's Reward" afterbirth="true" />
+  <input userinput="lilchest,chest" id="362" name="Lil Chest" afterbirth="true" />
+  <input userinput="swornprotector,sworprotector" id="363" name="Sworn Protector" afterbirth="true" />
+  <input userinput="friendzone,friendzonedagain" id="364" name="Friend Zone" afterbirth="true" />
   <input userinput="lostfly" id="365" name="Lost Fly" afterbirth="true" />
-  <input userinput="scatterbombs" id="366" name="Scatter Bombs" afterbirth="true"/>
+  <input userinput="scatterbombs" id="366" name="Scatter Bombs" afterbirth="true" />
   <input userinput="stickybombs" id="367" name="Sticky Bombs" afterbirth="true" />
-  <input userinput="epiphora" id="368" name="Epiphora" afterbirth="true"/>
-  <input userinput="continuum,continum" id="369" name="Continuum" afterbirth="true"/>
-  <input userinput="mrdolly,dolly" id="370" name="Mr. Dolly" afterbirth="true"/>
+  <input userinput="epiphora" id="368" name="Epiphora" afterbirth="true" />
+  <input userinput="continuum,continum" id="369" name="Continuum" afterbirth="true" />
+  <input userinput="mrdolly,dolly" id="370" name="Mr. Dolly" afterbirth="true" />
   <input userinput="curseofthetower,curseoftower" id="371" name="Curse of the Tower" afterbirth="true" />
-  <input userinput="chargedbaby,chargebaby" id="372" name="Charged Baby" afterbirth="true"/>
-  <input userinput="deadeye,accuracyshot" id="373" name="Dead Eye" afterbirth="true"/>
-  <input userinput="holylight" id="374" name="Holy Light!" afterbirth="true"/>
-  <input userinput="hosthat,nicehat" id="375" name="Host Hat" afterbirth="true"/>
-  <input userinput="restock" id="376" name="Restock" afterbirth="true"/>
-  <input userinput="burstingsack,spiderlove" id="377" name="Bursting Sack" afterbirth="true"/>
+  <input userinput="chargedbaby,chargebaby" id="372" name="Charged Baby" afterbirth="true" />
+  <input userinput="deadeye,accuracyshot" id="373" name="Dead Eye" afterbirth="true" />
+  <input userinput="holylight" id="374" name="Holy Light!" afterbirth="true" />
+  <input userinput="hosthat,nicehat" id="375" name="Host Hat" afterbirth="true" />
+  <input userinput="restock" id="376" name="Restock" afterbirth="true" />
+  <input userinput="burstingsack,spiderlove" id="377" name="Bursting Sack" afterbirth="true" />
   <input userinput="no2,numbertwo,number2" id="378" name="No. 2" afterbirth="true" />
-  <input userinput="pupuladuplex,pupula,wideshot" id="379" name="Pupula Duplex" afterbirth="true"/>
-  <input userinput="paytoplay,pay2play,p2p" id="380" name="Pay to Play" afterbirth="true"/>
-  <input userinput="edensblessing" id="381" name="Eden's Blessing" afterbirth="true"/>
-  <input userinput="lilgurdy,gurdy,littlegurdy" id="384" name="Lil Gurdy" afterbirth="true"/>
+  <input userinput="pupuladuplex,pupula,wideshot" id="379" name="Pupula Duplex" afterbirth="true" />
+  <input userinput="paytoplay,pay2play,p2p" id="380" name="Pay to Play" afterbirth="true" />
+  <input userinput="edensblessing" id="381" name="Eden's Blessing" afterbirth="true" />
+  <input userinput="lilgurdy,gurdy,littlegurdy" id="384" name="Lil Gurdy" afterbirth="true" />
   <input userinput="bumbo" id="385" name="Bumbo" afterbirth="true" />
-  <input userinput="censer,censor" id="387" name="Censer" afterbirth="true"/>
-  <input userinput="keybum" id="388" name="Key Bum" afterbirth="true"/>
-  <input userinput="runebag" id="389" name="Rune Bag" afterbirth="true"/>
+  <input userinput="censer,censor" id="387" name="Censer" afterbirth="true" />
+  <input userinput="keybum" id="388" name="Key Bum" afterbirth="true" />
+  <input userinput="runebag" id="389" name="Rune Bag" afterbirth="true" />
   <input userinput="seraphim" id="390" name="Seraphim" afterbirth="true" />
-  <input userinput="betrayal" id="391" name="Betrayal" afterbirth="true"/>
-  <input userinput="zodiac" id="392" name="Zodiac" afterbirth="true"/>
-  <input userinput="serpentskiss,serpentkiss" id="393" name="Serpent's Kiss" afterbirth="true"/>
-  <input userinput="marked,crosshair" id="394" name="Marked" afterbirth="true"/>
-  <input userinput="techx,tech10,techten" id="395" name="Tech X" afterbirth="true"/>
-  <input userinput="ventriclerazor,ventriclerazer" id="396" name="Ventricle Razor" afterbirth="true"/>
-  <input userinput="tractorbeam,alienprobe,ayylmao" id="397" name="Tractor Beam" afterbirth="true"/>
+  <input userinput="betrayal" id="391" name="Betrayal" afterbirth="true" />
+  <input userinput="zodiac" id="392" name="Zodiac" afterbirth="true" />
+  <input userinput="serpentskiss,serpentkiss" id="393" name="Serpent's Kiss" afterbirth="true" />
+  <input userinput="marked,crosshair" id="394" name="Marked" afterbirth="true" />
+  <input userinput="techx,tech10,techten" id="395" name="Tech X" afterbirth="true" />
+  <input userinput="ventriclerazor,ventriclerazer" id="396" name="Ventricle Razor" afterbirth="true" />
+  <input userinput="tractorbeam,alienprobe,ayylmao" id="397" name="Tractor Beam" afterbirth="true" />
   <input userinput="godsflesh" id="398" name="God's Flesh" afterbirth="true" />
-  <input userinput="mawofthevoid,mawofvoid,maw" id="399" name="Maw of the Void" afterbirth="true"/>
-  <input userinput="spearofdestiny,spear" id="400" name="Spear of Destiny" afterbirth="true"/>
-  <input userinput="explosivo,explosive" id="401" name="Explosivo" afterbirth="true"/>
-  <input userinput="chaos,kaos" id="402" name="Chaos" afterbirth="true"/>
+  <input userinput="mawofthevoid,mawofvoid,maw" id="399" name="Maw of the Void" afterbirth="true" />
+  <input userinput="spearofdestiny,spear" id="400" name="Spear of Destiny" afterbirth="true" />
+  <input userinput="explosivo,explosive" id="401" name="Explosivo" afterbirth="true" />
+  <input userinput="chaos,kaos" id="402" name="Chaos" afterbirth="true" />
   <input userinput="spidermod" id="403" name="Spider Mod" afterbirth="true" />
-  <input userinput="fartingbaby,fartbaby" id="404" name="Farting Baby" afterbirth="true"/>
-  <input userinput="gbbug,gamebreakingbug,bug" id="405" name="GB Bug" afterbirth="true"/>
-  <input userinput="purity" id="407" name="Purity" afterbirth="true"/>
-  <input userinput="athame" id="408" name="Athame" afterbirth="true"/>
-  <input userinput="emptyvessel" id="409" name="Empty Vessel" afterbirth="true"/>
-  <input userinput="evileye,eyeshot" id="410" name="Evil Eye" afterbirth="true"/>
-  <input userinput="lustyblood,lustybloody" id="411" name="Lusty Blood" afterbirth="true"/>
-  <input userinput="cambionconception,cambion" id="412" name="Cambion Conception" afterbirth="true"/>
-  <input userinput="immaculateconception,immaculate" id="413" name="Immaculate Conception" afterbirth="true"/>
-  <input userinput="moreoptions,theresoptions2,goldoptions" id="414" name="More Options" afterbirth="true"/>
+  <input userinput="fartingbaby,fartbaby" id="404" name="Farting Baby" afterbirth="true" />
+  <input userinput="gbbug,gamebreakingbug,bug" id="405" name="GB Bug" afterbirth="true" />
+  <input userinput="purity" id="407" name="Purity" afterbirth="true" />
+  <input userinput="athame" id="408" name="Athame" afterbirth="true" />
+  <input userinput="emptyvessel" id="409" name="Empty Vessel" afterbirth="true" />
+  <input userinput="evileye,eyeshot" id="410" name="Evil Eye" afterbirth="true" />
+  <input userinput="lustyblood,lustybloody" id="411" name="Lusty Blood" afterbirth="true" />
+  <input userinput="cambionconception,cambion" id="412" name="Cambion Conception" afterbirth="true" />
+  <input userinput="immaculateconception,immaculate" id="413" name="Immaculate Conception" afterbirth="true" />
+  <input userinput="moreoptions,theresoptions2,goldoptions" id="414" name="More Options" afterbirth="true" />
   <input userinput="crownofthelight,crownoflight" id="415" name="Crown of the Light" afterbirth="true" />
   <input userinput="deeppockets" id="416" name="Deep Pockets" afterbirth="true" />
-  <input userinput="succubus" id="417" name="Succubus" afterbirth="true"/>
-  <input userinput="fruitcake,fruit,fruitcaek" id="418" name="Fruit Cake" afterbirth="true"/>
+  <input userinput="succubus" id="417" name="Succubus" afterbirth="true" />
+  <input userinput="fruitcake,fruit,fruitcaek" id="418" name="Fruit Cake" afterbirth="true" />
   <input userinput="blackpowder" id="420" name="Black Powder" afterbirth="true" />
-  <input userinput="circleofprotection" id="423" name="Circle of Protection" afterbirth="true"/>
-  <input userinput="sackhead,sack" id="424" name="Sack Head" afterbirth="true"/>
-  <input userinput="nightlight" id="425" name="Night Light" afterbirth="true"/>
+  <input userinput="circleofprotection" id="423" name="Circle of Protection" afterbirth="true" />
+  <input userinput="sackhead,sack" id="424" name="Sack Head" afterbirth="true" />
+  <input userinput="nightlight" id="425" name="Night Light" afterbirth="true" />
   <input userinput="obsessedfan" id="426" name="Obsessed Fan" afterbirth="true" />
-  <input userinput="pjs,pj,pjsalt" id="428" name="PJs" afterbirth="true"/>
+  <input userinput="pjs,pj,pjsalt" id="428" name="PJs" afterbirth="true" />
   <input userinput="headofthekeeper" id="429" name="Head of the Keeper" afterbirth="true" />
   <input userinput="papafly" id="430" name="Papa Fly" afterbirth="true" />
-  <input userinput="multidimensionalbaby,interdimensionalbaby" id="431" name="Multidimensional Baby" afterbirth="true"/>
-  <input userinput="glitterbombs,kawaiibombs,pinkbombs" id="432" name="Glitter Bombs" afterbirth="true"/>
-  <input userinput="myshadow" id="433" name="My Shadow" afterbirth="true"/>
+  <input userinput="multidimensionalbaby,interdimensionalbaby" id="431" name="Multidimensional Baby" afterbirth="true" />
+  <input userinput="glitterbombs,kawaiibombs,pinkbombs" id="432" name="Glitter Bombs" afterbirth="true" />
+  <input userinput="myshadow" id="433" name="My Shadow" afterbirth="true" />
   <input userinput="lilloki,littleloki" id="435" name="Lil Loki" afterbirth="true" />
   <input userinput="milk" id="436" name="Milk!" afterbirth="true" />
-  <input userinput="binky,pacifier" id="438" name="Binky" afterbirth="true"/>
-  <input userinput="kidneystone,mattskidneystone" id="440" name="Kidney Stone" afterbirth="true"/>
+  <input userinput="binky,pacifier" id="438" name="Binky" afterbirth="true" />
+  <input userinput="kidneystone,mattskidneystone" id="440" name="Kidney Stone" afterbirth="true" />
 
-  <input userinput="bible" spacebar="true" name="The Bible"/>
-  <input userinput="bookofbelial" spacebar="true" name="The Book of Belial"/>
-  <input userinput="necronomicon" spacebar="true" name="The Necronomicon"/>
-  <input userinput="poop,shit" spacebar="true" name="The Poop"/>
-  <input userinput="mrboom" spacebar="true" name="Mr. Boom"/>
-  <input userinput="tammyshead" spacebar="true" name="Tammy's Head"/>
-  <input userinput="bra" spacebar="true" name="Mom's Bra"/>
-  <input userinput="kamikaze" spacebar="true" name="Kamikaze"/>
-  <input userinput="pad" spacebar="true" name="Mom's Pad"/>
-  <input userinput="bobsrottenhead" spacebar="true" name="Bob's Rotten Head"/>
-  <input userinput="teleport" spacebar="true" name="Teleport"/>
-  <input userinput="yumheart" spacebar="true" name="Yum Heart"/>
-  <input userinput="doctorsremote" spacebar="true" name="Doctor's Remote"/>
-  <input userinput="shoopdawoop,shoopdawhoop" spacebar="true" name="Shoop Da Whoop"/>
-  <input userinput="lemonmishap" spacebar="true" name="Lemon Mishap"/>
-  <input userinput="bookofshadows" spacebar="true" name="Book of Shadows"/>
-  <input userinput="anarchistscookbook,anarchistcookbook,cookbook" spacebar="true" name="Anarchist Cookbook"/>
-  <input userinput="hourglass" spacebar="true" name="The Hourglass"/>
-  <input userinput="mylittleunicorn,mylittlepony" spacebar="true" name="My Little Unicorn"/>
-  <input userinput="bookofrevelations" spacebar="true" name="Book of Revelations"/>
-  <input userinput="nail" spacebar="true" name="The Nail"/>
-  <input userinput="weneedtogodeeper,shovel" spacebar="true" name="We Need To Go Deeper"/>
-  <input userinput="deckofcards" spacebar="true" name="Deck of Cards"/>
-  <input userinput="monstrostooth" spacebar="true" name="Monstro's Tooth"/>
-  <input userinput="gamekid" spacebar="true" name="The Gamekid"/>
-  <input userinput="bookofsin" spacebar="true" name="The Book of Sin"/>
-  <input userinput="bottleofpills" spacebar="true" name="Mom's Bottle of Pills"/>
-  <input userinput="d6,d69,dice" spacebar="true" name="The D6"/>
-  <input userinput="pinkingshears" spacebar="true" name="Pinking Shears"/>
-  <input userinput="bean" spacebar="true" name="The Bean"/>
-  <input userinput="monstermanual,monstermanuel" spacebar="true" name="Monster Manual"/>
-  <input userinput="deadseascrolls" spacebar="true" name="Dead Sea Scrolls"/>
-  <input userinput="razorblade,razorsharp" spacebar="true" name="Razor Blade"/>
-  <input userinput="forgetmenow" spacebar="true" name="Forget Me Now"/>
-  <input userinput="pony" spacebar="true" name="A Pony"/>
-  <input userinput="guppyspaw" spacebar="true" name="Guppy's Paw"/>
-  <input userinput="ivbag" spacebar="true" name="IV Bag"/>
-  <input userinput="bestfriend" spacebar="true" name="Best Friend"/>
-  <input userinput="remotedetonator" spacebar="true" name="Remote Detonator"/>
-  <input userinput="guppyshead" spacebar="true" name="Guppy's Head"/>
-  <input userinput="prayercard" spacebar="true" name="Prayer Card"/>
-  <input userinput="notchedaxe" spacebar="true" name="Notched Axe"/>
-  <input userinput="crystalball" spacebar="true" name="Crystal Ball"/>
-  <input userinput="crackthesky" spacebar="true" name="Crack The Sky"/>
-  <input userinput="candle,bluecandle" spacebar="true" name="The Candle"/>
-  <input userinput="d20" spacebar="true" name="D20"/>
-  <input userinput="spiderbutt" spacebar="true" name="Spider Butt"/>
-  <input userinput="dadskey" spacebar="true" name="Dad's Key"/>
-  <input userinput="portableslot" spacebar="true" name="Portable Slot"/>
-  <input userinput="whitepony" spacebar="true" name="White Pony"/>
-  <input userinput="bloodrights" spacebar="true" name="Blood Rights"/>
-  <input userinput="telepathyfordummies" spacebar="true" name="Telepathy For Dummies"/>
-  <input userinput="howtojump,how2jump" spacebar="true" name="How To Jump"/>
-  <input userinput="d100" spacebar="true" name="D100"/>
-  <input userinput="d4" spacebar="true" name="D4"/>
-  <input userinput="d10,dio" spacebar="true" name="D10"/>
-  <input userinput="blankcard" spacebar="true" name="Blank Card"/>
-  <input userinput="bookofsecrets" spacebar="true" name="Book of Secrets"/>
-  <input userinput="boxofspiders" spacebar="true" name="Box of Spiders"/>
-  <input userinput="redcandle" spacebar="true" name="Red Candle"/>
-  <input userinput="jar" spacebar="true" name="The Jar"/>
-  <input userinput="flush" spacebar="true" name="Flush!"/>
-  <input userinput="satanicbible,stanicbible" spacebar="true" name="The Satanic Bible"/>
-  <input userinput="headofkrampus" spacebar="true" name="Head of Krampus"/>
-  <input userinput="butterbean" spacebar="true" name="Butter Bean"/>
-  <input userinput="magicfingers" spacebar="true" name="Magic Fingers"/>
-  <input userinput="converter" spacebar="true" name="Converter"/>
-  <input userinput="pandorasbox" spacebar="true" name="Pandora's Box"/>
-  <input userinput="unicornstump" spacebar="true" name="Unicorn Stump"/>
-  <input userinput="isaacstears,shittytammyshead" spacebar="true" name="Isaac's Tears"/>
-  <input userinput="undefined" spacebar="true" name="Undefined"/>
-  <input userinput="scissors" spacebar="true" name="Scissors"/>
-  <input userinput="breathoflife,trash" spacebar="true" name="Breath of Life"/>
-  <input userinput="boomerang" spacebar="true" name="Boomerang"/>
+  <input userinput="mucormycosis,mucormyosis,muc,mucor" id="1000" name="Mucormycosis" antibirth="true" />
+  <input userinput="2spooky,toospooky" id="1001" name="2Spooky" antibirth="true" />
+  <input userinput="schoolbag" id="1002" name="Schoolbag" antibirth="true" />
+  <input userinput="eyesore" id="1005" name="Eye Sore" antibirth="true" />
+  <input userinput="120volt" id="1006" name="120 Volt" antibirth="true" />
+  <input userinput="ithurts" id="1007" name="It Hurts" antibirth="true" />
+  <input userinput="almondmilk" id="1008" name="Almond Milk" antibirth="true" />
+  <input userinput="rockbottom" id="1009" name="Rock Bottom" antibirth="true" />
+  <input userinput="enigmabombs" id="1010" name="Enigma Bombs" antibirth="true" />
+  <input userinput="barofsoap,soap" id="1011" name="A Bar of Soap" antibirth="true" />
+  <input userinput="paschalcandle" id="1014" name="Paschal Candle" antibirth="true" />
+  <input userinput="bloodoath" id="1016" name="Blood Oath" antibirth="true" />
+  <input userinput="playdohcookie,playdoh" id="1017" name="Playdoh Cookie" antibirth="true" />
+  <input userinput="orphansocks,socks" id="1018" name="Orphan Socks" antibirth="true" />
+  <input userinput="eyeoftheoccult,occult" id="1019" name="Eye of the Occult" antibirth="true" />
+  <input userinput="immaculateheart" id="1020" name="Immaculate Heart" antibirth="true" />
+  <input userinput="monstrance" id="1021" name="Monstrance" antibirth="true" />
+  <input userinput="intruder" id="1022" name="The Intruder" antibirth="true" />
+  <input userinput="dirtymind" id="1023" name="Dirty Mind" antibirth="true" />
+  <input userinput="spiritsword" id="1026" name="Spirit Sword" antibirth="true" />
+  <input userinput="psyfly" id="1028" name="Psy Fly" antibirth="true" />
+  <input userinput="rocketinajar,rocket" id="1030" name="Rocket in a Jar" antibirth="true" />
+  <input userinput="jacobsladder,jacobladder" id="1033" name="Jacob's Ladder" antibirth="true" />
+  <input userinput="menorah" id="1034" name="Menorah" antibirth="true" />
+  <input userinput="sol" id="1035" name="Sol" antibirth="true" />
+  <input userinput="luna" id="1036" name="Luna" antibirth="true" />
+  <input userinput="mercurius" id="1037" name="Mercurius" antibirth="true" />
+  <input userinput="venus" id="1038" name="Venus" antibirth="true" />
+  <input userinput="terra" id="1039" name="Terra" antibirth="true" />
+  <input userinput="mars" id="1040" name="Mars" antibirth="true" />
+  <input userinput="jupiter" id="1041" name="Jupiter" antibirth="true" />
+  <input userinput="saturnus" id="1042" name="Saturnus" antibirth="true" />
+  <input userinput="uranus" id="1043" name="Uranus" antibirth="true" />
+  <input userinput="neptunus" id="1044" name="Neptunus" antibirth="true" />
+  <input userinput="pluto" id="1045" name="Pluto" antibirth="true" />
+  <input userinput="voodoohead,voodoo" id="1046" name="Voodoo Head" antibirth="true" />
+  <input userinput="eyedrops" id="1047" name="Eye Drops" antibirth="true" />
+  <input userinput="actofcontrition" id="1048" name="Act of Contrition" antibirth="true" />
+  <input userinput="membercard" id="1049" name="Member Card" antibirth="true" />
+  <input userinput="batterypack" id="1050" name="Battery Pack" antibirth="true" />
+  <input userinput="oculusrift,oculus" id="1053" name="Oculus Rift" antibirth="true" />
+  <input userinput="boiledbaby" id="1054" name="Boiled Baby" antibirth="true" />
+  <input userinput="freezerbaby" id="1055" name="Freezer Baby" antibirth="true" />
+  <input userinput="birdcage" id="1057" name="Bird Cage" antibirth="true" />
+  <input userinput="donkeyjawbone" id="1058" name="Donkey Jawbone" antibirth="true" />
+  <input userinput="lostsoul" id="1059" name="Lost Soul" antibirth="true" />
+  <input userinput="bloodbombs" id="1061" name="Blood Bombs" antibirth="true" />
+  <input userinput="lildumpy,littledumpy" id="1062" name="Lil' Dumpy" antibirth="true" />
+  <input userinput="birdseye,birdeye" id="1063" name="Bird's Eye" antibirth="true" />
+  <input userinput="lodestone" id="1064" name="Lodestone" antibirth="true" />
+  <input userinput="rottentomato" id="1065" name="Rotten Tomato" antibirth="true" />
+  <input userinput="birthright" id="1066" name="Birthright" antibirth="true" />
+  <input userinput="redstew" id="1068" name="Red Stew" antibirth="true" />
+  <input userinput="sausage,sosig" id="1069" name="Sausage" antibirth="true" />
+  <input userinput="boosterpack" id="1071" name="Booster Pack" antibirth="true" />
+  <input userinput="knifepiece1,knifepiece" id="1073" name="Knife Piece 1" antibirth="true" />
+  <input userinput="knifepiece2" id="1074" name="Knife Piece 2" antibirth="true" />
+  <input userinput="knifepiece3" id="1075" name="Knife Piece 3" antibirth="true" />
+  <input userinput="botfly" id="1076" name="Bot Fly" antibirth="true" />
+  <input userinput="luckyseven,lucky7" id="1077" name="Lucky Seven" antibirth="true" />
+  <input userinput="evilcharm" id="1079" name="Evil Charm" antibirth="true" />
+  <input userinput="stonebombs" id="1080" name="Stone Bombs" antibirth="true" />
+  <input userinput="knockoutdrops,knockout" id="1084" name="Knockout Drops" antibirth="true" />
+  <input userinput="akeldama" id="1088" name="Akeldama" antibirth="true" />
+  <input userinput="revelation" id="1090" name="Revelation" antibirth="true" />
+  <input userinput="consolationprize" id="1091" name="Consolation Prize" antibirth="true" />
+  <input userinput="tinytoma" id="1092" name="Tinytoma" antibirth="true" />
+
+  <input userinput="bible" spacebar="true" name="The Bible" />
+  <input userinput="bookofbelial" spacebar="true" name="The Book of Belial" />
+  <input userinput="necronomicon" spacebar="true" name="The Necronomicon" />
+  <input userinput="poop,shit" spacebar="true" name="The Poop" />
+  <input userinput="mrboom" spacebar="true" name="Mr. Boom" />
+  <input userinput="tammyshead" spacebar="true" name="Tammy's Head" />
+  <input userinput="bra" spacebar="true" name="Mom's Bra" />
+  <input userinput="kamikaze" spacebar="true" name="Kamikaze" />
+  <input userinput="pad" spacebar="true" name="Mom's Pad" />
+  <input userinput="bobsrottenhead" spacebar="true" name="Bob's Rotten Head" />
+  <input userinput="teleport" spacebar="true" name="Teleport" />
+  <input userinput="yumheart" spacebar="true" name="Yum Heart" />
+  <input userinput="doctorsremote" spacebar="true" name="Doctor's Remote" />
+  <input userinput="shoopdawoop,shoopdawhoop" spacebar="true" name="Shoop Da Whoop" />
+  <input userinput="lemonmishap" spacebar="true" name="Lemon Mishap" />
+  <input userinput="bookofshadows" spacebar="true" name="Book of Shadows" />
+  <input userinput="anarchistscookbook,anarchistcookbook,cookbook" spacebar="true" name="Anarchist Cookbook" />
+  <input userinput="hourglass" spacebar="true" name="The Hourglass" />
+  <input userinput="mylittleunicorn,mylittlepony" spacebar="true" name="My Little Unicorn" />
+  <input userinput="bookofrevelations" spacebar="true" name="Book of Revelations" />
+  <input userinput="nail" spacebar="true" name="The Nail" />
+  <input userinput="weneedtogodeeper,shovel" spacebar="true" name="We Need To Go Deeper" />
+  <input userinput="deckofcards" spacebar="true" name="Deck of Cards" />
+  <input userinput="monstrostooth" spacebar="true" name="Monstro's Tooth" />
+  <input userinput="gamekid" spacebar="true" name="The Gamekid" />
+  <input userinput="bookofsin" spacebar="true" name="The Book of Sin" />
+  <input userinput="bottleofpills" spacebar="true" name="Mom's Bottle of Pills" />
+  <input userinput="d6,d69,dice" spacebar="true" name="The D6" />
+  <input userinput="pinkingshears" spacebar="true" name="Pinking Shears" />
+  <input userinput="bean" spacebar="true" name="The Bean" />
+  <input userinput="monstermanual,monstermanuel" spacebar="true" name="Monster Manual" />
+  <input userinput="deadseascrolls" spacebar="true" name="Dead Sea Scrolls" />
+  <input userinput="razorblade,razorsharp" spacebar="true" name="Razor Blade" />
+  <input userinput="forgetmenow" spacebar="true" name="Forget Me Now" />
+  <input userinput="pony" spacebar="true" name="A Pony" />
+  <input userinput="guppyspaw" spacebar="true" name="Guppy's Paw" />
+  <input userinput="ivbag" spacebar="true" name="IV Bag" />
+  <input userinput="bestfriend" spacebar="true" name="Best Friend" />
+  <input userinput="remotedetonator" spacebar="true" name="Remote Detonator" />
+  <input userinput="guppyshead" spacebar="true" name="Guppy's Head" />
+  <input userinput="prayercard" spacebar="true" name="Prayer Card" />
+  <input userinput="notchedaxe" spacebar="true" name="Notched Axe" />
+  <input userinput="crystalball" spacebar="true" name="Crystal Ball" />
+  <input userinput="crackthesky" spacebar="true" name="Crack The Sky" />
+  <input userinput="candle,bluecandle" spacebar="true" name="The Candle" />
+  <input userinput="d20" spacebar="true" name="D20" />
+  <input userinput="spiderbutt" spacebar="true" name="Spider Butt" />
+  <input userinput="dadskey" spacebar="true" name="Dad's Key" />
+  <input userinput="portableslot" spacebar="true" name="Portable Slot" />
+  <input userinput="whitepony" spacebar="true" name="White Pony" />
+  <input userinput="bloodrights" spacebar="true" name="Blood Rights" />
+  <input userinput="telepathyfordummies" spacebar="true" name="Telepathy For Dummies" />
+  <input userinput="howtojump,how2jump" spacebar="true" name="How To Jump" />
+  <input userinput="d100" spacebar="true" name="D100" />
+  <input userinput="d4" spacebar="true" name="D4" />
+  <input userinput="d10,dio" spacebar="true" name="D10" />
+  <input userinput="blankcard" spacebar="true" name="Blank Card" />
+  <input userinput="bookofsecrets" spacebar="true" name="Book of Secrets" />
+  <input userinput="boxofspiders" spacebar="true" name="Box of Spiders" />
+  <input userinput="redcandle" spacebar="true" name="Red Candle" />
+  <input userinput="jar" spacebar="true" name="The Jar" />
+  <input userinput="flush" spacebar="true" name="Flush!" />
+  <input userinput="satanicbible,stanicbible" spacebar="true" name="The Satanic Bible" />
+  <input userinput="headofkrampus" spacebar="true" name="Head of Krampus" />
+  <input userinput="butterbean" spacebar="true" name="Butter Bean" />
+  <input userinput="magicfingers" spacebar="true" name="Magic Fingers" />
+  <input userinput="converter" spacebar="true" name="Converter" />
+  <input userinput="pandorasbox" spacebar="true" name="Pandora's Box" />
+  <input userinput="unicornstump" spacebar="true" name="Unicorn Stump" />
+  <input userinput="isaacstears,shittytammyshead" spacebar="true" name="Isaac's Tears" />
+  <input userinput="undefined" spacebar="true" name="Undefined" />
+  <input userinput="scissors" spacebar="true" name="Scissors" />
+  <input userinput="breathoflife,trash" spacebar="true" name="Breath of Life" />
+  <input userinput="boomerang" spacebar="true" name="Boomerang" />
 
   <input userinput="diplopia" spacebar="true" name="Diplopia" afterbirth="true" />
   <input userinput="placebo" spacebar="true" name="Placebo" afterbirth="true" />
@@ -442,4 +510,29 @@
   <input userinput="d7" spacebar="true" name="D7" afterbirth="true" />
   <input userinput="momsbox" spacebar="true" name="Mom's Box" afterbirth="true" />
   <input userinput="megablast,bigblast" spacebar="true" name="Mega Blast" afterbirth="true" />
+
+  <input userinput="sulfur" spacebar="true" name="Sulfur" antibirth="true" />
+  <input userinput="fortunecookie" spacebar="true" name="Fortune Cookie" antibirth="true" />
+  <input userinput="bookofdespair" spacebar="true" name="Book of Despair" antibirth="true" />
+  <input userinput="d12" spacebar="true" name="D12" antibirth="true" />
+  <input userinput="bowloftears" spacebar="true" name="Bowl of Tears" antibirth="true" />
+  <input userinput="damocles" spacebar="true" name="Damocles" antibirth="true" />
+  <input userinput="freelemonade" spacebar="true" name="Free Lemonade" antibirth="true" />
+  <input userinput="redkey" spacebar="true" name="Red Key" antibirth="true" />
+  <input userinput="blackmushroom" spacebar="true" name="Black Mushroom" antibirth="true" />
+  <input userinput="bookofvirtues" spacebar="true" name="Book of Virtues" antibirth="true" />
+  <input userinput="alabasterbox" spacebar="true" name="Alabaster Box" antibirth="true" />
+  <input userinput="bracelet" spacebar="true" name="Mom's Bracelet" antibirth="true" />
+  <input userinput="scooper" spacebar="true" name="The Scooper" antibirth="true" />
+  <input userinput="eternald6" spacebar="true" name="Eternal D6" antibirth="true" />
+  <input userinput="voodoopin" spacebar="true" name="Voodoo Pin" antibirth="true" />
+  <input userinput="sharpkey" spacebar="true" name="Sharp Key" antibirth="true" />
+  <input userinput="megamush,megamushroom" spacebar="true" name="Mega Mush" antibirth="true" />
+  <input userinput="meatcleaver,cleaver" spacebar="true" name="Meat Cleaver" antibirth="true" />
+  <input userinput="stitches" spacebar="true" name="Stitches" antibirth="true" />
+  <input userinput="rkey,r" spacebar="true" name="R Key" antibirth="true" />
+  <input userinput="eraser" spacebar="true" name="Eraser" antibirth="true" />
+  <input userinput="yuckheart" spacebar="true" name="Yuck Heart" antibirth="true" />
+  <input userinput="magicskin" spacebar="true" name="Magic Skin" antibirth="true" />
+
 </inputs>

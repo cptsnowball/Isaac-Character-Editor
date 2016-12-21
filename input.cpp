@@ -32,6 +32,8 @@ std::vector<Input> Input::getPossibleUserInputs()
                             input.WhichGame = attribute.value().toString() == "true" ? Game::Afterbirth : Game::Rebirth;
                         else if (attribute.name().toString() == "afterbirthplus")
                             input.WhichGame = attribute.value().toString() == "true" ? Game::AfterbirthPlus : Game::Rebirth;
+                        else if (attribute.name().toString() == "antibirth")
+                            input.WhichGame = attribute.value().toString() == "true" ? Game::Antibirth : Game::Rebirth;
                     }
                     inputs.push_back(input);
                 }

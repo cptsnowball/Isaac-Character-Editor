@@ -1,7 +1,5 @@
 #include "functions.h"
 
-#include <QMessageBox>
-
 std::vector<int> GetItemIDsFromItemList(QStringList itemList)
 {
     //Loops through all possible inputs and returns a vector containing matched item IDs
@@ -14,6 +12,7 @@ std::vector<int> GetItemIDsFromItemList(QStringList itemList)
                 {
                     if (!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::Afterbirth) continue;
                     else if (!(game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::AfterbirthPlus) continue;
+                    else if (!(game == Game::Antibirth) && possibleInput.WhichGame == Game::Antibirth) continue;
                     else itemIDs.push_back(possibleInput.ID);
                 }
 
@@ -43,6 +42,7 @@ QStringList GetItemNamesFromItemList(QStringList itemList, bool sideEffects)
             {
                 if (!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::Afterbirth) continue;
                 else if (!(game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::AfterbirthPlus) continue;
+                else if (!(game == Game::Antibirth) && possibleInput.WhichGame == Game::Antibirth) continue;
                 else if (!possibleInput.Spacebar) itemNames.push_back(possibleInput.Name);
                 continue;
             }
@@ -54,6 +54,7 @@ QStringList GetItemNamesFromItemList(QStringList itemList, bool sideEffects)
                 {
                     if (!(game == Game::Afterbirth || game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::Afterbirth) continue;
                     else if (!(game == Game::AfterbirthPlus) && possibleInput.WhichGame == Game::AfterbirthPlus) continue;
+                    else if (!(game == Game::Antibirth) && possibleInput.WhichGame == Game::Antibirth) continue;
                     else if (possibleInput.Spacebar && sideEffects)
                         FindAndSetValueInComboBox(spacebarComboBoxPtr, possibleInput.Name);
                     else itemNames.push_back(possibleInput.Name);

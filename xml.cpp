@@ -33,7 +33,7 @@ void XML::DeleteXML()
     QFile file(_filename + "/resources/players.xml");
     if(!file.exists())
     {
-        QMessageBox(QMessageBox::Warning, "Information", "players.xml doesn't exist or has already been purged.").exec();
+        QMessageBox(QMessageBox::Warning, "Information", "players.xml doesn't exist or has already been deleted.").exec();
         return;
     }
 
@@ -55,7 +55,7 @@ void XML::WriteXML()
     if (file.open(QIODevice::WriteOnly))
     {
         QTextStream stream(&file);
-        if (game == Game::Afterbirth)
+        if (game == Game::Afterbirth || game == Game::AfterbirthPlus)
             stream << "<players bigportraitroot=\"gfx/ui/stage/\" nameimageroot=\"gfx/ui/boss/\" portraitroot=\"gfx/ui/boss/\" root=\"gfx/characters/costumes/\">\r\n";
         else
             stream << "<players root=\"resources/gfx/characters/costumes/\" portraitroot=\"resources/gfx/ui/boss/\" bigportraitroot=\"resources/gfx/ui/stage/\">\r\n";
@@ -73,6 +73,12 @@ void XML::WriteXML()
             case Game::AfterbirthPlus:
                 for (int i = 0; i < constants::AfterbirthPlusCharacterCount; ++i)
                     stream << GetPlayerLine(characterMap.at(static_cast<Characters>(i)));
+                break;
+            case Game::Antibirth:
+                for (int i = 0; i < constants::RebirthCharacterCount; ++i)
+                    stream << GetPlayerLine(characterMap.at(static_cast<Characters>(i)));
+                for (int i = constants::RebirthCharacterCount; i < constants::AntibirthCharacterCount; ++i)
+                    stream << GetPlayerLine(characterMap.at(static_cast<Characters>(i + constants::AntibirthOffset)));
                 break;
         }
 
@@ -104,6 +110,8 @@ void XML::ReadXML()
     {
         QXmlStreamReader xml;
         xml.setDevice(&file);
+
+        //Entire thing needs a rewrite, barely "works".
         int currentCharacterIndex = 0;
 
         while (!xml.atEnd()) {
@@ -153,7 +161,6 @@ void XML::ReadXML()
 
         mainWindowPtr->SetCurrentCharacter(static_cast<int>(currentCharacter));
     }
-
     file.close();
 
     QMessageBox message(QMessageBox::Information, "Success!", "players.xml read successful.");
@@ -166,7 +173,7 @@ QString XML::GetPlayerLine(const Character &player)
     AppendToLine(line, "id", player.ID);
     AppendToLine(line, "name", player.Name);
     AppendToLine(line, "skinColor", player.SkinColor);
-    if (game == Game::Afterbirth) AppendToLine(line, "nameimage", player.NameImage);
+    if (game == Game::Afterbirth || game == Game::AfterbirthPlus) AppendToLine(line, "nameimage", player.NameImage);
     AppendToLine(line, "portrait", player.Portrait);
     AppendToLine(line, "bigportrait", player.BigPortrait);
     AppendToLine(line, "skin", (player.SkinFile.split('.')[0] + "%1.png").arg(GetSkinColorString(player)));
@@ -182,7 +189,7 @@ QString XML::GetPlayerLine(const Character &player)
     if (player.Pill != 0) AppendToLine(line, "pill", player.Pill);
     if (player.Card != 0) AppendToLine(line, "card", player.Card);
     if (player.Trinket != 0) AppendToLine(line, "trinket", player.Trinket);
-    if (game == Game::Afterbirth) AppendToLine(line, "canShoot", player.CanShoot);
+    if (game == Game::Afterbirth || game == Game::AfterbirthPlus) AppendToLine(line, "canShoot", player.CanShoot);
     if (player.ID == 9) //Eden
     {
         line.append(">\r\n");

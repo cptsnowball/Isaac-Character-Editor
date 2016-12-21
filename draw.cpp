@@ -74,6 +74,15 @@ void Draw::Character(QLabel* characterImageLabel, Characters characterToDraw)
     case Characters::Apollyon:
         character = ":/Resources/Characters/Isaac.png";
         break;
+    case Characters::Bethany:
+        character = ":/Resources/Characters/Bethany.png";
+        break;
+    case Characters::Jacob:
+        character = ":/Resources/Characters/Jacob.png";
+        break;
+    case Characters::Esau:
+        character = ":/Resources/Characters/Esau.png";
+        break;
     default:
         character = ":/Resources/Characters/Isaac.png";
         break;
@@ -175,13 +184,16 @@ void Draw::Spacebar(QLabel* spacebarImageLabel, int spacebarID)
 
 void Draw::Charge(QLabel* chargeLabel, int spacebarID)
 {
-    const std::vector<int> charge1IDs = {36, 38, 111, 127, 145, 164, 285, 289, 298, 294, 338, 349, 352, 383, 427};
-    const std::vector<int> charge2IDs = {37, 44, 56, 66, 107, 171, 175, 192, 288, 421, 422};
-    const std::vector<int> charge3IDs = {34, 39, 41, 42, 47, 49, 58, 65, 86, 123, 136, 147, 351, 382, 386, 437};
-    const std::vector<int> charge4IDs = {45, 97, 124, 160, 286, 348, 357, 406, 419, 439};
+    const std::vector<int> charge1IDs = { 36, 38, 111, 127, 145, 164, 285, 289, 298, 294, 338, 349, 352, 383, 427, 1029, 1051, 1082 };
+    const std::vector<int> charge2IDs = { 37, 44, 56, 66, 107, 171, 175, 192, 288, 421, 422, 1004, 1031, 1067, 1078};
+    const std::vector<int> charge3IDs = {
+                    34, 39, 41, 42, 47, 49, 58, 65, 86, 123, 136, 147, 351, 382, 386, 437,
+                    1003, 1012, 1013, 1027, 1052, 1056
+                };
+    const std::vector<int> charge4IDs = { 45, 97, 124, 160, 286, 348, 357, 406, 419, 439, 1025, 1086};
     const std::vector<int> charge6IDs = {
                     33, 35, 77, 78, 83, 84, 85, 93, 102, 105, 130, 146, 158, 166, 181, 283, 284, 287,
-                    291, 292, 293, 323, 324, 325, 326
+                    291, 292, 293, 323, 324, 325, 326, 1015, 1032, 1072, 1089
                 };
     const std::vector<int> charge12IDs = {441};
 
@@ -205,17 +217,25 @@ void Draw::Pill(QLabel* cardImageLabel)
 void Draw::Card(QLabel* cardImageLabel, int cardIndex)
 {
     QString rune = QString(":/Resources/Cards/Rune%1.png").arg(this->_rng.RandomInt(constants::RuneCount));
-    if(cardIndex == 0) cardImageLabel->clear();
-    else if(cardIndex > 0 && cardIndex <= 22) PixmapToLabel(cardImageLabel, ":/Resources/Cards/TarotCard.png");
-    else if(cardIndex >= 23 && cardIndex <= 27) PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
-    else if(cardIndex >= 36 && cardIndex <= 43)
+    if (cardIndex == 0) cardImageLabel->clear();
+    else if (cardIndex > 40 && game == Game::Antibirth) PixmapToLabel(cardImageLabel, ":/Resources/Cards/Rune1x.png");
+    else if (cardIndex > 0 && cardIndex <= 22) PixmapToLabel(cardImageLabel, ":/Resources/Cards/TarotCard.png");
+    else if (cardIndex >= 23 && cardIndex <= 27) PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
+    else if (cardIndex >= 36 && cardIndex <= 43)
     {
-        if((game == Game::Afterbirth || game == Game::AfterbirthPlus) && cardIndex == 36) PixmapToLabel(cardImageLabel, rune);
+        //Attention to detail added only by Antibirth
+        if (game == Game::Antibirth)
+        {
+            if (cardIndex == 36) PixmapToLabel(cardImageLabel, ":/Resources/Cards/ChaosCard.png");
+            else if (cardIndex == 37) PixmapToLabel(cardImageLabel, ":/Resources/Cards/CreditCard.png");
+            else if (cardIndex == 39) PixmapToLabel(cardImageLabel, ":/Resources/Cards/CardAgainstHumanity.png");
+        }
+        else if ((game == Game::Afterbirth || game == Game::AfterbirthPlus) && cardIndex == 36) PixmapToLabel(cardImageLabel, rune);
         else PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
     }
-    else if(cardIndex >= 28 && cardIndex <= 35) PixmapToLabel(cardImageLabel, rune);
-    else if(cardIndex == 44) PixmapToLabel(cardImageLabel, ":/Resources/Cards/DiceShard.png");
-    else if(cardIndex == 45) PixmapToLabel(cardImageLabel, ":/Resources/Cards/EmergencyContact.png");
+    else if (cardIndex >= 28 && cardIndex <= 35) PixmapToLabel(cardImageLabel, rune);
+    else if (cardIndex == 44) PixmapToLabel(cardImageLabel, ":/Resources/Cards/DiceShard.png");
+    else if (cardIndex == 45) PixmapToLabel(cardImageLabel, ":/Resources/Cards/EmergencyContact.png");
 }
 
 void Draw::Trinket(QLabel* trinketImageLabel, int trinketID)
@@ -240,21 +260,23 @@ void Draw::Familiar(QLabel* familiarImageLabel, std::vector<int> itemIDs) {
         360, 361, 362, 363, 364, 365, 372, 384, 385, 387, 388, 389, 390, 403, 404, 405,
         417, 426, 430, 431, 435, 436,
         //Sample for trinket familiars and Super Bum.
-        997, 998, 999
+        997, 998, 999,
+        //Antibirth
+        1014, 1016, 1028, 1034, 1054, 1055, 1059, 1062, 1076, 1092
     };
 
     //Create a vector that contains the IDs for the available familiars.
     std::vector<int> familiars;
-    for(const int itemID : itemIDs)
+    for (const int itemID : itemIDs)
     {
-        if(VectorContains(possibleFamiliars, itemID))
+        if (VectorContains(possibleFamiliars, itemID))
             familiars.push_back(itemID);
     }
 
-    if(trinketComboBoxPtr->currentText() == "Isaac's Head") familiars.push_back(997);
-    if(trinketComboBoxPtr->currentText() == "\?\?\?'s Soul") familiars.push_back(998);
-    if(currentCharacter == Characters::Lilith) familiars.push_back(360);
-    if(VectorContains(familiars, 144) && VectorContains(familiars, 278) && VectorContains(familiars, 388))
+    if (trinketComboBoxPtr->currentText() == "Isaac's Head") familiars.push_back(997);
+    if (trinketComboBoxPtr->currentText() == "\?\?\?'s Soul") familiars.push_back(998);
+    if (currentCharacter == Characters::Lilith) familiars.push_back(360);
+    if (VectorContains(familiars, 144) && VectorContains(familiars, 278) && VectorContains(familiars, 388))
     {
         RemoveValueFromVector(familiars, 144);
         RemoveValueFromVector(familiars, 278);
@@ -262,7 +284,7 @@ void Draw::Familiar(QLabel* familiarImageLabel, std::vector<int> itemIDs) {
         familiars.push_back(999);
     }
 
-    if(familiars.empty())
+    if (familiars.empty())
     {
         familiarImageLabel->clear();
         return;

@@ -39,7 +39,13 @@ Character _lilith(13, "Lilith", "playername_13_lilith.png", "Character_014_Lilit
 Character _theKeeper(14, "The Keeper", "playername_14_thekeeper.png", "Character_015_Keeper.png", "PlayerPortrait_14_Keeper.png", "PlayerPortraitBig_Keeper.png",
                      -1, 0, 4, 0, 0, 1, 1, 0, 0, 0, 83, 349, true);
 Character _apollyon(15, "Apollyon", "playername_15_apollyon.png", "Character_016_apollyon.png", "PlayerPortrait_15_Apollyon.png", "PlayerPortraitBig_Apollyon.png",
-                     0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 467, true);
+                     0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, true);
+Character _bethany(100, "Bethany", "playername_01_isaac.png", "Character_001x_Bethany.png", "PlayerPortrait_01x_Bethany.png", "PlayerPortraitBig_01x_Bethany.png",
+                        -1, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 1031, true);
+Character _jacob(101, "Jacob", "playername_01_isaac.png", "Character_002x_Jacob.png", "PlayerPortrait_02x_Jacob_Esau.png", "PlayerPortraitBig_02x_Jacob_Esau.png",
+                        -1, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, true);
+Character _esau(102, "Esau", "playername_01_isaac.png", "Character_003x_Esau.png", "PlayerPortrait_02x_Jacob_Esau.png", "PlayerPortraitBig_02x_Jacob_Esau.png",
+                        -1, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, true);
 
 std::map<Characters, Character> characterMap {
     {Characters::Isaac, _isaac},
@@ -57,7 +63,10 @@ std::map<Characters, Character> characterMap {
     {Characters::BlackJudas, _blackJudas},
     {Characters::Lilith, _lilith},
     {Characters::TheKeeper, _theKeeper},
-    {Characters::Apollyon, _apollyon}
+    {Characters::Apollyon, _apollyon},
+    {Characters::Bethany, _bethany},
+    {Characters::Jacob, _jacob},
+    {Characters::Esau, _esau}
 };
 
 std::map<QString, int> spacebarMap {
@@ -79,7 +88,12 @@ std::map<QString, int> spacebarMap {
     {"Diplopia", 347}, {"Placebo", 348}, {"Wooden Nickel", 349}, {"Mega Bean", 351}, {"Glass Cannon", 352},
     {"Box of Friends", 357}, {"Friendly Ball", 382}, {"Tear Detonator", 383}, {"D12", 386}, {"Ventricide Razor", 396},
     {"D8", 406}, {"Teleport 2.0", 419}, {"Kidney Bean", 421}, {"Glowing Hour Glass", 422}, {"Mine Crafter", 427},
-    {"Jar of Flies", 434}, {"D7", 437}, {"Mom's Box", 439}, {"Mega Blast", 441}
+    {"Jar of Flies", 434}, {"D7", 437}, {"Mom's Box", 439}, {"Mega Blast", 441},
+    {"Sulfur", 1003}, {"Fortune Cookie", 1004}, {"Book of Despair", 1012}, {"D12 ", 1013}, {"Bowl of Tears", 1015},
+    {"Damocles", 1024}, {"Free Lemonade", 1025}, {"Red Key", 1027}, {"Black Mushroom", 1029}, {"Book of Virtues", 1031},
+    {"Alabaster Box", 1032}, {"Mom's Bracelet", 1051}, {"The Scooper", 1052}, {"Eternal D6", 1056},
+    {"Voodoo Pin", 1067}, {"Sharp Key", 1070}, {"Mega Mush", 1072}, {"Meat Cleaver", 1078}, {"Book of Illusions", 1081},
+    {"Stitches", 1082}, {"R Key", 1083}, {"Eraser", 1085}, {"Yuck Heart", 1086}, {"Magic Skin", 1089}
 };
 
 std::map<QString, int> trinketMap {
@@ -100,7 +114,11 @@ std::map<QString, int> trinketMap {
     {"Bob's Bladder", 71}, {"Watch Battery", 72}, {"Blasting Cap", 73}, {"Stud Finder", 74}, {"Error", 75},
     {"Poker Chip", 76}, {"Blister", 77}, {"Second Hand", 78}, {"Endless Nameless", 79}, {"Black Feather", 80},
     {"Blind Rage", 81}, {"Golden Horse Shoe", 82}, {"Store Key", 83}, {"Rib of Greed", 84}, {"Karma", 85},
-    {"Lil Larva", 86}, {"Mom's Locket", 87}, {"NO!", 88}, {"Child Leash", 89}, {"Brown Cap", 90}
+    {"Lil Larva", 86}, {"Mom's Locket", 87}, {"NO!", 88}, {"Child Leash", 89}, {"Brown Cap", 90},
+    {"Jawbreaker", 1000}, {"Chewed Pen", 1001}, {"Blessed Penny", 1002}, {"Broken Syringe", 1003}, {"Exploded Firecracker", 1004},
+    {"Giant Bean", 1005}, {"A Lighter", 1006}, {"Broken Padlock", 1007}, {"Myosotis", 1008}, {" 'M", 1009}, {"Teardrop Charm", 1010},
+    {"Apple of Sodom", 1011}, {"Song of the Siren", 1012}, {"Beth's Faith", 1013}, {"Old Capacitator", 1014}, {"Brain Worm", 1015},
+    {"Perfection", 1016}, {"Devil's Crown", 1017}, {"Electric Penny", 1018}
 };
 
 std::map<Characters, QString> defaultNames {
@@ -119,7 +137,10 @@ std::map<Characters, QString> defaultNames {
     {Characters::BlackJudas, "Black Judas"},
     {Characters::Lilith, "Lilith"},
     {Characters::TheKeeper, "The Keeper"},
-    {Characters::Apollyon, "Apollyon"}
+    {Characters::Apollyon, "Apollyon"},
+    {Characters::Bethany, "Bethany"},
+    {Characters::Jacob, "Jacob"},
+    {Characters::Esau, "Esau"}
 };
 
 std::map<Characters, QPoint> charSelectMenuOffsets {
@@ -136,7 +157,10 @@ std::map<Characters, QPoint> charSelectMenuOffsets {
     {Characters::TheLost, {80, 384}},
     {Characters::Lilith, {176, 480}},
     {Characters::TheKeeper, {176, 512}},
-    {Characters::Apollyon, {0, 0}}
+    {Characters::Apollyon, {0, 0}},
+    {Characters::Bethany, {0, 0}},
+    {Characters::Jacob, {0, 0}},
+    {Characters::Esau, {0, 0}}
 };
 
 std::vector<Input> possibleInputs;
