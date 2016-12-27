@@ -34,23 +34,27 @@ void PNG::SavePNGs()
     switch (game)
     {
         case Game::Rebirth:
-            for (int i = 0; i < constants::RebirthCharacterCount; ++i)
+            for (int i = 0; i < constants::RebirthCharacterCount; ++i) {
                 SaveVsBossImage(static_cast<Characters>(i));
+            }
             break;
         case Game::Afterbirth:
             for (int i = 0; i < constants::AfterbirthCharacterCount; ++i) {
-                QMessageBox(QMessageBox::Warning, "Information", QString("%1").arg(i)).exec();
-                SaveVsBossImage(static_cast<Characters>(i)); }
+                SaveVsBossImage(static_cast<Characters>(i));
+            }
             break;
         case Game::AfterbirthPlus:
-            for (int i = 0; i < constants::AfterbirthPlusCharacterCount; ++i)
+            for (int i = 0; i < constants::AfterbirthPlusCharacterCount; ++i) {
                 SaveVsBossImage(static_cast<Characters>(i));
+            }
             break;
         case Game::Antibirth:
-            for (int i = 0; i < constants::RebirthCharacterCount; ++i)
+            for (int i = 0; i < constants::RebirthCharacterCount; ++i) {
                 SaveVsBossImage(static_cast<Characters>(i));
-            for (int i = constants::RebirthCharacterCount; i < constants::AntibirthCharacterCount; ++i)
+            }
+            for (int i = constants::RebirthCharacterCount; i < constants::AntibirthCharacterCount; ++i) {
                 SaveVsBossImage(static_cast<Characters>(i + constants::AntibirthOffset));
+            }
             break;
     }
     auto charSelectMenu = (game == Game::Afterbirth || game == Game::AfterbirthPlus) ?
