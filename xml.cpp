@@ -217,9 +217,10 @@ QString XML::GetSkinColorString(const Character &player)
 {
     std::vector<int> skinColorlessCharacterIDs = {
         _blueBaby.ID, _theLost.ID, _azazel.ID,
-        _blackJudas.ID, _lilith.ID, _theKeeper.ID
+        _blackJudas.ID, _lilith.ID, _theKeeper.ID,
+        _apollyon.ID
     };
-    if(VectorContains(skinColorlessCharacterIDs, player.ID)) return "";
+    if (VectorContains(skinColorlessCharacterIDs, player.ID)) return "";
     else {
         switch(player.SkinColor)
         {
@@ -235,6 +236,8 @@ QString XML::GetSkinColorString(const Character &player)
             return "_red";
         case 4:
             return "_green";
+        case 5:
+            return "_grey";
         default:
             return "";
 

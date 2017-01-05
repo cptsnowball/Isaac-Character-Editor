@@ -348,6 +348,44 @@
   <input userinput="binky,pacifier" id="438" name="Binky" afterbirth="true" />
   <input userinput="kidneystone,mattskidneystone" id="440" name="Kidney Stone" afterbirth="true" />
 
+  <input userinput="darkprincescrown,darkcrown,darkrecolor" id="442" name="Dark Princes Crown" afterbirthplus="true" />
+  <input userinput="apple" id="443" name="Apple!" afterbirthplus="true" />
+  <input userinput="leadpencil,pencil" id="444" name="Lead Pencil" afterbirthplus="true" />
+  <input userinput="dogtooth,dogteeth" id="445" name="Dog Tooth" afterbirthplus="true" />
+  <input userinput="deadtooth,deadteeth" id="446" name="Dead Tooth" afterbirthplus="true" />
+  <input userinput="lingerbean" id="447" name="Linger Bean" afterbirthplus="true" />
+  <input userinput="shardofglass,glass" id="448" name="Shard of Glass" afterbirthplus="true" />
+  <input userinput="metalplate,metal,plate" id="449" name="Metal Plate" afterbirthplus="true" />
+  <input userinput="eyeofgreed,eyeoftyrone" id="450" name="Eye of Greed" afterbirthplus="true" />
+  <input userinput="tarotcloth,tarot,cloth" id="451" name="Tarot Cloth" afterbirthplus="true" />
+  <input userinput="varicoseveins,veins" id="452" name="Varicose Veins" afterbirthplus="true" />
+  <input userinput="compoundfracture,fracture" id="453" name="Compound Fracture" afterbirthplus="true" />
+  <input userinput="polydactyly,pterodactyl" id="454" name="Polydactyly" afterbirthplus="true" />
+  <input userinput="dadslostcoin,dadlostcoin,lostcoin" id="455" name="Dad's Lost Coin" afterbirthplus="true" />
+  <input userinput="moldybread,moldedbread" id="456" name="Moldy Bread" afterbirthplus="true" />
+  <input userinput="conehead,cone" id="457" name="Cone Head" afterbirthplus="true" />
+  <input userinput="bellybutton,belly" id="458" name="Belly Button" afterbirthplus="true" />
+  <input userinput="sinusinfection,sinus" id="459" name="Sinus Infection" afterbirthplus="true" />
+  <input userinput="glaucoma" id="460" name="Glaucoma" afterbirthplus="true" />
+  <input userinput="parasitoid" id="461" name="Parasitoid" afterbirthplus="true" />
+  <input userinput="eyeofbelial,belialeye" id="462" name="Eye of Belial" afterbirthplus="true" />
+  <input userinput="sulfuricacid,acid" id="463" name="Sulfuric Acid" afterbirthplus="true" />
+  <input userinput="glyphofbalance,balance" id="464" name="Glyph of Balance" afterbirthplus="true" />
+  <input userinput="analogstick,analog,controller" id="465" name="Analog Stick" afterbirthplus="true" />
+  <input userinput="contagion" id="466" name="Contagion" afterbirthplus="true" />
+  <input userinput="adderline" id="493" name="Adderline" afterbirthplus="true" />
+  <input userinput="ripoff" id="494" name="Jacob's Ladder" afterbirthplus="true" />
+  <input userinput="ghostpepper" id="495" name="Ghost Pepper" afterbirthplus="true" />
+  <input userinput="euthanasia" id="496" name="Euthanasia" afterbirthplus="true" />
+  <input userinput="camoundies,camo" id="497" name="Camo Undies" afterbirthplus="true" />
+  <input userinput="duality" id="498" name="Duality" afterbirthplus="true" />
+  <input userinput="eucharist" id="499" name="Eucharist" afterbirthplus="true" />
+  <input userinput="greedsgullet,greedgullet" id="501" name="Greed's Gullet" afterbirthplus="true" />
+  <input userinput="largezit,zit" id="502" name="Large Zit" afterbirthplus="true" />
+  <input userinput="littlehorn" id="503" name="Little Horn" afterbirthplus="true" />
+  <input userinput="pokego,pokemongo" id="505" name="Poke Go" afterbirthplus="true" />
+  <input userinput="backstabber" id="506" name="BackStabber" afterbirthplus="true" />
+
   <input userinput="mucormycosis,mucormyosis,muc,mucor" id="1000" name="Mucormycosis" antibirth="true" />
   <input userinput="2spooky,toospooky" id="1001" name="2Spooky" antibirth="true" />
   <input userinput="schoolbag" id="1002" name="Schoolbag" antibirth="true" />
@@ -510,6 +548,26 @@
   <input userinput="d7" spacebar="true" name="D7" afterbirth="true" />
   <input userinput="momsbox" spacebar="true" name="Mom's Box" afterbirth="true" />
   <input userinput="megablast,bigblast" spacebar="true" name="Mega Blast" afterbirth="true" />
+
+  <input userinput="planc,forgetmenowrecolor" spacebar="true" name="Plan C" afterbirthplus="true" />
+  <input userinput="d1,idontunderstandhowdicework" spacebar="true" name="D1" afterbirthplus="true" />
+  <input userinput="void" spacebar="true" name="Void" afterbirthplus="true" />
+  <input userinput="pause" spacebar="true" name="Pause" afterbirthplus="true" />
+  <input userinput="smelter,smelt" spacebar="true" name="Smelter" afterbirthplus="true" />
+  <input userinput="compost" spacebar="true" name="Compost" afterbirthplus="true" />
+  <input userinput="dataminer" spacebar="true" name="Dataminer" afterbirthplus="true" />
+  <input userinput="clicker,click" spacebar="true" name="Clicker" afterbirthplus="true" />
+  <input userinput="mamamega" spacebar="true" name="MaMa Mega!" afterbirthplus="true" />
+  <input userinput="waitwhat,notfunny" spacebar="true" name="Wait What?" afterbirthplus="true" />
+  <input userinput="crookedpenny" spacebar="true" name="Crooked Penny" afterbirthplus="true" />
+  <input userinput="dullrazor,dullcontent" spacebar="true" name="Dull Razor" afterbirthplus="true" />
+  <input userinput="potatopeeler,peeler" spacebar="true" name="Potato Peeler" afterbirthplus="true" />
+  <input userinput="metronome" spacebar="true" name="Metronome" afterbirthplus="true" />
+  <input userinput="dinfinity" spacebar="true" name="D infinity" afterbirthplus="true" />
+  <input userinput="edenssoul,edensoul" spacebar="true" name="Eden's Soul" afterbirthplus="true" />
+  <input userinput="brownnugget,nugget" spacebar="true" name="Brown Nugget" afterbirthplus="true" />
+  <input userinput="sharpstraw,straw" spacebar="true" name="Sharp Straw" afterbirthplus="true" />
+  <input userinput="delirious,delusional" spacebar="true" name="Delirious" afterbirthplus="true" />
 
   <input userinput="sulfur" spacebar="true" name="Sulfur" antibirth="true" />
   <input userinput="fortunecookie" spacebar="true" name="Fortune Cookie" antibirth="true" />

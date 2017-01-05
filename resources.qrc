@@ -385,5 +385,55 @@
         <file>Resources/Familiars/Familiar_1062.png</file>
         <file>Resources/Familiars/Familiar_1076.png</file>
         <file>Resources/Familiars/Familiar_1092.png</file>
+        <file>Resources/Characters/Apollyon.png</file>
+        <file>Resources/Trinkets/Trinket_100.png</file>
+        <file>Resources/Trinkets/Trinket_101.png</file>
+        <file>Resources/Trinkets/Trinket_102.png</file>
+        <file>Resources/Trinkets/Trinket_103.png</file>
+        <file>Resources/Trinkets/Trinket_104.png</file>
+        <file>Resources/Trinkets/Trinket_105.png</file>
+        <file>Resources/Trinkets/Trinket_106.png</file>
+        <file>Resources/Trinkets/Trinket_107.png</file>
+        <file>Resources/Trinkets/Trinket_108.png</file>
+        <file>Resources/Trinkets/Trinket_109.png</file>
+        <file>Resources/Trinkets/Trinket_110.png</file>
+        <file>Resources/Trinkets/Trinket_111.png</file>
+        <file>Resources/Trinkets/Trinket_112.png</file>
+        <file>Resources/Trinkets/Trinket_113.png</file>
+        <file>Resources/Trinkets/Trinket_114.png</file>
+        <file>Resources/Trinkets/Trinket_115.png</file>
+        <file>Resources/Trinkets/Trinket_116.png</file>
+        <file>Resources/Trinkets/Trinket_117.png</file>
+        <file>Resources/Trinkets/Trinket_118.png</file>
+        <file>Resources/Trinkets/Trinket_119.png</file>
+        <file>Resources/Trinkets/Trinket_91.png</file>
+        <file>Resources/Trinkets/Trinket_92.png</file>
+        <file>Resources/Trinkets/Trinket_93.png</file>
+        <file>Resources/Trinkets/Trinket_94.png</file>
+        <file>Resources/Trinkets/Trinket_95.png</file>
+        <file>Resources/Trinkets/Trinket_96.png</file>
+        <file>Resources/Trinkets/Trinket_97.png</file>
+        <file>Resources/Trinkets/Trinket_98.png</file>
+        <file>Resources/Trinkets/Trinket_99.png</file>
+        <file>Resources/Spacebar/Spacebar_475.png</file>
+        <file>Resources/Spacebar/Spacebar_476.png</file>
+        <file>Resources/Spacebar/Spacebar_477.png</file>
+        <file>Resources/Spacebar/Spacebar_478.png</file>
+        <file>Resources/Spacebar/Spacebar_479.png</file>
+        <file>Resources/Spacebar/Spacebar_480.png</file>
+        <file>Resources/Spacebar/Spacebar_481.png</file>
+        <file>Resources/Spacebar/Spacebar_482.png</file>
+        <file>Resources/Spacebar/Spacebar_483.png</file>
+        <file>Resources/Spacebar/Spacebar_484.png</file>
+        <file>Resources/Spacebar/Spacebar_485.png</file>
+        <file>Resources/Spacebar/Spacebar_486.png</file>
+        <file>Resources/Spacebar/Spacebar_487.png</file>
+        <file>Resources/Spacebar/Spacebar_488.png</file>
+        <file>Resources/Spacebar/Spacebar_489.png</file>
+        <file>Resources/Spacebar/Spacebar_490.png</file>
+        <file>Resources/Spacebar/Spacebar_504.png</file>
+        <file>Resources/Spacebar/Spacebar_507.png</file>
+        <file>Resources/Spacebar/Spacebar_510.png</file>
+        <file>Resources/Cards/BlackRune.png</file>
     </qresource>
 </RCC>

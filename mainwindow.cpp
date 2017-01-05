@@ -298,6 +298,31 @@ void MainWindow::GenerateSpacebarComboBox()
         });
     }
 
+    if (game == Game::AfterbirthPlus)
+    {
+        spacebarList.append(QStringList {
+            "Plan C",
+            "D1",
+            "Void",
+            "Pause",
+            "Smelter",
+            "Compost",
+            "Dataminer",
+            "Clicker",
+            "MaMa Mega!",
+            "Wait What?",
+            "Crooked Penny",
+            "Dull Razor",
+            "Potato Peeler",
+            "Metronome",
+            "D infinity",
+            "Eden's Soul",
+            "Brown Nugget",
+            "Sharp Straw",
+            "Delirious"
+        });
+    }
+
     if (game == Game::Antibirth)
     {
         spacebarList.append(QStringList {
@@ -324,7 +349,6 @@ void MainWindow::GenerateSpacebarComboBox()
             "Eraser",
             "Yuck Heart",
             "Magic Skin"
-
         });
     }
 
@@ -395,6 +419,18 @@ void MainWindow::GenerateCardComboBox()
             "Dice Shard", //44
             "Emergency Contact" //45
         });
+    }
+
+    if (game == Game::AfterbirthPlus)
+    {
+        //Just screw up the order completely, because why not?
+        cardList.insert(27, "Ace of Clubs");
+        cardList.insert(28, "Ace of Diamonds");
+        cardList.insert(29, "Ace of Spades");
+        cardList.insert(30, "Ace of Hearts");
+        cardList.insert(41, "Black Rune");
+
+        cardList.append("Holy Card");
     }
 
     if (game == Game::Antibirth)
@@ -513,6 +549,41 @@ void MainWindow::GenerateTrinketComboBox()
         });
     }
 
+    if (game == Game::AfterbirthPlus)
+    {
+        trinketList.append(QStringList {
+            "Meconium",
+            "Cracked Crown",
+            "Used Diaper",
+            "Fish Tail",
+            "Black Tooth",
+            "Ouroboros Worm",
+            "Tonsil",
+            "Nose Goblin",
+            "Super Ball",
+            "Vibrant Bulb",
+            "Dim Bulb",
+            "Fragmented Card",
+            "Equality!",
+            "Wish Bone",
+            "Bag Lunch",
+            "Lost Cork",
+            "Crow Heart",
+            "Walnut",
+            "Duct Tape",
+            "Silver Dollar",
+            "Bloody Crown",
+            "Pay To Win",
+            "Locust of Wrath",
+            "Locust of Pestilence",
+            "Locust of Famine",
+            "Locust of Death",
+            "Locust of Conquest",
+            "Bat Wing",
+            "Stem Cell"
+        });
+    }
+
     if (game == Game::Antibirth)
     {
         trinketList.append(QStringList {
@@ -571,7 +642,7 @@ void MainWindow::GenerateCostumeComboBox()
         "16: Santa Hat"
     };
 
-    if(game == Game::Afterbirth || game == Game::AfterbirthPlus)
+    if (game == Game::Afterbirth || game == Game::AfterbirthPlus)
     {
         costumeList.append(QStringList {
             "17: Holy Glow",
@@ -595,6 +666,17 @@ void MainWindow::GenerateCostumeComboBox()
             "35: Satoru Iwata"
         });
         costumeList.replace(2, "2: I Found Pills");
+    }
+
+    if (game == Game::AfterbirthPlus)
+    {
+        costumeList.append(QStringList {
+            "36: Apollyon's Wings",
+            "37: Monocle",
+            "38: Adult",
+            "39: Spider Fangs",
+            "40: Bat Wings"
+        });
     }
 
     ReplaceComboBoxItems(this->ui->costumeComboBox, costumeList);
@@ -622,6 +704,8 @@ void MainWindow::GenerateSkinColorComboBox()
         "Red",
         "Green"
     };
+
+    if (game == Game::AfterbirthPlus) skinColorList.append("Grey");
 
     ReplaceComboBoxItems(this->ui->skinColorComboBox, skinColorList);
 }
@@ -671,7 +755,7 @@ void MainWindow::SetCurrentCharacter(int characterToSet)
                        currentCharacter == Characters::TheKeeper);
 
     if (character.Pill == 1) this->_draw.Pill(this->ui->cardImageLabel);
-    else if (character.Card > 0) this->_draw.Card(this->ui->cardImageLabel, character.Card);
+    else if (character.Card > 0) this->_draw.Card(this->ui->cardImageLabel, this->ui->cardComboBox->itemText(character.Card));
 
     this->ui->redHeartLineEdit->setText(QString::number(character.RedHearts));
     this->ui->soulHeartLineEdit->setText(QString::number(character.SoulHearts));
@@ -792,7 +876,7 @@ void MainWindow::SetCard(int cardIndex)
     //Antibirth cards are 19 IDs ahead of Rebirth ones.
     if (game == Game::Antibirth && cardIndex > 40) cardIndex += 19;
     character->Card = cardIndex;
-    this->_draw.Card(this->ui->cardImageLabel, cardIndex);
+    this->_draw.Card(this->ui->cardImageLabel, this->ui->cardComboBox->itemText(cardIndex));
 }
 
 void MainWindow::SetTrinket(QString value)
@@ -877,7 +961,6 @@ void MainWindow::SortCheckBoxChanged(int checkState)
 
 void MainWindow::GameComboBoxChanged(int gameIndex)
 {
-    auto prev = game;
     game = static_cast<Game>(gameIndex);
     switch (game)
     {
@@ -891,14 +974,10 @@ void MainWindow::GameComboBoxChanged(int gameIndex)
             this->ui->nameImagesCheckBox->setEnabled(false);
             break;
         case Game::Afterbirth:
+        case Game::AfterbirthPlus:
             this->ui->canShootCheckBox->setEnabled(true);
             this->ui->nameImagesCheckBox->setEnabled(true);
             break;
-        //Placeholder stuff until Afterbirth+.
-        case Game::AfterbirthPlus:
-            QMessageBox(QMessageBox::Warning, "Information", "Afterbirth+ is not yet supported or you're using an outdated version of Isaac Character Editor.").exec();
-            this->ui->gameComboBox->setCurrentIndex(static_cast<int>(prev));
-            return;
     }
 
     GenerateCharacterComboBox();

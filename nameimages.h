@@ -13,6 +13,7 @@ public:
     QImage GenerateCharSelectImage(const QString &name);
     QImage GenerateRebirthCharMenu();
     QImage GenerateAfterbirthCharMenu();
+    QImage GenerateAfterbirthPlusCharMenu();
 private:
     QFont _isaacFont, _godmodeFont;
 

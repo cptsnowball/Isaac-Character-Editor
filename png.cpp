@@ -57,9 +57,10 @@ void PNG::SavePNGs()
             }
             break;
     }
-    auto charSelectMenu = (game == Game::Afterbirth || game == Game::AfterbirthPlus) ?
-                _nameImages.GenerateAfterbirthCharMenu() :
-                _nameImages.GenerateRebirthCharMenu();
+
+    auto charSelectMenu = (game == Game::AfterbirthPlus) ?
+                _nameImages.GenerateAfterbirthPlusCharMenu() : (game == Game::Afterbirth) ?
+                    _nameImages.GenerateAfterbirthCharMenu() : _nameImages.GenerateRebirthCharMenu();
 
     SaveCharSelectMenu(charSelectMenu);
 }

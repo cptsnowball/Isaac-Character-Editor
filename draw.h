@@ -21,7 +21,7 @@ public:
     void Spacebar(QLabel*, int);
     void Charge(QLabel*, int);
     void Pill(QLabel*);
-    void Card(QLabel*, int);
+    void Card(QLabel*, QString);
     void Trinket(QLabel*, int);
     void Familiar(QLabel*, std::vector<int>);
     int DrawnPill = 0;

@@ -72,7 +72,7 @@ void Draw::Character(QLabel* characterImageLabel, Characters characterToDraw)
         character = ":/Resources/Characters/TheKeeper.png";
         break;
     case Characters::Apollyon:
-        character = ":/Resources/Characters/Isaac.png";
+        character = ":/Resources/Characters/Apollyon.png";
         break;
     case Characters::Bethany:
         character = ":/Resources/Characters/Bethany.png";
@@ -184,18 +184,26 @@ void Draw::Spacebar(QLabel* spacebarImageLabel, int spacebarID)
 
 void Draw::Charge(QLabel* chargeLabel, int spacebarID)
 {
-    const std::vector<int> charge1IDs = { 36, 38, 111, 127, 145, 164, 285, 289, 298, 294, 338, 349, 352, 383, 427, 1029, 1051, 1082 };
-    const std::vector<int> charge2IDs = { 37, 44, 56, 66, 107, 171, 175, 192, 288, 421, 422, 1004, 1031, 1067, 1078};
+    const std::vector<int> charge1IDs = {
+                    36, 38, 111, 127, 145, 164, 285, 289, 298, 294, 338, 349, 352, 383, 427,
+                    476, 484, 488, 504, 507, 1029, 1051, 1082
+                };
+    const std::vector<int> charge2IDs = {
+                    37, 44, 56, 66, 107, 171, 175, 192, 288, 421, 422, 478, 480, 486, 489,
+                    1004, 1031, 1067, 1078
+                };
     const std::vector<int> charge3IDs = {
                     34, 39, 41, 42, 47, 49, 58, 65, 86, 123, 136, 147, 351, 382, 386, 437,
                     1003, 1012, 1013, 1027, 1052, 1056
                 };
-    const std::vector<int> charge4IDs = { 45, 97, 124, 160, 286, 348, 357, 406, 419, 439, 1025, 1086};
+    const std::vector<int> charge4IDs = {
+                    45, 97, 124, 160, 286, 348, 357, 406, 419, 439, 481, 485, 1025, 1086
+                };
     const std::vector<int> charge6IDs = {
                     33, 35, 77, 78, 83, 84, 85, 93, 102, 105, 130, 146, 158, 166, 181, 283, 284, 287,
-                    291, 292, 293, 323, 324, 325, 326, 1015, 1032, 1072, 1089
+                    291, 292, 293, 323, 324, 325, 326, 477, 479, 482, 1015, 1032, 1089
                 };
-    const std::vector<int> charge12IDs = {441};
+    const std::vector<int> charge12IDs = { 441, 490, 510, 1072 };
 
     if(VectorContains(charge1IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge1.png");
     else if(VectorContains(charge2IDs, spacebarID)) PixmapToLabel(chargeLabel, ":/Resources/Charge/Charge2.png");
@@ -214,33 +222,88 @@ void Draw::Pill(QLabel* cardImageLabel)
     this->DrawnPill = pillToDraw.toInt();
 }
 
-void Draw::Card(QLabel* cardImageLabel, int cardIndex)
+void Draw::Card(QLabel* cardImageLabel, QString cardName)
 {
-    QString rune = QString(":/Resources/Cards/Rune%1.png").arg(this->_rng.RandomInt(constants::RuneCount));
-    if (cardIndex == 0) cardImageLabel->clear();
-    else if (cardIndex > 40 && game == Game::Antibirth) PixmapToLabel(cardImageLabel, ":/Resources/Cards/Rune1x.png");
-    else if (cardIndex > 0 && cardIndex <= 22) PixmapToLabel(cardImageLabel, ":/Resources/Cards/TarotCard.png");
-    else if (cardIndex >= 23 && cardIndex <= 27) PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
-    else if (cardIndex >= 36 && cardIndex <= 43)
-    {
-        //Attention to detail added only by Antibirth
-        if (game == Game::Antibirth)
-        {
-            if (cardIndex == 36) PixmapToLabel(cardImageLabel, ":/Resources/Cards/ChaosCard.png");
-            else if (cardIndex == 37) PixmapToLabel(cardImageLabel, ":/Resources/Cards/CreditCard.png");
-            else if (cardIndex == 39) PixmapToLabel(cardImageLabel, ":/Resources/Cards/CardAgainstHumanity.png");
-        }
-        else if ((game == Game::Afterbirth || game == Game::AfterbirthPlus) && cardIndex == 36) PixmapToLabel(cardImageLabel, rune);
-        else PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
-    }
-    else if (cardIndex >= 28 && cardIndex <= 35) PixmapToLabel(cardImageLabel, rune);
-    else if (cardIndex == 44) PixmapToLabel(cardImageLabel, ":/Resources/Cards/DiceShard.png");
-    else if (cardIndex == 45) PixmapToLabel(cardImageLabel, ":/Resources/Cards/EmergencyContact.png");
+    const QStringList tarot {
+        "O - The Fool",
+        "I - The Magician",
+        "II - The High Priestess",
+        "III - The Empress",
+        "IV - The Emperor",
+        "V - The Hierophant",
+        "VI - The Lovers",
+        "VII - The Chariot",
+        "VIII - Justice",
+        "IX - The Hermit",
+        "X - Wheel of Fortune",
+        "XI - Strength",
+        "XII - The Hanged Man",
+        "XIII - Death",
+        "XIV - Temperance",
+        "XV - The Devil",
+        "XVI - The Tower",
+        "XVII - The Stars",
+        "XVIII - The Moon",
+        "XIX - The Sun",
+        "XX - Judgement",
+        "XXI - The World"
+    };
+
+    const QStringList playing {
+        "2 of Clubs",
+        "2 of Diamonds",
+        "2 of Spades",
+        "2 of Hearts",
+        "Ace of Clubs",
+        "Ace of Diamonds",
+        "Ace of Spades",
+        "Ace of Hearts",
+        "Joker",
+        "Rules Card",
+        "Suicide King",
+        "Get Out of Jail Free Card",
+        "? Card",
+        "Holy Card"
+    };
+
+    const QStringList rune1 {
+        "Rune of Hagalaz",
+        "Rune of Jera",
+        "Rune of Ehwaz",
+        "Rune of Dagaz"
+    };
+
+    const QStringList rune2 {
+        "Rune of Ansuz",
+        "Rune of Perthro",
+        "Rune of Berkano",
+        "Rune of Algiz"
+    };
+
+    const QStringList antibirthRune {
+        "Rune of Gebo",
+        "Rune of Kenaz",
+        "Rune of Fehu",
+        "Rune of Ingwaz",
+        "Rune of Sowilo"
+    };
+
+    if (tarot.contains(cardName)) PixmapToLabel(cardImageLabel, ":/Resources/Cards/TarotCard.png");
+    else if (playing.contains(cardName)) PixmapToLabel(cardImageLabel, ":/Resources/Cards/PlayingCard.png");
+    else if (rune1.contains(cardName)) PixmapToLabel(cardImageLabel, ":/Resources/Cards/Rune1.png");
+    else if (rune2.contains(cardName))PixmapToLabel(cardImageLabel, ":/Resources/Cards/Rune2.png");
+    else if (antibirthRune.contains(cardName)) PixmapToLabel(cardImageLabel, ":/Resources/Cards/Rune1x.png");
+    else if (cardName == "Black Rune") PixmapToLabel(cardImageLabel, ":/Resources/Cards/BlackRune.png");
+    else if (cardName == "Chaos Card") PixmapToLabel(cardImageLabel, ":/Resources/Cards/ChaosCard.png");
+    else if (cardName == "Credit Card") PixmapToLabel(cardImageLabel, ":/Resources/Cards/CreditCard.png");
+    else if (cardName == "A Card Against Humanity") PixmapToLabel(cardImageLabel, ":/Resources/Cards/CardAgainstHumanity.png");
+    else if (cardName == "Dice Shard") PixmapToLabel(cardImageLabel, ":/Resources/Cards/DiceShard.png");
+    else if (cardName == "Emergency Contact") PixmapToLabel(cardImageLabel, ":/Resources/Cards/EmergencyContact.png");
 }
 
 void Draw::Trinket(QLabel* trinketImageLabel, int trinketID)
 {
-    if(trinketID == 0) trinketImageLabel->clear();
+    if (trinketID == 0) trinketImageLabel->clear();
     else PixmapToLabel(trinketImageLabel, QString(":/Resources/Trinkets/Trinket_%1.png").arg(QString::number(trinketID)));
 }
 

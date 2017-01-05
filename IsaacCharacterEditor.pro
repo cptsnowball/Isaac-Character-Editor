@@ -58,8 +58,38 @@ macx {
     QMAKE_CXXFLAGS += -stdlib=libc++
 }
 
-VERSION = 7.0.2.0
+VERSION = 8.0.0.0
 QMAKE_TARGET_COMPANY = Portal-chan
 QMAKE_TARGET_PRODUCT = Isaac Character Editor
 QMAKE_TARGET_DESCRIPTION =
-QMAKE_TARGET_COPYRIGHT = Copyright © 2015-2016
+QMAKE_TARGET_COPYRIGHT = Copyright © 2015-2017
+
+DISTFILES += \
+    Resources/Trinkets/Trinket_091.png \
+    Resources/Trinkets/Trinket_093.png \
+    Resources/Trinkets/Trinket_094.png \
+    Resources/Trinkets/Trinket_095.png \
+    Resources/Trinkets/Trinket_096.png \
+    Resources/Trinkets/Trinket_097.png \
+    Resources/Trinkets/Trinket_098.png \
+    Resources/Trinkets/Trinket_099.png \
+    Resources/Trinkets/Trinket_100.png \
+    Resources/Trinkets/Trinket_101.png \
+    Resources/Trinkets/Trinket_102.png \
+    Resources/Trinkets/Trinket_103.png \
+    Resources/Trinkets/Trinket_104.png \
+    Resources/Trinkets/Trinket_105.png \
+    Resources/Trinkets/Trinket_106.png \
+    Resources/Trinkets/Trinket_107.png \
+    Resources/Trinkets/Trinket_108.png \
+    Resources/Trinkets/Trinket_109.png \
+    Resources/Trinkets/Trinket_110.png \
+    Resources/Trinkets/Trinket_111.png \
+    Resources/Trinkets/Trinket_112.png \
+    Resources/Trinkets/Trinket_113.png \
+    Resources/Trinkets/Trinket_114.png \
+    Resources/Trinkets/Trinket_115.png \
+    Resources/Trinkets/Trinket_116.png \
+    Resources/Trinkets/Trinket_117.png \
+    Resources/Trinkets/Trinket_118.png \
+    Resources/Trinkets/Trinket_119.png
