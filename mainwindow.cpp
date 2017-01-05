@@ -76,7 +76,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     SetUpHealthAndConsumableLabels();
     GenerateCharacterComboBox();
-    GenerateSkinColorComboBox();
     GenerateComboBoxes();
 
     //Generating ComboBoxes resets the spacebar item to 0
@@ -151,6 +150,7 @@ void MainWindow::GenerateComboBoxes()
     GenerateCardComboBox();
     GenerateTrinketComboBox();
     GenerateCostumeComboBox();
+    GenerateSkinColorComboBox();
 }
 
 void MainWindow::GenerateCharacterComboBox()
