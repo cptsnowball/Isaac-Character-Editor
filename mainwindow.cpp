@@ -961,6 +961,9 @@ void MainWindow::SortCheckBoxChanged(int checkState)
 
 void MainWindow::GameComboBoxChanged(int gameIndex)
 {
+    auto prev = game;
+    if (prev == Game::AfterbirthPlus) prev = Game::Afterbirth;
+
     game = static_cast<Game>(gameIndex);
     switch (game)
     {
@@ -974,10 +977,13 @@ void MainWindow::GameComboBoxChanged(int gameIndex)
             this->ui->nameImagesCheckBox->setEnabled(false);
             break;
         case Game::Afterbirth:
-        case Game::AfterbirthPlus:
             this->ui->canShootCheckBox->setEnabled(true);
             this->ui->nameImagesCheckBox->setEnabled(true);
             break;
+    case Game::AfterbirthPlus:
+            QMessageBox(QMessageBox::Warning, "Information", "players.xml mods are no longer supported by Afterbirth+.").exec();
+            this->ui->gameComboBox->setCurrentIndex(static_cast<int>(prev));
+            return;
     }
 
     GenerateCharacterComboBox();
