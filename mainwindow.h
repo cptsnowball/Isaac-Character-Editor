@@ -89,6 +89,7 @@ private:
 #if defined(Q_OS_WIN)
     const QString _defaultPath = QDir("C:/Program Files (x86)").exists() ?
                 "C:/Program Files (x86)/Steam/SteamApps/common/The Binding of Isaac Rebirth" : "C:/Program Files/Steam/SteamApps/common/The Binding of Isaac Rebirth";
+    const QString _afterbirthPlusPath = QDir::homePath() + "/My Games/The Binding of Isaac Afterbirth+ Mods";
     const QFont _font = QFont("Segoe UI", 9);
 #elif defined(Q_OS_MAC)
     const QString _defaultPath = QDir::homePath() + "/Library/Application Support/Steam/steamapps/common/The Binding of Isaac Rebirth/The Binding of Isaac Rebirth.app/Contents/Resources/";

@@ -22,11 +22,29 @@ XML::XML(const QString &filename) :
     }
 }
 
+void XML::CreateDirIfDoesntExist(const QString &dirname)
+{
+    if(!QDir(dirname).exists()) QDir().mkpath(dirname);
+}
+
 void XML::DeleteXML()
 {
-    if(!QDir(_filename + "/resources").exists())
+    if (game == Game::AfterbirthPlus && !QDir(_filename).exists())
     {
         QMessageBox(QMessageBox::Critical, "Error", QString("%1 is not found!").arg(_filename)).exec();
+        return;
+    }
+    else if(game != Game::AfterbirthPlus && !QDir(_filename + "/resources").exists())
+    {
+        QMessageBox(QMessageBox::Critical, "Error", QString("%1 is not found!").arg(_filename)).exec();
+        return;
+    }
+
+    if (game == Game::AfterbirthPlus)
+    {
+        QDir(_filename + "/Isaac Character Editor").removeRecursively();
+        QMessageBox message(QMessageBox::Information, "Success!", "players.xml deleted.");
+        message.exec();
         return;
     }
 
@@ -45,13 +63,20 @@ void XML::DeleteXML()
 
 void XML::WriteXML()
 {
-    if (!QDir(_filename + "/resources").exists())
+    if (game == Game::AfterbirthPlus)
+    {
+        CreateDirIfDoesntExist(_filename + "/Isaac Character Editor/resources/");
+    }
+
+    else if (game != Game::AfterbirthPlus && !QDir(_filename + "/resources").exists())
     {
         QMessageBox(QMessageBox::Critical, "Error", QString("%1 is not found!").arg(_filename)).exec();
         return;
     }
 
     QFile file(_filename + "/resources/players.xml");
+    if (game == Game::AfterbirthPlus) file.setFileName(_filename + "/Isaac Character Editor/resources/players.xml");
+
     if (file.open(QIODevice::WriteOnly))
     {
         QTextStream stream(&file);
@@ -93,13 +118,19 @@ void XML::WriteXML()
 
 void XML::ReadXML()
 {
-    if (!QDir(_filename + "/resources").exists())
+    if (game == Game::AfterbirthPlus && !QDir(_filename).exists())
+    {
+        QMessageBox(QMessageBox::Critical, "Error", QString("%1 is not found!").arg(_filename)).exec();
+        return;
+    }
+    else if (game != Game::AfterbirthPlus &&  !QDir(_filename + "/resources").exists())
     {
         QMessageBox(QMessageBox::Critical, "Error", QString("%1 is not found!").arg(_filename)).exec();
         return;
     }
 
     QFile file(_filename + "/resources/players.xml");
+    if (game == Game::AfterbirthPlus) file.setFileName(_filename + "/Isaac Character Editor/resources/players.xml");
     if (!file.exists())
     {
         QMessageBox(QMessageBox::Warning, "Information", "players.xml doesn't exist.").exec();

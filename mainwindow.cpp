@@ -962,8 +962,6 @@ void MainWindow::SortCheckBoxChanged(int checkState)
 void MainWindow::GameComboBoxChanged(int gameIndex)
 {
     auto prev = game;
-    if (prev == Game::AfterbirthPlus) prev = Game::Afterbirth;
-
     game = static_cast<Game>(gameIndex);
     switch (game)
     {
@@ -975,15 +973,17 @@ void MainWindow::GameComboBoxChanged(int gameIndex)
                 characterMap.at(static_cast<Characters>(i)).CanShoot = true;
             this->ui->canShootCheckBox->setEnabled(false);
             this->ui->nameImagesCheckBox->setEnabled(false);
+            if (prev == Game::AfterbirthPlus) this->ui->pathTextEdit->setText(this->_defaultPath);
             break;
         case Game::Afterbirth:
             this->ui->canShootCheckBox->setEnabled(true);
             this->ui->nameImagesCheckBox->setEnabled(true);
+            if (prev == Game::AfterbirthPlus) this->ui->pathTextEdit->setText(this->_defaultPath);
+        case Game::AfterbirthPlus:
+            this->ui->canShootCheckBox->setEnabled(true);
+            this->ui->nameImagesCheckBox->setEnabled(true);
+            this->ui->pathTextEdit->setText(this->_afterbirthPlusPath);
             break;
-    case Game::AfterbirthPlus:
-            QMessageBox(QMessageBox::Warning, "Information", "players.xml mods are no longer supported by Afterbirth+.").exec();
-            this->ui->gameComboBox->setCurrentIndex(static_cast<int>(prev));
-            return;
     }
 
     GenerateCharacterComboBox();
@@ -1027,7 +1027,8 @@ void MainWindow::EditNameButtonClicked()
 
 void MainWindow::RestoreDefaultPath()
 {
-    this->ui->pathTextEdit->setText(this->_defaultPath);
+    if (game == Game::AfterbirthPlus) this->ui->pathTextEdit->setText(this->_afterbirthPlusPath);
+    else this->ui->pathTextEdit->setText(this->_defaultPath);
     QTextCursor cursor(this->ui->pathTextEdit->textCursor());
     cursor.movePosition(QTextCursor::End);
     this->ui->pathTextEdit->setTextCursor(cursor);
@@ -1157,7 +1158,8 @@ void MainWindow::LoadSettings()
     this->ui->sortCheckBox->setChecked(settings.value("sortalphabetically", false).toBool());
     this->ui->nameImagesCheckBox->setChecked(settings.value("nameimages", true).toBool());
     this->DrawBackground(settings.value("vaporwave", false).toBool() ? Background::Vaporwave : Background::Default);
-    this->ui->pathTextEdit->setPlainText(settings.value("path", this->_defaultPath).toString());
+    if (game == Game::AfterbirthPlus) this->ui->pathTextEdit->setPlainText(settings.value("abpluspath", this->_defaultPath).toString());
+    else this->ui->pathTextEdit->setPlainText(settings.value("path", this->_defaultPath).toString());
     settings.endGroup();
 }
 
@@ -1169,6 +1171,7 @@ void MainWindow::SaveSettings()
     settings.setValue("sortalphabetically", sortAlphabetically);
     settings.setValue("nameimages", nameImagesEnabled);
     settings.setValue("vaporwave", vaporwaveAesthetics);
-    settings.setValue("path", this->_isaacPath);
+    if (game == Game::AfterbirthPlus) settings.setValue("abpluspath", this->_isaacPath);
+    else settings.setValue("path", this->_isaacPath);
     settings.endGroup();
 }

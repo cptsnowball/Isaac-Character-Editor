@@ -12,6 +12,7 @@ public:
     void DeleteXML();
     void ReadXML();
 private:
+    void CreateDirIfDoesntExist(const QString &dirname);
     QString GetPlayerLine(const Character &player);
     QString GetItemString(const Character &player);
     QString GetSkinColorString(const Character &player);
